@@ -137,5 +137,57 @@ Ensure that the generated JSON Schema is **valid**, accurately represents the CS
 """
 
 get_issues_of_data = """
-I have the right 
+You are given a **strict schema** for a dataset and a **partial dataset** extracted within a specified range [l, r]. Your task is to **identify and correct errors** in the dataset while strictly adhering to the schema and real-world context.
+
+#### Possible Issues to Detect & Fix:
+1. **Wrong Format:**  
+   - Example: The correct date format is **DD-MM-YYYY**, but some data uses **MM:DD:YYYY**.  
+   - Example: A serial number should follow **ABC-123**, but an incorrect entry is **AB1-123**.  
+
+2. **Incorrect Number Format:**  
+   - Example: The expected decimal separator is **comma (1,35)**, but some entries use a **dot (1.35)** instead.  
+
+3. **Unit Inconsistency:**  
+   - Example: The dataset mixes units (e.g., **1 cm** and **2 meters**), causing inconsistencies.  
+
+4. **Spelling or Typographical Errors:**  
+   - Example: **"Itally"** instead of **"Italy"**.  
+
+Your **response** must strictly follow this JSON format**:  
+
+```json
+{
+    "improves": [
+        {
+            "description": "Explain why the data needs correction in simple terms.",
+            "position": {
+                "row": <row_number>,
+                "column": <column_number>,
+                "new_values": "<corrected_value>"
+            }
+        }
+    ]
+}
+```
+
+---
+### **Input Structure:**  
+#### **Schema:**  
+```
+{schema}
+```
+#### **Data (Partial Range from Dataset):**  
+```
+{data}
+```
+#### **Range for Processing:**  
+```
+{range}
+```
+---
+### **Expected Behavior:**  
+- **Ensure all corrections align with the schema** (e.g., expected formats, constraints, regex patterns).  
+- **Explain the reasoning for each fix clearly and concisely.**  
+- **Preserve the integrity of real-world context** while updating values.  
+- **Strictly return only the required JSON format.**  
 """

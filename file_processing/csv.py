@@ -1,4 +1,5 @@
 import json
+import random
 
 import pandas
 import pandas as pd
@@ -35,9 +36,19 @@ class CSVLoader:
     def to_dict(self):
         return self.data.to_dict()
 
-    def get_sample_data(self):
+    def get_sample_data(self, sample_size: int, random_state: int = None):
+        """
+            Returns a random sample of the DataFrame.
 
-        pass
+            :param df: Pandas DataFrame to sample from
+            :param sample_size: Number of rows to sample
+            :param random_state: Random seed for reproducibility (default: None)
+            :return: Sampled DataFrame
+        """
+
+        if sample_size > len(self.data):
+            raise ValueError(f"Sample size cannot be greater than the number of rows in the DataFrame. {sample_size} > {self.data.shape[0]}")
+        return self.data.sample(n=sample_size, random_state=random_state)
 
     def generate_schema(self, other_info: str = '', prompt: str = FIND_JSON_SCHEMA_PROMPTS) -> dict:
         message = [('system', SYSTEM_MESSAGE), ('human', prompt)]
@@ -45,7 +56,8 @@ class CSVLoader:
         chain = chain_message | openai_llm
         chain.bind(response_format="json_object")
 
-        format_data = self.to_str()
+        # get random format_data
+        format_data = self.get_sample_data(min(self.data.length, 20), random_state=random.seed()).to_csv(index=False)
 
         response = chain.invoke(input={
             "data": format_data,
@@ -65,7 +77,7 @@ class CSVLoader:
         except json.JSONDecodeError:
             raise ValueError("Response is not a valid JSON object.")
 
-    def set_schema(self, prompt: str = find_simple_json_schema_message):
+    def set_schema(self, prompt: str = FIND_JSON_SCHEMA_PROMPTS):
         schema = self.generate_schema(prompt=prompt)
         self.schema = schema
 
