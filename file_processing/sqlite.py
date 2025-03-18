@@ -1,6 +1,9 @@
 import sqlite3
 import pandas as pd
 
+from file_processing.sql_generator import generate_create_table
+
+
 class SQLiteManager:
     def __init__(self, db_path: str):
         """Initialize the SQLiteManager with the database path and establish a connection."""
