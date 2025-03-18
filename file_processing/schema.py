@@ -17,3 +17,7 @@ class CreateQueryResponse(BaseModel):
     """
     statement: str = Field(...,
                             description="statement of create query")
+
+class PotentialErrorQueryResponse(BaseModel):
+    issue_list: list[str] = Field(...,
+                                  description="list of issue list")

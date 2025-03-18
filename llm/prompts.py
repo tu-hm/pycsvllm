@@ -1,6 +1,6 @@
 # system_message = 'You are helpful assistant that expert in data analysis and data cleaning and find the data pattern smart'
 
-system_message = """
+SYSTEM_MESSAGE = """
 Provide detailed instructions on data analysis and data cleaning/normalization, outlining key concepts and techniques.
 
 # Steps
@@ -57,7 +57,7 @@ Provide a summary of the data analysis, cleaning, and normalization procedures i
 - Consider potential biases introduced during normalization, especially when preparing data for machine learning models.
 """
 
-find_json_schema_message = """
+FIND_JSON_SCHEMA_PROMPTS = """
 Given the CSV dataset below and any optional context provided, generate a **strict and valid JSON Schema** that adheres to the following requirements:
 
 1. **Accurate Data Typing** – Infer and enforce the correct data types (e.g., `string`, `number`, `integer`, `boolean`, `array`, `object`).
@@ -83,7 +83,7 @@ Your response **must** strictly follow this JSON format:
 ---
 """
 
-prompts_create_table_from_schema = """
+CREATE_TABLE_SCHEMA_PROMPTS = """
 Given the database schema, table name, and list of columns, generate a SQLite CREATE TABLE statement that accurately defines the table structure. 
 
 - Ensure the statement follows SQLite syntax, including appropriate data types, constraints (e.g., PRIMARY KEY, NOT NULL, UNIQUE), and any relevant attributes inferred from the provided schema.  
@@ -136,4 +136,6 @@ Optional Context:
 Ensure that the generated JSON Schema is **valid**, accurately represents the CSV structure, and reflects inferred data types.
 """
 
-
+get_issues_of_data = """
+I have the right 
+"""

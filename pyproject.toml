@@ -19,4 +19,5 @@ dependencies = [
     "pydantic>=2.10.6",
     "typing>=3.10.0.0",
     "langchain-community>=0.3.18",
+    "jsonschema>=4.23.0",
 ]

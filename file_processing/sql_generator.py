@@ -4,10 +4,10 @@ from langchain_core.prompts import ChatPromptTemplate
 
 from file_processing.schema import CreateQueryResponse
 from llm import openai_llm
-from llm.prompts import system_message, prompts_create_table_from_schema
+from llm.prompts import SYSTEM_MESSAGE, CREATE_TABLE_SCHEMA_PROMPTS
 
 def generate_create_table(schema, table_name, columns):
-    message = [('system', system_message), ('human', prompts_create_table_from_schema)]
+    message = [('system', SYSTEM_MESSAGE), ('human', CREATE_TABLE_SCHEMA_PROMPTS)]
     chain_message = ChatPromptTemplate.from_messages(message)
     chain = chain_message | openai_llm
     chain.bind(response_format="json_object")
