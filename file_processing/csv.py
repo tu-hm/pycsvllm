@@ -6,7 +6,8 @@ from langchain_core.prompts import ChatPromptTemplate
 
 from file_processing.schema import CSVJsonSchemaResponse
 from llm import openai_llm
-from llm.prompts import find_json_schema_message, system_message
+from llm.prompts import find_json_schema_message, system_message, find_simple_json_schema_message
+
 
 class CSVLoader:
     name: str
@@ -36,8 +37,8 @@ class CSVLoader:
     def get_sample_data(self):
         pass
 
-    def generate_schema(self, other_info: str = '') -> CSVJsonSchemaResponse:
-        message = [('system', system_message), ('human', find_json_schema_message)]
+    def generate_schema(self, other_info: str = '', prompt: str = find_json_schema_message) -> CSVJsonSchemaResponse:
+        message = [('system', system_message), ('human', prompt)]
         chain_message = ChatPromptTemplate.from_messages(message)
         chain = chain_message | openai_llm
         chain.bind(response_format="json_object")
@@ -55,11 +56,13 @@ class CSVLoader:
             # Ensure correct structure
             if isinstance(content_json, dict) and "json_schema" in content_json and "other_info" in content_json:
                 json_schema_response = CSVJsonSchemaResponse(**content_json)
-                schema = json_schema_response.json_schema
-                self.schema = schema
                 return json_schema_response
             else:
                 raise ValueError("Invalid JSON format received from API.")
 
         except json.JSONDecodeError:
             raise ValueError("Response is not a valid JSON object.")
+
+    def set_schema(self, prompt: str = find_simple_json_schema_message):
+        schema = self.generate_schema(prompt=prompt)
+        self.schema = schema.json_schema

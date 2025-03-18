@@ -1,90 +1,69 @@
-from sqlalchemy import create_engine, Column, Integer, String, Text, inspect
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+import sqlite3
 import pandas as pd
 
-Base = declarative_base()
+class SQLiteManager:
+    def __init__(self, db_path: str):
+        """Initialize the SQLiteManager with the database path and establish a connection."""
+        self.db_path = db_path
+        self.connection = None
+        self.cursor = None
+        self._connect()
 
-
-class SQLiteProcessor:
-    def __init__(self, database_name, table_name, columns=None):
-        self.database_name = database_name
-        self.table_name = table_name
-        self.engine = create_engine(f'sqlite:///{self.database_name}')
-        self.Session = sessionmaker(bind=self.engine)
-        self.session = self.Session()
-
-        # Dynamically create table model if it doesn't exist
-        if not inspect(self.engine).has_table(self.table_name):
-            self._create_table_model(columns)
-            Base.metadata.create_all(self.engine)
-
-    def _create_table_model(self, columns):
-        """Dynamically create SQLAlchemy model class"""
-        attrs = {
-            '__tablename__': self.table_name,
-            'id': Column(Integer, primary_key=True)
-        }
-
-        if columns:
-            for col_name, col_type in columns.items():
-                attrs[col_name] = Column(col_type)
-
-        self.TableModel = type(
-            f'Dynamic{self.table_name.capitalize()}',
-            (Base,),
-            attrs
-        )
-
-    def import_from_pandas(self, df, if_exists='replace'):
-        """Import data from pandas DataFrame"""
-        df.to_sql(
-            name=self.table_name,
-            con=self.engine,
-            if_exists=if_exists,
-            index=False
-        )
-
-    def export_to_pandas(self):
-        """Export table to pandas DataFrame"""
-        return pd.read_sql_table(self.table_name, self.engine)
-
-    def query(self, filter_dict=None):
-        """Safe query using SQLAlchemy ORM"""
-        query = self.session.query(self.TableModel)
-        if filter_dict:
-            for key, value in filter_dict.items():
-                query = query.filter(getattr(self.TableModel, key) == value)
-        return query.all()
-
-    def update(self, filter_dict, update_dict):
-        """Safe update using SQLAlchemy ORM"""
-        records = self.query(filter_dict)
-        for record in records:
-            for key, value in update_dict.items():
-                setattr(record, key, value)
-        self.session.commit()
-
-    def insert(self, data_dict):
-        """Safe insert using SQLAlchemy ORM"""
-        new_record = self.TableModel(**data_dict)
-        self.session.add(new_record)
-        self.session.commit()
-
-    def delete(self, filter_dict):
-        """Safe delete using SQLAlchemy ORM"""
-        records = self.query(filter_dict)
-        for record in records:
-            self.session.delete(record)
-        self.session.commit()
+    def _connect(self):
+        """Establish a connection to the database, creating the file if it doesn’t exist."""
+        try:
+            self.connection = sqlite3.connect(self.db_path)
+            self.cursor = self.connection.cursor()
+        except sqlite3.Error as e:
+            raise RuntimeError(f"Failed to connect to database: {e}")
 
     def close(self):
-        """Close the connection"""
-        self.session.close()
-        self.engine.dispose()
+        """Close the database connection if it exists."""
+        if self.connection:
+            self.connection.close()
+            self.connection = None
+            self.cursor = None
 
     def __enter__(self):
+        """Enter the context and return the SQLiteManager instance."""
         return self
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(self, exc_type, exc_value, traceback):
+        """Exit the context and close the connection."""
         self.close()
+
+    def create_table(self, sql: str):
+        """Execute a CREATE TABLE statement."""
+        try:
+            self.cursor.execute(sql)
+            self.connection.commit()
+        except sqlite3.Error as e:
+            raise RuntimeError(f"Failed to create table: {e}")
+
+    def execute(self, sql: str, parameters: tuple = ()):
+        """Execute an SQL statement with optional parameters."""
+        try:
+            self.cursor.execute(sql, parameters)
+            self.connection.commit()
+        except sqlite3.Error as e:
+            raise RuntimeError(f"SQL execution failed: {e}")
+
+    def query(self, sql: str, parameters: tuple = ()) -> list:
+        """Execute a SELECT query and return the results."""
+        try:
+            self.cursor.execute(sql, parameters)
+            return self.cursor.fetchall()
+        except sqlite3.Error as e:
+            raise RuntimeError(f"SQL query failed: {e}")
+
+    def import_from_csvloader(self, csvloader: 'CSVLoader', table_name: str = None):
+        """Import data from a CSVLoader into a table."""
+        if table_name is None:
+            table_name = csvloader.name if csvloader.name else "default_table"
+        create_sql = generate_create_table(csvloader, table_name)
+        self.create_table(create_sql)
+        csvloader.data.to_sql(table_name, self.connection, if_exists='append', index=False)
+
+    def export_to_dataframe(self, table_name: str) -> pd.DataFrame:
+        """Export a table to a pandas DataFrame."""
+        return pd.read_sql(f"SELECT * FROM {table_name}", self.connection)

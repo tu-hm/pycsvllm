@@ -2,17 +2,11 @@ import json
 
 from langchain_core.prompts import ChatPromptTemplate
 
-from file_processing.csv import CSVLoader
 from file_processing.schema import CreateQueryResponse
 from llm import openai_llm
 from llm.prompts import system_message, prompts_create_table_from_schema
 
-def generate_create_table(file: CSVLoader):
-    schema = file.schema
-    table_name = file.name
-
-    columns = file.data.columns
-
+def generate_create_table(schema, table_name, columns):
     message = [('system', system_message), ('human', prompts_create_table_from_schema)]
     chain_message = ChatPromptTemplate.from_messages(message)
     chain = chain_message | openai_llm
