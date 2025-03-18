@@ -1,4 +1,5 @@
 from pydantic import Field, BaseModel
+from typing import List
 
 
 class CSVJsonSchemaResponse(BaseModel):
@@ -17,7 +18,14 @@ class CreateQueryResponse(BaseModel):
     """
     statement: str = Field(...,
                             description="statement of create query")
+class CellInfo(BaseModel):
+    row: int = Field(..., description="row number")
+    column: str = Field(..., description="column atrribute")
+    value: str = Field(..., description="value")
+
+class ImprovesItem(BaseModel):
+    description: str = Field(..., description="description of how to improve")
+    position: CellInfo = Field(..., description="cell position")
 
 class PotentialErrorQueryResponse(BaseModel):
-    issue_list: list[str] = Field(...,
-                                  description="list of issue list")
+    improves: List[ImprovesItem] = Field(..., description="list of improves")

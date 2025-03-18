@@ -115,14 +115,12 @@ Given the following CSV dataset and any optional context provided, generate a JS
 - **Accurate Data Typing**: Infer and enforce the correct data types (`string`, `number`, `integer`, `boolean`, `array`, `object`) for each field.  
 - **All fields are optional** (i.e., not required).  
 
-Your response **must strictly** follow this JSON format:
+Your response **must** strictly follow this JSON format:
 
-```
 {{
     "json_schema": {{ ... }},
     "other_info": "Additional details about the schema"
 }}
-```
 
 **Do not** return anything outside this format.
 
@@ -136,7 +134,7 @@ Optional Context:
 Ensure that the generated JSON Schema is **valid**, accurately represents the CSV structure, and reflects inferred data types.
 """
 
-get_issues_of_data = """
+GET_ISSUE_OF_DATA = """
 You are given a **strict schema** for a dataset and a **partial dataset** extracted within a specified range [l, r]. Your task is to **identify and correct errors** in the dataset while strictly adhering to the schema and real-world context.
 
 #### Possible Issues to Detect & Fix:
@@ -153,22 +151,21 @@ You are given a **strict schema** for a dataset and a **partial dataset** extrac
 4. **Spelling or Typographical Errors:**  
    - Example: **"Itally"** instead of **"Italy"**.  
 
-Your **response** must strictly follow this JSON format**:  
+Your response **must** strictly follow this JSON format:
 
-```json
-{
-    "improves": [
-        {
+{{
+    "improves": list[
+        {{
             "description": "Explain why the data needs correction in simple terms.",
-            "position": {
-                "row": <row_number>,
-                "column": <column_number>,
-                "new_values": "<corrected_value>"
-            }
-        }
-    ]
-}
-```
+            "position": {{
+                "row": <<row_number>>,
+                "column": <<column_headername>>,
+                "value": "<<corrected_value>>, default type is str that I can format"
+            }}
+        }}
+    ] || can be none
+}}
+**Do not** return anything outside this format. No ```json...``` like this
 
 ---
 ### **Input Structure:**  
