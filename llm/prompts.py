@@ -29,6 +29,33 @@ Your response **must** strictly follow this JSON format:
 """
 
 prompts_create_table_from_schema = """
+Given the database schema, table name, and list of columns, generate a SQLite CREATE TABLE statement that accurately defines the table structure. 
+
+- Ensure the statement follows SQLite syntax, including appropriate data types, constraints (e.g., PRIMARY KEY, NOT NULL, UNIQUE), and any relevant attributes inferred from the provided schema.  
+- The table definition should be as strict as possible, correctly enforcing constraints based on the given schema and column list.  
+- Use appropriate SQLite data types (e.g., INTEGER, TEXT, REAL, BLOB) and constraints where applicable.  
+
+Your response **must** strictly follow this JSON format:  
+
+{{
+    "statement": "<SQLite CREATE TABLE statement>"
+}}
+
+**Do not** return anything outside this format.
+
+### Input Data:  
+Schema:  
+{schema}  
+
+Table Name:  
+{table_name}  
+
+Column List:  
+{column_list}  
+"""
+
+find_simple_json_schema_message = """
 
 """
+
 

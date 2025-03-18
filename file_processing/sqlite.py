@@ -26,8 +26,6 @@ class SQLiteProcessor:
             'id': Column(Integer, primary_key=True)
         }
 
-        # Add columns from input (example implementation)
-        # You would need to implement proper column type handling
         if columns:
             for col_name, col_type in columns.items():
                 attrs[col_name] = Column(col_type)

@@ -10,3 +10,10 @@ class CSVJsonSchemaResponse(BaseModel):
                   description="JSON schema output")
     other_info: str = Field(...,
                       description="other relation info in schema")
+
+class CreateQueryResponse(BaseModel):
+    """
+    the define response type of create query response
+    """
+    statement: str = Field(...,
+                            description="statement of create query")

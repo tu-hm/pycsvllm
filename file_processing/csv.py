@@ -3,18 +3,19 @@ import json
 import pandas
 import pandas as pd
 from langchain_core.prompts import ChatPromptTemplate
-from pydantic import BaseModel, Field
 
 from file_processing.schema import CSVJsonSchemaResponse
 from llm import openai_llm
 from llm.prompts import find_json_schema_message, system_message
 
 class CSVLoader:
+    name: str
     filepath: str
     data: pandas.DataFrame
     schema: dict
 
-    def __init__(self, filepath):
+    def __init__(self, filepath: str, name: str = ''):
+        self.name = name
         self.filepath = filepath
         self.data = pd.read_csv(filepath)
         self.schema = {}
