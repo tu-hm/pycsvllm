@@ -277,3 +277,4 @@ class CSVLoader:
             # Update the DataFrame
             column_index = self.data.columns.get_loc(column)
             self.data.iloc[row, column_index] = parsed_value
+        return self.data

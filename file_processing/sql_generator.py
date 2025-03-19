@@ -11,6 +11,7 @@ def generate_create_table(schema, table_name, columns):
     chain_message = ChatPromptTemplate.from_messages(message)
     chain = chain_message | base_llm
     chain.bind(response_format="json_object")
+
     response = chain.invoke(input={
         "schema": str(schema),
         "table_name": table_name,
