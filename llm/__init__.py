@@ -1,3 +1,3 @@
-from llm.llm import openai_llm
+from llm.llm import base_llm
 
-__all__ = ["openai_llm"]
+__all__ = ["base_llm"]

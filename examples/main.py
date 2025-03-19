@@ -9,14 +9,14 @@ data = CSVLoader(
 
 schema = data.generate_schema()
 
-df = pandas.read_csv('public/messy_data.csv')
-list_errors = CSVLoader.validate_dataset(df, schema)
-print(list_errors)
-
-messy_data = CSVLoader(
+data1 = CSVLoader(
     filepath='public/messy_data.csv',
     name='messy_data',
 )
 
-list_improves = messy_data.scan_error(schema=schema)
+list_improves = data1.scan_error(schema=schema)
 print(list_improves)
+
+data1.apply_improvements(list_improves)
+print(data1.data)
+data1.data.to_csv('public/messy_data1.csv')

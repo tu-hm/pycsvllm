@@ -1,4 +1,6 @@
 import json
+
+import numpy as np
 import pandas as pd
 from jsonschema.validators import Draft202012Validator
 from langchain_core.prompts import ChatPromptTemplate
@@ -9,7 +11,7 @@ from file_processing.schema import (
     PotentialErrorQueryResponse,
     ImprovesItem
 )
-from llm import openai_llm
+from llm import base_llm
 from llm.prompts import (
     FIND_JSON_SCHEMA_PROMPTS,
     SYSTEM_MESSAGE,
@@ -31,7 +33,7 @@ class CSVLoader:
         """
         self.name = name
         self.filepath = filepath
-        self.data = pd.read_csv(filepath)
+        self.data = pd.read_csv(filepath, index_col=0)
         self.schema = {}
 
     def read_data(self, filepath: str) -> None:
@@ -92,7 +94,7 @@ class CSVLoader:
         """
         message = [('system', SYSTEM_MESSAGE), ('human', prompt)]
         chain_message = ChatPromptTemplate.from_messages(message)
-        chain = chain_message | openai_llm
+        chain = chain_message | base_llm
         chain.bind(response_format="json_object")
 
         format_data = (self.get_sample_data(
@@ -127,7 +129,7 @@ class CSVLoader:
         """
         message = [('system', SYSTEM_MESSAGE), ('human', GET_ISSUE_OF_DATA)]
         chain_message = ChatPromptTemplate.from_messages(message)
-        chain = chain_message | openai_llm
+        chain = chain_message | base_llm
         chain.bind(response_format="json_object")
 
         format_data = self.get_range_data(*range_query).to_csv(index=False)
@@ -185,3 +187,87 @@ class CSVLoader:
                 })
 
         return validation_results
+
+    @staticmethod
+    def parse_value(value: str, type_or_dtype):
+        """
+        Parse a string value based on either a schema type string or a pandas dtype.
+
+        :param value: The string value to parse (e.g., "42", "3.14", "true").
+        :param type_or_dtype: Either a schema type (str) or pandas dtype (e.g., np.int64).
+        :return: The parsed value (e.g., 42, 3.14, True).
+        :raises ValueError: If parsing fails or the type/dtype is unsupported.
+        """
+        if isinstance(type_or_dtype, str):
+            # Schema type string
+            if type_or_dtype == "string":
+                return value
+            elif type_or_dtype == "integer":
+                return int(value)
+            elif type_or_dtype == "number":
+                return float(value)
+            elif type_or_dtype == "boolean":
+                if value.lower() in ["true", "1", "yes", "t", "y"]:
+                    return True
+                elif value.lower() in ["false", "0", "no", "f", "n"]:
+                    return False
+                else:
+                    raise ValueError(f"Cannot parse '{value}' as boolean.")
+            else:
+                raise ValueError(f"Unsupported schema type: {type_or_dtype}")
+        else:
+            # Pandas dtype
+            dtype = type_or_dtype
+            if np.issubdtype(dtype, np.integer):
+                return int(value)
+            elif np.issubdtype(dtype, np.floating):
+                return float(value)
+            elif np.issubdtype(dtype, np.bool_):
+                if value.lower() in ["true", "1", "yes", "t", "y"]:
+                    return True
+                elif value.lower() in ["false", "0", "no", "f", "n"]:
+                    return False
+                else:
+                    raise ValueError(f"Cannot parse '{value}' as boolean.")
+            elif np.issubdtype(dtype, np.object_):
+                return value
+            else:
+                raise ValueError(f"Unsupported pandas dtype: {dtype}")
+
+    def apply_improvements(self, improvements: List[ImprovesItem]) -> None:
+        """
+        Apply improvements to the DataFrame, using schema types or inferred pandas types.
+
+        :param improvements: List of improvements specifying row, column, and new value.
+        :raises ValueError: If column/row is invalid or value cannot be parsed.
+        """
+        for item in improvements:
+            column = item.position.column
+            row = item.position.row
+            value = item.position.value
+
+            # Ensure column exists in DataFrame
+            if column not in self.data.columns:
+                raise ValueError(f"Column '{column}' not found in DataFrame.")
+
+            # Decide whether to use schema or pandas dtype
+            if self.schema:
+                if column not in self.schema["properties"]:
+                    raise ValueError(f"Column '{column}' not found in schema.")
+                type_or_dtype = self.schema["properties"][column]["type"]
+            else:
+                type_or_dtype = self.data[column].dtype
+
+            # Parse the value
+            try:
+                parsed_value = self.parse_value(value, type_or_dtype)
+            except ValueError as e:
+                raise ValueError(f"Failed to parse '{value}' for column '{column}': {e}")
+
+            # Ensure row is valid
+            if row < 0 or row >= len(self.data):
+                raise ValueError(f"Row {row} is out of range (0 to {len(self.data) - 1}).")
+
+            # Update the DataFrame
+            column_index = self.data.columns.get_loc(column)
+            self.data.iloc[row, column_index] = parsed_value

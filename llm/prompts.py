@@ -150,6 +150,10 @@ You are given a **strict schema** for a dataset and a **partial dataset** extrac
 
 4. **Spelling or Typographical Errors:**  
    - Example: **"Itally"** instead of **"Italy"**.  
+5. Other time, you should find the best case if the data in wrong
+    - You can try to fix the not valid data with other valid data by checking time and type and it description, to find the best
+    - For example midnight is 00:00:00
+    
 
 Your response **must** strictly follow this JSON format:
 
