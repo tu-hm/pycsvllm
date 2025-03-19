@@ -136,8 +136,9 @@ class CSVLoader:
         response = chain.invoke(input={
             "schema": str(schema),
             "data": format_data,
-            "range": str(range_query)
         })
+
+        print(response.content)
 
         try:
             content_json = json.loads(response.content)
@@ -148,7 +149,12 @@ class CSVLoader:
         except json.JSONDecodeError:
             raise ValueError("Response is not a valid JSON object.")
 
-    def scan_error(self, schema: dict, batch_size: int = 5) -> List[ImprovesItem]:
+    def _update_index(self, left: int, items: List[ImprovesItem]):
+        for item in items:
+            item.position.row = left + item.position.row
+        return items
+
+    def scan_error(self, schema: dict, batch_size: int = 10) -> List[ImprovesItem]:
         """
         Scans the entire dataset for potential errors in batches.
 
@@ -156,12 +162,12 @@ class CSVLoader:
         :param batch_size: Number of rows per scan.
         :return: List of detected improvement suggestions.
         """
-        improvements = []
+        improvements: List[ImprovesItem] = []
         for start in range(0, self.get_length(), batch_size):
             end = min(start + batch_size, self.get_length())
             improvements.extend(
-                self._scan_error_for_range(
-                    schema, (start, end)).improves
+                self._update_index(start, self._scan_error_for_range(
+                    schema, (start, end)).improves)
             )
         return improvements
 

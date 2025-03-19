@@ -25,7 +25,7 @@ Provide detailed instructions on data analysis and data cleaning/normalization, 
 
 # Output Format
 
-Provide a summary of the data analysis, cleaning, and normalization procedures in a structured format such as a bulleted list or a short report. Include key steps, visualizations (examples as text descriptions or summary), and reasoning where applicable.
+- You should given the json format that user have defined. No ```json``` like this, only the data, no other comment or explain.
 
 # Examples
 
@@ -135,60 +135,94 @@ Ensure that the generated JSON Schema is **valid**, accurately represents the CS
 """
 
 GET_ISSUE_OF_DATA = """
-You are given a **strict schema** for a dataset and a **partial dataset** extracted within a specified range [l, r]. Your task is to **identify and correct errors** in the dataset while strictly adhering to the schema and real-world context.
+You are given a **strict schema** for a CSV dataset along with a **partial dataset**. Your task is to **detect and correct errors** in the dataset while conforming rigorously to the schema and preserving the real-world meaning of the data. The corrections should be as precise as possible—if a valid alternative exists, adjust the value rather than reverting to a default.
 
-#### Possible Issues to Detect & Fix:
-1. **Wrong Format:**  
-   - Example: The correct date format is **DD-MM-YYYY**, but some data uses **MM:DD:YYYY**.  
-   - Example: A serial number should follow **ABC-123**, but an incorrect entry is **AB1-123**.  
+---
 
-2. **Incorrect Number Format:**  
-   - Example: The expected decimal separator is **comma (1,35)**, but some entries use a **dot (1.35)** instead.  
+### **Issues to Detect & Correct**
 
-3. **Unit Inconsistency:**  
-   - Example: The dataset mixes units (e.g., **1 cm** and **2 meters**), causing inconsistencies.  
+1. **Incorrect Formatting:**  
+   - **Dates:** Ensure dates follow the **DD-MM-YYYY** format. For example, if a date is provided as **MM-DD-YYYY** or **MM:DD:YYYY**, convert it to the correct format.  
+   - **Serial Numbers:** Validate entries against the expected pattern (e.g., **ABC-123**); if a serial number appears as **AB1-123**, correct the format.  
+   - **General Consistency:** All entries in a given column should adhere to a single, uniform format.
 
-4. **Spelling or Typographical Errors:**  
-   - Example: **"Itally"** instead of **"Italy"**.  
-5. Other time, you should find the best case if the data in wrong
-    - You can try to fix the not valid data with other valid data by checking time and type and it description, to find the best
-    - For example midnight is 00:00:00
-    
+2. **Number Formatting Errors:**  
+   - Correct the decimal and thousand separators. For example, if the expected format uses a comma (e.g., **1,35** for decimals), convert any numbers using a dot (e.g., **1.35**) accordingly.  
+   - Adjust number formatting without defaulting to a generic value.
+
+3. **Unit Inconsistencies:**  
+   - If the dataset uses mixed units (e.g., **1 cm** vs. **2 meters**), standardize units to maintain consistency across the dataset.
+
+4. **Spelling and Typographical Errors:**  
+   - Fix misspellings and typographical errors while respecting contextual clues. For instance, correct **"Itally"** to **"Italy"**.
+
+5. **Contextual and Logical Corrections:**  
+   - For any invalid value, decide on the best correction by considering the time, type, description, and overall column meaning.  
+   - Use logical substitutions (e.g., change **"midnight"** to **"00:00:00"**).
+
+6. **Intelligent Spelling Adjustments:**  
+   - Use context to remove extra characters or typos. For example:  
+     - "italy111" should be corrected to "Italy"  
+     - "sun?light" should become "Sunlight"  
+     - "9taly" should be corrected to "Italy"
+
+---
+
+### **Input Structure**
+
+- **Schema:**  
+  ```
+  {schema}
+  ```
+
+- **Data (Partial Range from Dataset):**  
+  ```
+  {data}
+  ```
+
+
+---
+
+### **Output Requirements**
 
 Your response **must** strictly follow this JSON format:
 
 {{
-    "improves": list[
+    "improves": list[  
         {{
-            "description": "Explain why the data needs correction in simple terms.",
+            "description": "Explain why the data needs correction in simple terms.",  
             "position": {{
-                "row": <<row_number>>,
-                "column": <<column_headername>>,
-                "value": "<<corrected_value>>, default type is str that I can format"
+                "row": <<row_number>>, row is base 0 start at 0,  
+                "column": <<column_headername>>,  
+                "value": "<<corrected_value>>, default type is str that I can format"  
             }}
-        }}
-    ] || can be none
+        }}  
+    ] || can be none  
 }}
-**Do not** return anything outside this format. No ```json...``` like this
+
+**Important:**  
+- Return **only** the required JSON structure—do not include any additional text or formatting outside this structure.  
+- Provide a clear, concise explanation for each correction that ties back to the schema rules and real-world context.  
+- Ensure every change is aligned with the expected formats, constraints, and regex patterns defined in the schema.
 
 ---
-### **Input Structure:**  
-#### **Schema:**  
-```
-{schema}
-```
-#### **Data (Partial Range from Dataset):**  
-```
-{data}
-```
-#### **Range for Processing:**  
-```
-{range}
-```
+
+### **Expected Behavior**
+
+- **Strict Schema Adherence:**  
+  Every correction must align with the provided schema specifications.
+
+- **Context-Aware Corrections:**  
+  Corrections should respect the real-world context of the data (e.g., maintaining appropriate units and logical time values).
+
+- **Minimal Disruption:**  
+  Only change values that are in error. If a better correction exists, do not resort to default values.
+
+- **Clear Justification:**  
+  For every corrected value, provide a brief explanation that is easily understandable.
+
 ---
-### **Expected Behavior:**  
-- **Ensure all corrections align with the schema** (e.g., expected formats, constraints, regex patterns).  
-- **Explain the reasoning for each fix clearly and concisely.**  
-- **Preserve the integrity of real-world context** while updating values.  
-- **Strictly return only the required JSON format.**  
+
+This prompt is designed to guide you through a careful, context-aware data cleaning process while strictly adhering to the schema and returning your findings in the required JSON format.
+
 """

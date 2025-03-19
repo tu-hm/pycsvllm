@@ -20,3 +20,4 @@ print(list_improves)
 data1.apply_improvements(list_improves)
 print(data1.data)
 data1.data.to_csv('public/messy_data1.csv')
+
