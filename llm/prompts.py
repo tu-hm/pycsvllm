@@ -58,7 +58,7 @@ Provide detailed instructions on data analysis and data cleaning/normalization, 
 """
 
 FIND_JSON_SCHEMA_PROMPTS = """
-Given the CSV dataset below and any optional context provided, generate a **strict and valid JSON Schema** that adheres to the following requirements:
+Given the CSV dataset below, some column info of dataset and any optional context provided, generate a **strict and valid JSON Schema** that adheres to the following requirements:
 
 1. **Accurate Data Typing** – Infer and enforce the correct data types (e.g., `string`, `number`, `integer`, `boolean`, `array`, `object`).
 2. **Format Specification** – Apply appropriate formats where relevant (e.g., `date-time`, `email`, `uuid`, `uri`).
@@ -77,6 +77,9 @@ Your response **must** strictly follow this JSON format:
 ---
 **CSV Dataset:**
 {data}
+
+**Column info in dataset:**
+{column_info}
 
 **Additional Context (if any):**
 {context}

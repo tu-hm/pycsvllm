@@ -18,7 +18,6 @@ from llm.prompts import (
     GET_ISSUE_OF_DATA
 )
 
-
 class CSVLoader:
     """
     A class to load, process, and validate CSV files using JSON Schema.
@@ -83,6 +82,70 @@ class CSVLoader:
         if end < start or end > self.get_length() or start < 0:
             raise ValueError(f"Invalid range: {start}-{end}")
         return self.data.iloc[start:end]
+    @staticmethod
+    def get_column_info(df: pd.DataFrame, unique_threshold: int = 20) -> list:
+        """
+        Generate comprehensive information about each column in a DataFrame
+
+        :param    df: Input DataFrame
+        :param    unique_threshold: Maximum number of unique values to display (default: 20)
+
+        :return:     List of dictionaries containing column information
+        """
+        column_info = []
+
+        for col in df.columns:
+            col_series = df[col]
+            null_count = col_series.isnull().sum()
+            unique_count = col_series.nunique()
+
+            # Base information for all columns
+            info = {
+                'column_name': col,
+                'dtype': str(col_series.dtype),
+                'non_null_count': len(col_series) - null_count,
+                'null_count': null_count,
+                'null_percentage': round((null_count / len(col_series)) * 100, 2),
+                'unique_count': unique_count,
+            }
+
+            # Handle different data types
+            if pd.api.types.is_numeric_dtype(col_series):
+                info['type_category'] = 'numerical'
+                info.update({
+                    'min': col_series.min(),
+                    'max': col_series.max(),
+                    'mean': col_series.mean(),
+                    'median': col_series.median(),
+                    'std': col_series.std()
+                })
+            elif pd.api.types.is_datetime64_any_dtype(col_series):
+                info['type_category'] = 'datetime'
+                info.update({
+                    'min_date': col_series.min(),
+                    'max_date': col_series.max()
+                })
+            elif pd.api.types.is_categorical_dtype(col_series):
+                info['type_category'] = 'categorical'
+            elif pd.api.types.is_bool_dtype(col_series):
+                info['type_category'] = 'boolean'
+                info['value_distribution'] = col_series.value_counts().to_dict()
+            else:
+                info['type_category'] = 'string/object'
+                info['max_length'] = col_series.str.len().max()
+
+            # Handle unique values
+            if unique_count <= unique_threshold:
+                info['unique_values'] = col_series.dropna().unique().tolist()
+            else:
+                info['unique_sample'] = col_series.dropna().sample(
+                    min(unique_threshold, len(col_series)),
+                    random_state=42
+                ).tolist()
+
+            column_info.append(info)
+
+        return column_info
 
     def generate_schema(self, other_info: str = '', prompt: str = FIND_JSON_SCHEMA_PROMPTS) -> dict:
         """
@@ -97,12 +160,15 @@ class CSVLoader:
         chain = chain_message | base_llm
         chain.bind(response_format="json_object")
 
-        format_data = (self.get_sample_data(
+        format_data = self.get_sample_data(
             min(self.get_length(), 10))
-                       .to_csv(index=False))
+
+        relevant_info = self.get_column_info(format_data)
+
         response = chain.invoke(input={
-            "data": format_data,
-            "context": other_info
+            "data": format_data.to_csv(index=False),
+            "context": other_info,
+            "column_info": str(relevant_info),
         })
 
         try:
@@ -138,7 +204,7 @@ class CSVLoader:
             "data": format_data,
         })
 
-        print(response.content)
+        # print(response.content)
 
         try:
             content_json = json.loads(response.content)

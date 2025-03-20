@@ -1,0 +1,247 @@
+row,column,original_value,modified_value,error_type,data_type,dtype
+293,Customer ID,CUST2127,FIST2127,introduce_typo,STRING,object
+474,Order ID,ORD000474,ODD000474,introduce_typo,STRING,object
+164,Customer Feedback,Very satisfied with the service.,Very satisfied with the servi,truncate,STRING,object
+5,Platform,Blinkit,BLINKIT,change_case,STRING,object
+470,Order ID,ORD000470,ORD0004,truncate,STRING,object
+231,Product Category,Personal Care,Personal Care ,whitespace,STRING,object
+366,Customer Feedback,Items missing from order.,Items missing from order. ,whitespace,STRING,object
+171,Order Value (INR),476,47.6,scale_value,NUMERIC,float64
+391,Order ID,ORD000391,ORD00039,truncate,STRING,object
+301,Product Category,Dairy,  Dairy,whitespace,STRING,object
+376,Refund Requested,Yes,YES,change_case,STRING,object
+468,Customer Feedback,"Horrible experience, never ordering again.","horrible experience, never ordering again.",change_case,STRING,object
+481,Customer Feedback,Good quality products.,GOOD QUALITY PRODUCTS.,change_case,STRING,object
+107,Order Date & Time,15:29.5,15:29.,truncate,STRING,object
+227,Platform,Swiggy Instamart, Swiggy Instamart,whitespace,STRING,object
+205,Delivery Time (Minutes),31,31%,stringify,NUMERIC,object
+505,Product Category,Fruits & Vegetables,fruits & vegetables,change_case,STRING,object
+365,Platform,JioMart,  JioMart  ,whitespace,STRING,object
+183,Order Value (INR),675.0,67.5,scale_value,NUMERIC,float64
+104,Refund Requested,No,NO,change_case,STRING,object
+518,Platform,JioMart,JioMar,truncate,STRING,object
+84,Customer Feedback,Very satisfied with the service.,Very satisgief ekgh the serfjce.,introduce_typo,STRING,object
+500,Customer Feedback,"Horrible experience, never ordering again.","Horrible experience, never ordering aga",truncate,STRING,object
+129,Service Rating,5,4.982244396707397,add_noise,NUMERIC,float64
+531,Delivery Delay,No, No ,whitespace,STRING,object
+381,Order ID,ORD000381,  ORD000381 ,whitespace,STRING,object
+190,Customer ID,CUST8744, CUST8744 ,whitespace,STRING,object
+379,Order Date & Time,25:29.5,  25:29.5,whitespace,STRING,object
+165,Product Category,Snacks,Snackz,introduce_typo,STRING,object
+413,Customer Feedback,"Fast delivery, great service!","Fast delivery, great servic",truncate,STRING,object
+376,Service Rating,2.0,20.0,scale_value,NUMERIC,float64
+268,Service Rating,2.0,1.9351874211727789,add_noise,NUMERIC,float64
+105,Service Rating,2.0,2.187680014221767,add_noise,NUMERIC,float64
+491,Customer Feedback,Good quality products.,  Good quality products.  ,whitespace,STRING,object
+97,Order Value (INR),306.0,306.0,stringify,NUMERIC,object
+173,Service Rating,1.0,1.0%,stringify,NUMERIC,object
+176,Customer ID,CUST2163,CHST2163,introduce_typo,STRING,object
+499,Product Category,Beverages,Beverages ,whitespace,STRING,object
+174,Product Category,Personal Care,PERSONAL CARE,change_case,STRING,object
+400,Customer ID,CUST4114, CUST4114 ,whitespace,STRING,object
+2,Platform,Blinkit, Blinkit  ,whitespace,STRING,object
+29,Refund Requested,Yes,Yea,introduce_typo,STRING,object
+84,Order Date & Time,32:29.5,32:29,truncate,STRING,object
+27,Customer Feedback,Items missing from order.,  Items missing from order.  ,whitespace,STRING,object
+323,Order ID,ORD000323,ord000323,change_case,STRING,object
+516,Customer ID,CUST7812,Cust7812,change_case,STRING,object
+290,Refund Requested,No,No  ,whitespace,STRING,object
+58,Product Category,Dairy, Dairy ,whitespace,STRING,object
+56,Product Category,Fruits & Vegetables,  Fruits & Vegetables,whitespace,STRING,object
+342,Delivery Delay,No,NO,change_case,STRING,object
+243,Service Rating,3.0,3.0,whitespace,STRING,object
+261,Product Category,Beverages,Beverag,truncate,STRING,object
+287,Delivery Delay,No,  No ,whitespace,STRING,object
+307,Delivery Delay,No,No  ,whitespace,STRING,object
+388,Customer ID,CUST5279, CUST5279,whitespace,STRING,object
+427,Product Category,Grocery,Groce,truncate,STRING,object
+466,Product Category,Beverages,BEVERAGES,change_case,STRING,object
+159,Product Category,Beverages,Bevera,truncate,STRING,object
+78,Refund Requested,Yes,Y,truncate,STRING,object
+489,Platform,JioMart,jiomart,change_case,STRING,object
+37,Customer Feedback,"Fast delivery, great service!","Fast selifert, geeat servivd!",introduce_typo,STRING,object
+301,Platform,JioMart,JolMarf,introduce_typo,STRING,object
+378,Order Date & Time,37:29.5,37:2,truncate,STRING,object
+469,Order ID,ORD000469,  ORD000469  ,whitespace,STRING,object
+540,Order Date & Time,35:29.5,35:29,truncate,STRING,object
+191,Customer ID,CUST4981,VJSY4981,introduce_typo,STRING,object
+92,Refund Requested,No,NO,change_case,STRING,object
+304,Refund Requested,Yes,YES,change_case,STRING,object
+148,Customer ID,CUST8962,  CUST8962 ,whitespace,STRING,object
+132,Customer ID,CUST7126,CUST712,truncate,STRING,object
+305,Refund Requested,No,Ni,introduce_typo,STRING,object
+357,Customer Feedback,Items missing from order.,Jtemx missknv frpk orfwr.,introduce_typo,STRING,object
+177,Product Category,Grocery, Grocery ,whitespace,STRING,object
+363,Platform,Swiggy Instamart,Zwkggj Jbstamatt,introduce_typo,STRING,object
+527,Delivery Delay,Yes, Yes  ,whitespace,STRING,object
+126,Platform,Blinkit,BLINKIT,change_case,STRING,object
+463,Order Date & Time,52:29.5,52:29,truncate,STRING,object
+45,Customer ID,CUST5803,CUST58,truncate,STRING,object
+13,Order ID,ORD000013,  ORD000013,whitespace,STRING,object
+71,Customer Feedback,"Not fresh, disappointed."," Not fresh, disappointed.",whitespace,STRING,object
+348,Order ID,ORD000348,ORE000348,introduce_typo,STRING,object
+168,Order ID,ORD000168,ORF000168,introduce_typo,STRING,object
+409,Order Date & Time,33:29.5, 33:29.5 ,whitespace,STRING,object
+420,Refund Requested,No,NO,change_case,STRING,object
+174,Delivery Delay,No,NO,change_case,STRING,object
+422,Order ID,ORD000422,ORD000422 ,whitespace,STRING,object
+13,Delivery Delay,Yes,YES,change_case,STRING,object
+237,Delivery Time (Minutes),36,  36,whitespace,STRING,object
+9,Product Category,Fruits & Vegetables,Gfuits & Vegdtqbles,introduce_typo,STRING,object
+139,Delivery Time (Minutes),25,  25 ,whitespace,STRING,object
+493,Customer Feedback,Delivery person was rude., Delivery person was rude.,whitespace,STRING,object
+152,Customer Feedback,Packaging could be better.,Pacowtiny could ne gdgfer.,introduce_typo,STRING,object
+23,Refund Requested,No, No ,whitespace,STRING,object
+74,Platform,Swiggy Instamart,Swigbg Instwmart,introduce_typo,STRING,object
+91,Customer Feedback,Very satisfied with the service.,Csrj sayosrire wkrh ths seevicw.,introduce_typo,STRING,object
+259,Customer ID,CUST2312,cust2312,change_case,STRING,object
+61,Product Category,Fruits & Vegetables, Fruits & Vegetables  ,whitespace,STRING,object
+67,Customer ID,CUST5010,CIDT5010,introduce_typo,STRING,object
+150,Delivery Delay,No, No,whitespace,STRING,object
+484,Order Date & Time,23:29.5,23:29.5  ,whitespace,STRING,object
+1,Delivery Time (Minutes),30, 30 ,whitespace,STRING,object
+107,Refund Requested,No,no,change_case,STRING,object
+185,Customer Feedback,Very satisfied with the service.,VERY SATISFIED WITH THE SERVICE.,change_case,STRING,object
+483,Customer Feedback,Excellent experience!,Exfeloent exlsriemce!,introduce_typo,STRING,object
+448,Customer Feedback,"Very late delivery, not happy.","very late delivery, not happy.",change_case,STRING,object
+323,Customer ID,CUST1722,CUST1722 ,whitespace,STRING,object
+38,Customer Feedback,Wrong item delivered.,Erpjf iydm reoiverex.,introduce_typo,STRING,object
+536,Delivery Delay,No, No,whitespace,STRING,object
+37,Order ID,ORD000037,ORD0000,truncate,STRING,object
+296,Platform,Swiggy Instamart,swiggy instamart,change_case,STRING,object
+349,Customer Feedback,"Easy to order, loved it!","EASY TO ORDER, LOVED IT!",change_case,STRING,object
+223,Customer Feedback,"Easy to order, loved it!","Essh to orret, lovrd it!",introduce_typo,STRING,object
+135,Platform,JioMart,JioMar,truncate,STRING,object
+236,Platform,Swiggy Instamart,Swiggy Instam,truncate,STRING,object
+20,Refund Requested,No,  No ,whitespace,STRING,object
+263,Order Date & Time,07:29.5, 07:29.5 ,whitespace,STRING,object
+8,Delivery Delay,No,N,truncate,STRING,object
+407,Delivery Delay,No,Ho,introduce_typo,STRING,object
+407,Platform,Blinkit,BLINKIT,change_case,STRING,object
+298,Customer Feedback,"Very late delivery, not happy.","Vwry lwtr felivdry, not haplj.",introduce_typo,STRING,object
+114,Refund Requested,Yes, Yes,whitespace,STRING,object
+337,Customer Feedback,"Very late delivery, not happy.","Very Late Delivery, Not Happy.",change_case,STRING,object
+113,Refund Requested,No,N,truncate,STRING,object
+413,Product Category,Snacks,Sna,truncate,STRING,object
+398,Product Category,Grocery, Grocery ,whitespace,STRING,object
+62,Product Category,Beverages,Bdvdrabes,introduce_typo,STRING,object
+11,Service Rating,5.0,5.0,whitespace,STRING,object
+48,Delivery Delay,No,Bi,introduce_typo,STRING,object
+408,Product Category,Snacks,Sna,truncate,STRING,object
+54,Service Rating,2.0, 2.0  ,whitespace,STRING,object
+500,Customer ID,CUST6502,Cust6502,change_case,STRING,object
+291,Product Category,Beverages,Becerwgws,introduce_typo,STRING,object
+547,Customer ID,CUST1444,  CUST1444,whitespace,STRING,object
+89,Customer Feedback,"Fast delivery, great service!","Fast delivedh, great seevive!",introduce_typo,STRING,object
+305,Customer Feedback,Very satisfied with the service.,Very wqtusfied witu yye service.,introduce_typo,STRING,object
+118,Order ID,ORD000118,LRD000118,introduce_typo,STRING,object
+360,Order Date & Time,11:29.5,11:29.,truncate,STRING,object
+527,Order Date & Time,33:29.5,  33:29.5  ,whitespace,STRING,object
+549,Delivery Delay,No,  No  ,whitespace,STRING,object
+286,Delivery Delay,No,no,change_case,STRING,object
+269,Refund Requested,Yes,Ges,introduce_typo,STRING,object
+499,Customer Feedback,Good quality products.,Good qualigy productd.,introduce_typo,STRING,object
+165,Platform,Swiggy Instamart,Swiggy Instamart  ,whitespace,STRING,object
+72,Order ID,ORD000072,LTC000072,introduce_typo,STRING,object
+397,Order ID,ORD000397,ord000397,change_case,STRING,object
+278,Customer ID,CUST3144,Cust3144,change_case,STRING,object
+215,Order ID,ORD000215,ord000215,change_case,STRING,object
+554,Platform,Blinkit,BLINKIT,change_case,STRING,object
+464,Refund Requested,No,No  ,whitespace,STRING,object
+340,Order ID,ORD000340,ORD00034,truncate,STRING,object
+383,Product Category,Snacks,SNACKS,change_case,STRING,object
+102,Order ID,ORD000102,ORD0001,truncate,STRING,object
+443,Customer ID,CUST5649,CUXT5649,introduce_typo,STRING,object
+345,Order ID,ORD000345,ORD0003,truncate,STRING,object
+58,Delivery Delay,No,no,change_case,STRING,object
+277,Order Date & Time,54:29.5, 54:29.5,whitespace,STRING,object
+511,Product Category,Beverages,  Beverages,whitespace,STRING,object
+229,Refund Requested,Yes, Yes,whitespace,STRING,object
+535,Customer ID,CUST8140,CUST8,truncate,STRING,object
+286,Product Category,Personal Care,Pdrspnal Care,introduce_typo,STRING,object
+69,Customer Feedback,Quick and reliable!,Quick And Reliable!,change_case,STRING,object
+219,Platform,Blinkit,BLINKIT,change_case,STRING,object
+540,Delivery Time (Minutes),31, 31 ,whitespace,STRING,object
+247,Refund Requested,Yes,YES,change_case,STRING,object
+224,Delivery Time (Minutes),26,  26,whitespace,STRING,object
+49,Refund Requested,No,  No,whitespace,STRING,object
+23,Product Category,Beverages,Bsbwrages,introduce_typo,STRING,object
+382,Product Category,Personal Care,personal care,change_case,STRING,object
+219,Product Category,Beverages,  Beverages,whitespace,STRING,object
+330,Delivery Delay,No,NO,change_case,STRING,object
+179,Customer Feedback,"Very late delivery, not happy.","  Very late delivery, not happy. ",whitespace,STRING,object
+105,Customer ID,CUST7916,  CUST7916,whitespace,STRING,object
+12,Customer Feedback,Excellent experience!,excellent experience!,change_case,STRING,object
+449,Refund Requested,No,N,truncate,STRING,object
+486,Platform,Swiggy Instamart,  Swiggy Instamart ,whitespace,STRING,object
+23,Customer Feedback,Good quality products.,GOOD QUALITY PRODUCTS.,change_case,STRING,object
+298,Order ID,ORD000298,PRD000298,introduce_typo,STRING,object
+360,Delivery Delay,No,NO,change_case,STRING,object
+138,Product Category,Beverages,Veceragws,introduce_typo,STRING,object
+473,Refund Requested,Yes,  Yes  ,whitespace,STRING,object
+465,Delivery Time (Minutes),33, 33  ,whitespace,STRING,object
+340,Customer ID,CUST3088,cust3088,change_case,STRING,object
+222,Product Category,Dairy,Dairy ,whitespace,STRING,object
+177,Delivery Time (Minutes),33,33 ,whitespace,STRING,object
+424,Delivery Delay,No,N,truncate,STRING,object
+296,Product Category,Fruits & Vegetables,Fruitz & Vsgetwblds,introduce_typo,STRING,object
+494,Platform,JioMart,JioMart ,whitespace,STRING,object
+361,Platform,Swiggy Instamart,Swiggy Instamar,truncate,STRING,object
+96,Platform,Blinkit,blinkit,change_case,STRING,object
+256,Refund Requested,Yes,Yes ,whitespace,STRING,object
+144,Order Date & Time,41:29.5,  41:29.5,whitespace,STRING,object
+375,Customer ID,CUST4164,CJDR4164,introduce_typo,STRING,object
+12,Customer ID,CUST1488,Cust1488,change_case,STRING,object
+359,Order ID,ORD000359,ORD000359  ,whitespace,STRING,object
+537,Customer ID,CUST1475, CUST1475,whitespace,STRING,object
+482,Customer ID,CUST7991,  CUST7991  ,whitespace,STRING,object
+278,Order ID,ORD000278, ORD000278,whitespace,STRING,object
+224,Refund Requested,No, No  ,whitespace,STRING,object
+25,Platform,Blinkit, Blinkit ,whitespace,STRING,object
+333,Customer Feedback,"Easy to order, loved it!","Easy to order, loved it",truncate,STRING,object
+7,Platform,JioMart,JioM,truncate,STRING,object
+337,Refund Requested,Yes,YES,change_case,STRING,object
+14,Platform,JioMart,JioMzft,introduce_typo,STRING,object
+291,Customer Feedback,Good quality products.,Good Quality Products.,change_case,STRING,object
+77,Order Date & Time,11:29.5,  11:29.5  ,whitespace,STRING,object
+157,Platform,JioMart,  JioMart  ,whitespace,STRING,object
+454,Product Category,Snacks,Sna,truncate,STRING,object
+6,Platform,Blinkit,Blinki,truncate,STRING,object
+184,Platform,Blinkit,Gpunkit,introduce_typo,STRING,object
+1,Product Category,Fruits & Vegetables,Fruits & Vegetab,truncate,STRING,object
+151,Customer ID,CUST3060,Cust3060,change_case,STRING,object
+558,Order ID,ORD000558,ORD00055,truncate,STRING,object
+253,Platform,JioMart,JioMqrt,introduce_typo,STRING,object
+60,Platform,JioMart,JioMadt,introduce_typo,STRING,object
+125,Order Date & Time,14:29.5,14:29.5  ,whitespace,STRING,object
+503,Delivery Delay,No,NO,change_case,STRING,object
+434,Customer ID,CUST6279, CUST6279 ,whitespace,STRING,object
+216,Service Rating,1.0,1.0,whitespace,STRING,object
+321,Platform,Blinkit,Blijoit,introduce_typo,STRING,object
+56,Order Date & Time,08:29.5,08:29.,truncate,STRING,object
+238,Customer Feedback,"Very late delivery, not happy.","Very late delivery, not happy",truncate,STRING,object
+187,Refund Requested,No,  No ,whitespace,STRING,object
+467,Customer Feedback,"Easy to order, loved it!","Easg to ordwr, opved iy!",introduce_typo,STRING,object
+528,Product Category,Snacks,Snafks,introduce_typo,STRING,object
+477,Customer ID,CUST8612,CUST8,truncate,STRING,object
+494,Order Value (INR),396.0,396.0,whitespace,STRING,object
+328,Customer ID,CUST3647,CUST36,truncate,STRING,object
+193,Product Category,Fruits & Vegetables,Fruits & Vegetable,truncate,STRING,object
+291,Platform,Swiggy Instamart,Swiggy Instam,truncate,STRING,object
+151,Customer Feedback,Excellent experience!,Excellent experience,truncate,STRING,object
+30,Order Date & Time,53:29.5,53:29.,truncate,STRING,object
+45,Platform,Blinkit,Hljmkit,introduce_typo,STRING,object
+239,Platform,JioMart,JIOMART,change_case,STRING,object
+243,Product Category,Beverages,Bevera,truncate,STRING,object
+161,Order Date & Time,57:29.5,57:29,truncate,STRING,object
+530,Order Date & Time,31:29.5,  31:29.5,whitespace,STRING,object
+38,Delivery Delay,No,NO,change_case,STRING,object
+214,Delivery Delay,No,no,change_case,STRING,object
+195,Customer Feedback,Quick and reliable!,Quick zje reliable!,introduce_typo,STRING,object
+510,Order ID,ORD000510,  ORD000510,whitespace,STRING,object
+470,Platform,JioMart,jiomart,change_case,STRING,object
+188,Customer Feedback,Very satisfied with the service.,Very satisfied with the service,truncate,STRING,object
+90,Customer ID,CUST5040,CUST5,truncate,STRING,object
+393,Platform,Blinkit,Blin,truncate,STRING,object
+237,Customer ID,CUST7396,cust7396,change_case,STRING,object
+3,Order Date & Time,21:29.5,21:29.,truncate,STRING,object
