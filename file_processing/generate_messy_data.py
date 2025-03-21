@@ -12,15 +12,6 @@ def create_messy_dataset(
         change_percent: float = 0.04,
         **kwargs
 ) -> None:
-    """
-    Creates a messy dataset with controlled randomness and percentage of changes
-
-    Args:
-        input_filepath: Path to clean input CSV file
-        output_filepath: Path to save messy output CSV file
-        change_percent: Percentage of total cells to make messy (0-1)
-        **kwargs: Additional arguments for pd.read_csv
-    """
     clean_df = pd.read_csv(input_filepath, **kwargs)
     messy_df, change_log = make_dataset_messy(clean_df, change_percent)
 
@@ -45,11 +36,9 @@ def make_dataset_messy(
     total_cells = rows * cols
     target_changes = int(total_cells * change_percent)
 
-    # Generate and shuffle all possible cell indices
     cell_indices = [(r, c) for r in range(rows) for c in range(cols)]
     random.shuffle(cell_indices)
 
-    # Define modifiers for different data types
     modifiers = {
         'numeric': [
             ('scale_value', lambda x: x * random.choice([0.1, 10])),
@@ -61,7 +50,7 @@ def make_dataset_messy(
             ('introduce_typo', lambda x: introduce_typos(x)),
             ('whitespace', lambda x: f"{' ' * random.randint(0, 2)}{x}{' ' * random.randint(0, 2)}"),
             ('change_case', lambda x: random.choice([x.upper(), x.lower(), x.title()])),
-            ('truncate', lambda x: x[:random.randint(max(1, len(x) - 3), len(x))])
+            # ('truncate', lambda x: x[:random.randint(max(1, len(x) - 3), len(x))])
         ],
         'datetime': [
             ('shift_date', lambda x: x + timedelta(days=random.randint(-30, 30))),
@@ -100,7 +89,7 @@ def make_dataset_messy(
 
         messy_df.iat[row_idx, col_idx] = modified
         change_log.append({
-            'row': row_idx + 1,  # Use 1-based indexing for user-friendliness
+            'row': row_idx + 1,
             'column': col_name,
             'original_value': original,
             'modified_value': modified,
@@ -114,7 +103,6 @@ def make_dataset_messy(
 
 
 def get_dtype_category(dtype: Any, value: Any) -> str:
-    """Categorize data types for modifier selection"""
     if pd_types.is_numeric_dtype(dtype):
         return 'numeric'
     if pd_types.is_datetime64_any_dtype(dtype) or isinstance(value, (datetime, pd.Timestamp)):
@@ -125,7 +113,6 @@ def get_dtype_category(dtype: Any, value: Any) -> str:
 
 
 def introduce_typos(s: str) -> str:
-    """Introduce realistic typos in string"""
     if len(s) < 1:
         return s
 

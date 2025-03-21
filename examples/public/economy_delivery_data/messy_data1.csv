@@ -1,0 +1,562 @@
+,Order ID,Customer ID,Platform,Order Date & Time,Delivery Time (Minutes),Product Category,Order Value (INR),Customer Feedback,Service Rating,Delivery Delay,Refund Requested
+0,ORD000001,CUST2824,JioMart,19:29.5,30,Fruits & Vegetables,382.0,"Fast delivery, great service!",5,No,No
+1,ORD000002,CUST1409,Blinkit,54:29.5,16,Dairy,279.0,Quick and reliable!,5,No,No
+2,ORD000003,CUST5506,JioMart,21:29.0,25,Beverages,599.0,Items missing from order.,2,No,Yes
+3,ORD000004,CUST5012,JioMart,19:29.5,42,Beverages,946.0,Items missing from order.,2,Yes,Yes
+4,ORD000005,CUST4657,Blinkit,49:29.5,30,Beverages,334.0,"Fast delivery, great service!",5,No,No
+5,ORD000006,CUST3286,Blinkit,36:29.5,25,Personal Care,1939.0,Items missing from order.,2,No,Yes
+6,ORD000007,CUST2679,JioMart,22:29.5,22,Personal Care,1693.0,"Fast delivery, great service!",5,No,No
+7,ORD000008,CUST9935,Swiggy Instamart,50:29.5,16,Personal Care,195.0,"Horrible experience, never ordering again.",1,No,Yes
+8,ORD000009,CUST2424,JioMart,51:29.5,39,Fruits & Vegetables,182.0,Very satisfied with the service.,5,No,No
+9,ORD000010,CUST7912,JioMart,08:29.5,51,Grocery,1279.0,"Very late delivery, not happy.",2,Yes,Yes
+10,ORD000011,CUST1520,JioMart,32:29.5,25,Fruits & Vegetables,553.0,"Fast delivery, great service!",5,No,No
+11,ORD000012,Cust1488,JioMart,12:29.5,11,Grocery,1062.0,excellent experience!,5,No,No
+12,  ORD000013,CUST2535,Blinkit,08:29.5,45,Fruits & Vegetables,516.0,"Horrible experience, never ordering again.",1,Yes,Yes
+13,ORD000014,CUST4582,JioMart,19:29.5,21,Dairy,322.0,"Very late delivery, not happy.",2,No,Yes
+14,ORD000015,CUST4811,Swiggy Instamart,27:29.5,33,Fruits & Vegetables,50.0,"Easy to order, loved it!",5,No,No
+15,ORD000016,CUST9279,Blinkit,07:29.5,35,Beverages,143.0,Good quality products.,4,No,No
+16,ORD000017,CUST1434,Swiggy Instamart,58:29.5,41,Beverages,956.0,"Not fresh, disappointed.",2,Yes,Yes
+17,ORD000018,CUST4257,Swiggy Instamart,23:29.5,27,Beverages,161.0,Excellent experience!,5,No,No
+18,ORD000019,CUST9928,Swiggy Instamart,15:29.5,34,Dairy,417.0,"Horrible experience, never ordering again.",1,No,Yes
+19,ORD000020,CUST7873,Swiggy Instamart,20:29.5,26,Beverages,677.0,Quick and reliable!,5,No,No
+20,ORD000021,CUST4611,Blinkit,44:29.5,10,Beverages,789.0,Wrong item delivered.,1,No,Yes
+21,ORD000022,CUST8359,Blinkit,57:29.5,25,Beverages,739.0,Delivery person was rude.,2,No,Yes
+22,ORD000023,CUST5557,Swiggy Instamart,01:29.5,33,Beverages,486.0,GOOD QUALITY PRODUCTS.,4,No,No
+23,ORD000024,CUST1106,Swiggy Instamart,27:29.5,20,Beverages,202.0,Packaging could be better.,3,No,No
+24,ORD000025,CUST3615,Blinkit,06:29.5,30,Grocery,1288.0,Delivery person was rude.,2,No,Yes
+25,ORD000026,CUST7924,Blinkit,59:29.5,32,Dairy,205.0,Very satisfied with the service.,5,No,No
+26,ORD000027,CUST6574,Blinkit,33:29.5,43,Fruits & Vegetables,204.0,  Items missing from order.  ,2,Yes,Yes
+27,ORD000028,CUST5552,JioMart,56:29.5,20,Dairy,334.0,Wrong item delivered.,1,No,Yes
+28,ORD000029,CUST3547,JioMart,57:29.5,32,Dairy,563.0,"Horrible experience, never ordering again.",1,No,Yes
+29,ORD000030,CUST4527,JioMart,53:29.0,19,Grocery,1333.0,"Easy to order, loved it!",5,No,No
+30,ORD000031,CUST6514,Swiggy Instamart,08:29.5,8,Beverages,757.0,Excellent experience!,5,No,No
+31,ORD000032,CUST2674,JioMart,23:29.5,25,Personal Care,1651.0,Packaging could be better.,3,No,No
+32,ORD000033,CUST2519,Swiggy Instamart,08:29.5,24,Dairy,290.0,Quick and reliable!,5,No,No
+33,ORD000034,CUST7224,Swiggy Instamart,28:29.5,33,Personal Care,697.0,"Fast delivery, great service!",5,No,No
+34,ORD000035,CUST2584,JioMart,31:29.5,41,Personal Care,668.0,"Fast delivery, great service!",5,Yes,No
+35,ORD000036,CUST6881,Swiggy Instamart,50:29.5,31,Fruits & Vegetables,582.0,Quick and reliable!,5,No,No
+36,ORD0000,CUST6635,JioMart,01:29.5,23,Fruits & Vegetables,101.0,"Fast selifert, geeat servivd!",5,No,No
+37,ORD000038,CUST5333,JioMart,41:29.5,21,Snacks,402.0,Erpjf iydm reoiverex.,1,No,Yes
+38,ORD000039,CUST1711,Blinkit,09:29.5,41,Beverages,711.0,Wrong item delivered.,1,Yes,Yes
+39,ORD000040,CUST8527,JioMart,11:29.5,36,Dairy,632.0,Quick and reliable!,5,No,No
+40,ORD000041,CUST9785,Blinkit,46:29.5,21,Fruits & Vegetables,516.0,Wrong item delivered.,1,No,Yes
+41,ORD000042,CUST3045,JioMart,11:29.5,16,Beverages,409.0,"Horrible experience, never ordering again.",1,No,Yes
+42,ORD000043,CUST7201,JioMart,37:29.5,21,Snacks,124.0,Delivery person was rude.,2,No,Yes
+43,ORD000044,CUST2291,Blinkit,05:29.5,39,Grocery,1118.0,Quick and reliable!,5,No,No
+44,ORD000045,CUST58,JioMart,26:29.5,20,Personal Care,323.0,"Easy to order, loved it!",5,No,No
+45,ORD000046,CUST6925,JioMart,14:29.5,34,Snacks,174.0,Excellent experience!,5,No,No
+46,ORD000047,CUST4150,Swiggy Instamart,43:29.5,46,Snacks,320.0,"Horrible experience, never ordering again.",1,Yes,Yes
+47,ORD000048,CUST2139,Blinkit,16:29.5,22,Snacks,71.0,Packaging could be better.,3,No,No
+48,ORD000049,CUST1750,Swiggy Instamart,32:29.5,26,Snacks,53.0,"Fast delivery, great service!",5,No,No
+49,ORD000050,CUST4733,Swiggy Instamart,59:29.5,29,Personal Care,916.0,Wrong item delivered.,1,No,Yes
+50,ORD000051,CUST5741,Swiggy Instamart,04:29.5,13,Dairy,289.0,Quick and reliable!,5.0,No,No
+51,ORD000052,CUST2307,Blinkit,16:29.5,22,Grocery,774.0,"Easy to order, loved it!",5.0,No,No
+52,ORD000053,CUST4814,Swiggy Instamart,22:29.5,31,Beverages,917.0,Quick and reliable!,5.0,No,No
+53,ORD000054,CUST2654,Blinkit,29:29.5,20,Fruits & Vegetables,424.0,"Not fresh, disappointed.", 2.0  ,No,Yes
+54,ORD000055,CUST7227,Swiggy Instamart,43:29.5,51,Beverages,167.0,"Very late delivery, not happy.",2.0,Yes,Yes
+55,ORD000056,CUST5554,JioMart,08:29.,25,  Fruits & Vegetables,657.0,Packaging could be better.,3.0,No,No
+56,ORD000057,CUST8428,JioMart,12:29.5,28,Personal Care,817.0,Good quality products.,4.0,No,No
+57,ORD000058,CUST6977,Blinkit,40:29.5,24, Dairy ,243.0,Wrong item delivered.,1.0,no,Yes
+58,ORD000059,CUST3664,JioMart,49:29.5,27,Dairy,557.0,"Not fresh, disappointed.",2.0,No,Yes
+59,ORD000060,CUST7065,JioMadt,05:29.5,22,Fruits & Vegetables,555.0,Packaging could be better.,3.0,No,No
+60,ORD000061,CUST6820,Swiggy Instamart,35:29.5,9, Fruits & Vegetables  ,586.0,Quick and reliable!,5.0,No,No
+61,ORD000062,CUST4432,Blinkit,52:29.5,26,Bdvdrabes,666.0,Delivery person was rude.,2.0,No,Yes
+62,ORD000063,CUST5374,Swiggy Instamart,35:29.5,48,Snacks,61.0,Delivery person was rude.,2.0,Yes,Yes
+63,ORD000064,CUST2169,Swiggy Instamart,06:29.5,46,Dairy,772.0,"Horrible experience, never ordering again.",1.0,Yes,Yes
+64,ORD000065,CUST3803,Swiggy Instamart,41:29.5,19,Personal Care,1595.0,"Not fresh, disappointed.",2.0,No,Yes
+65,ORD000066,CUST9751,Swiggy Instamart,11:29.5,14,Personal Care,1956.0,Wrong item delivered.,1.0,No,Yes
+66,ORD000067,CIDT5010,Swiggy Instamart,58:29.5,9,Dairy,796.0,Wrong item delivered.,1.0,No,Yes
+67,ORD000068,CUST3677,Swiggy Instamart,17:29.5,20,Dairy,146.0,Excellent experience!,5.0,No,No
+68,ORD000069,CUST8573,Swiggy Instamart,34:29.5,24,Fruits & Vegetables,536.0,Quick And Reliable!,5.0,No,No
+69,ORD000070,CUST7216,Blinkit,45:29.5,34,Snacks,353.0,"Very late delivery, not happy.",2.0,No,Yes
+70,ORD000071,CUST5422,JioMart,48:29.5,25,Dairy,641.0," Not fresh, disappointed.",2.0,No,Yes
+71,LTC000072,CUST4598,Swiggy Instamart,52:29.5,38,Fruits & Vegetables,341.0,Excellent experience!,5.0,No,No
+72,ORD000073,CUST6313,Swiggy Instamart,11:29.5,35,Dairy,425.0,"Fast delivery, great service!",5.0,No,No
+73,ORD000074,CUST1916,Swigbg Instwmart,30:29.5,33,Snacks,284.0,"Very late delivery, not happy.",2.0,No,Yes
+74,ORD000075,CUST4752,Swiggy Instamart,46:29.5,28,Beverages,905.0,Quick and reliable!,5.0,No,No
+75,ORD000076,CUST1525,Swiggy Instamart,21:29.5,39,Grocery,1221.0,Very satisfied with the service.,5.0,No,No
+76,ORD000077,CUST6168,Swiggy Instamart,  11:29.5  ,36,Beverages,159.0,Items missing from order.,2.0,No,Yes
+77,ORD000078,CUST7572,JioMart,28:29.5,15,Fruits & Vegetables,122.0,Delivery person was rude.,2.0,No,Y
+78,ORD000079,CUST5386,JioMart,35:29.5,35,Beverages,276.0,Excellent experience!,5.0,No,No
+79,ORD000080,CUST2084,Swiggy Instamart,15:29.5,24,Dairy,147.0,Very satisfied with the service.,5.0,No,No
+80,ORD000081,CUST4456,JioMart,13:29.5,39,Fruits & Vegetables,565.0,Very satisfied with the service.,5.0,No,No
+81,ORD000082,CUST6155,Blinkit,45:29.5,36,Personal Care,1848.0,Good quality products.,4.0,No,No
+82,ORD000083,CUST4483,Swiggy Instamart,31:29.5,47,Dairy,240.0,Packaging could be better.,3.0,Yes,No
+83,ORD000084,CUST9179,Blinkit,32:29,10,Beverages,910.0,Very satisgief ekgh the serfjce.,5.0,No,No
+84,ORD000085,CUST7482,Blinkit,19:29.5,33,Grocery,314.0,Packaging could be better.,3.0,No,No
+85,ORD000086,CUST8517,Swiggy Instamart,50:29.5,23,Grocery,1332.0,"Very late delivery, not happy.",2.0,No,Yes
+86,ORD000087,CUST3340,JioMart,38:29.5,51,Beverages,640.0,Wrong item delivered.,1.0,Yes,Yes
+87,ORD000088,CUST5339,Blinkit,05:29.5,5,Beverages,465.0,"Horrible experience, never ordering again.",1.0,No,Yes
+88,ORD000089,CUST3287,Swiggy Instamart,03:29.5,34,Personal Care,1690.0,"Fast delivedh, great seevive!",5.0,No,No
+89,ORD000090,CUST5,Blinkit,40:29.5,35,Fruits & Vegetables,191.0,Items missing from order.,2.0,No,Yes
+90,ORD000091,CUST9830,Blinkit,18:29.5,8,Personal Care,183.0,Csrj sayosrire wkrh ths seevicw.,5.0,No,No
+91,ORD000092,CUST5304,Blinkit,03:29.5,35,Fruits & Vegetables,288.0,"Fast delivery, great service!",5.0,No,NO
+92,ORD000093,CUST8019,Blinkit,31:29.5,9,Grocery,645.0,Excellent experience!,5.0,No,No
+93,ORD000094,CUST7543,JioMart,22:29.5,22,Grocery,280.0,"Fast delivery, great service!",5.0,No,No
+94,ORD000095,CUST6930,Blinkit,38:29.5,34,Personal Care,703.0,Good quality products.,4.0,No,No
+95,ORD000096,CUST4593,blinkit,13:29.5,20,Grocery,378.0,Packaging could be better.,3.0,No,No
+96,ORD000097,CUST3266,Blinkit,58:29.5,30,Fruits & Vegetables,306.0,Quick and reliable!,5.0,No,No
+97,ORD000098,CUST9348,JioMart,31:29.5,29,Fruits & Vegetables,160.0,"Easy to order, loved it!",5.0,No,No
+98,ORD000099,CUST9085,Blinkit,06:29.5,35,Beverages,364.0,"Not fresh, disappointed.",2.0,No,Yes
+99,ORD000100,CUST2489,Blinkit,52:29.5,19,Fruits & Vegetables,427.0,Quick and reliable!,5.0,No,No
+100,ORD000101,CUST1771,JioMart,42:29.5,39,Beverages,160.0,Very satisfied with the service.,5.0,No,No
+101,ORD0001,CUST2796,JioMart,52:29.5,5,Personal Care,377.0,Items missing from order.,2.0,No,Yes
+102,ORD000103,CUST3504,JioMart,00:29.5,45,Personal Care,634.0,Delivery person was rude.,2.0,Yes,Yes
+103,ORD000104,CUST3621,Blinkit,53:29.5,27,Snacks,285.0,Excellent experience!,5.0,No,NO
+104,ORD000105,  CUST7916,JioMart,11:29.5,28,Beverages,391.0,Items missing from order.,2.187680014221767,No,Yes
+105,ORD000106,CUST2040,JioMart,34:29.5,33,Snacks,51.0,Delivery person was rude.,2.0,No,Yes
+106,ORD000107,CUST7304,Blinkit,15:29.,31,Fruits & Vegetables,367.0,Good quality products.,4.0,No,no
+107,ORD000108,CUST7252,JioMart,51:29.5,29,Grocery,1015.0,Excellent experience!,5.0,No,No
+108,ORD000109,CUST8668,Blinkit,33:29.5,42,Beverages,607.0,Packaging could be better.,3.0,Yes,No
+109,ORD000110,CUST9669,Swiggy Instamart,27:29.5,14,Dairy,600.0,"Horrible experience, never ordering again.",1.0,No,Yes
+110,ORD000111,CUST5119,JioMart,10:29.5,20,Personal Care,727.0,Delivery person was rude.,2.0,No,Yes
+111,ORD000112,CUST1188,Swiggy Instamart,55:29.5,34,Beverages,624.0,"Very late delivery, not happy.",2.0,No,Yes
+112,ORD000113,CUST2876,Blinkit,55:29.5,26,Fruits & Vegetables,252.0,Very satisfied with the service.,5.0,No,N
+113,ORD000114,CUST9797,JioMart,19:29.5,42,Dairy,724.0,"Very late delivery, not happy.",2.0,Yes, Yes
+114,ORD000115,CUST5371,Blinkit,04:29.5,52,Grocery,623.0,"Fast delivery, great service!",5.0,Yes,No
+115,ORD000116,CUST6573,Swiggy Instamart,42:29.5,30,Beverages,859.0,Quick and reliable!,5.0,No,No
+116,ORD000117,CUST2827,Blinkit,08:29.5,12,Dairy,599.0,"Fast delivery, great service!",5.0,No,No
+117,LRD000118,CUST5808,JioMart,39:29.5,21,Beverages,502.0,Items missing from order.,2.0,No,Yes
+118,ORD000119,CUST8123,JioMart,02:29.5,9,Personal Care,931.0,Items missing from order.,2.0,No,Yes
+119,ORD000120,CUST3591,Swiggy Instamart,37:29.5,36,Dairy,198.0,"Fast delivery, great service!",5.0,No,No
+120,ORD000121,CUST8433,Blinkit,48:29.5,20,Dairy,314.0,Packaging could be better.,3.0,No,No
+121,ORD000122,CUST1053,JioMart,51:29.5,28,Dairy,509.0,"Very late delivery, not happy.",2.0,No,Yes
+122,ORD000123,CUST5315,Swiggy Instamart,04:29.5,27,Dairy,436.0,Very satisfied with the service.,5.0,No,No
+123,ORD000124,CUST9201,JioMart,54:29.5,41,Grocery,718.0,Very satisfied with the service.,5.0,Yes,No
+124,ORD000125,CUST3927,JioMart,14:29.5  ,30,Snacks,418.0,Packaging could be better.,3.0,No,No
+125,ORD000126,CUST9317,BLINKIT,26:29.5,27,Snacks,312.0,"Very late delivery, not happy.",2.0,No,Yes
+126,ORD000127,CUST2743,JioMart,01:29.5,20,Fruits & Vegetables,230.0,"Easy to order, loved it!",5.0,No,No
+127,ORD000128,CUST5889,Blinkit,41:29.5,36,Fruits & Vegetables,619.0,Items missing from order.,2.0,No,Yes
+128,ORD000129,CUST9317,JioMart,43:29.5,18,Snacks,70.0,Excellent experience!,4.982244396707397,No,No
+129,ORD000130,CUST4258,Swiggy Instamart,26:29.5,17,Fruits & Vegetables,596.0,Quick and reliable!,5.0,No,No
+130,ORD000131,CUST3504,JioMart,07:29.5,24,Beverages,734.0,"Horrible experience, never ordering again.",1.0,No,Yes
+131,ORD000132,CUST712,Blinkit,14:29.5,50,Personal Care,1010.0,Packaging could be better.,3.0,Yes,No
+132,ORD000133,CUST3646,Blinkit,06:29.5,29,Beverages,580.0,Very satisfied with the service.,5.0,No,No
+133,ORD000134,CUST9837,Swiggy Instamart,24:29.5,29,Fruits & Vegetables,303.0,"Fast delivery, great service!",5.0,No,No
+134,ORD000135,CUST9689,JioMar,07:29.5,33,Dairy,472.0,"Not fresh, disappointed.",2.0,No,Yes
+135,ORD000136,CUST1009,JioMart,57:29.5,32,Beverages,987.0,"Fast delivery, great service!",5.0,No,No
+136,ORD000137,CUST6310,Swiggy Instamart,30:29.5,27,Dairy,207.0,"Very late delivery, not happy.",2.0,No,Yes
+137,ORD000138,CUST9005,JioMart,42:29.5,20,Veceragws,548.0,Packaging could be better.,3.0,No,No
+138,ORD000139,CUST1319,JioMart,02:29.5,  25 ,Snacks,220.0,Delivery person was rude.,2.0,No,Yes
+139,ORD000140,CUST2832,Blinkit,51:29.5,27,Fruits & Vegetables,209.0,"Very late delivery, not happy.",2.0,No,Yes
+140,ORD000141,CUST6947,JioMart,20:29.5,15,Dairy,517.0,"Horrible experience, never ordering again.",1.0,No,Yes
+141,ORD000142,CUST6038,JioMart,21:29.5,27,Dairy,244.0,Good quality products.,4.0,No,No
+142,ORD000143,CUST4923,Swiggy Instamart,27:29.5,31,Dairy,304.0,Excellent experience!,5.0,No,No
+143,ORD000144,CUST1949,Swiggy Instamart,  41:29.5,24,Beverages,899.0,Quick and reliable!,5.0,No,No
+144,ORD000145,CUST4946,Blinkit,11:29.5,42,Personal Care,959.0,Delivery person was rude.,2.0,Yes,Yes
+145,ORD000146,CUST2290,JioMart,01:29.5,32,Snacks,155.0,"Very late delivery, not happy.",2.0,No,Yes
+146,ORD000147,CUST2403,JioMart,08:29.5,22,Fruits & Vegetables,131.0,"Very late delivery, not happy.",2.0,No,Yes
+147,ORD000148,  CUST8962 ,JioMart,13:29.5,25,Grocery,330.0,Delivery person was rude.,2.0,No,Yes
+148,ORD000149,CUST2133,Blinkit,15:29.5,42,Fruits & Vegetables,617.0,Excellent experience!,5.0,Yes,No
+149,ORD000150,CUST9727,Blinkit,11:29.5,23,Dairy,403.0,"Not fresh, disappointed.",2.0, No,Yes
+150,ORD000151,Cust3060,Swiggy Instamart,30:29.5,21,Beverages,106.0,Excellent experience,5.0,No,No
+151,ORD000152,CUST3103,Blinkit,25:29.5,21,Personal Care,1929.0,Pacowtiny could ne gdgfer.,3.0,No,No
+152,ORD000153,CUST8787,JioMart,25:29.5,30,Dairy,610.0,Quick and reliable!,5.0,No,No
+153,ORD000154,CUST3705,JioMart,56:29.5,32,Personal Care,696.0,"Very late delivery, not happy.",2.0,No,Yes
+154,ORD000155,CUST5342,Blinkit,56:29.5,36,Snacks,354.0,Quick and reliable!,5.0,No,No
+155,ORD000156,CUST9645,JioMart,11:29.5,22,Grocery,583.0,Good quality products.,4.0,No,No
+156,ORD000157,CUST7932,  JioMart  ,25:29.5,45,Dairy,486.0,"Easy to order, loved it!",5.0,Yes,No
+157,ORD000158,CUST4470,Blinkit,52:29.5,35,Personal Care,731.0,"Horrible experience, never ordering again.",1.0,No,Yes
+158,ORD000159,CUST9835,Blinkit,07:29.5,25,Bevera,683.0,Excellent experience!,5.0,No,No
+159,ORD000160,CUST4295,JioMart,25:29.5,38,Grocery,1450.0,Wrong item delivered.,1.0,No,Yes
+160,ORD000161,CUST6107,JioMart,57:29,49,Grocery,379.0,Quick and reliable!,5.0,Yes,No
+161,ORD000162,CUST7537,JioMart,06:29.5,34,Dairy,786.0,"Horrible experience, never ordering again.",1.0,No,Yes
+162,ORD000163,CUST7118,Swiggy Instamart,17:29.5,47,Dairy,412.0,"Very late delivery, not happy.",2.0,Yes,Yes
+163,ORD000164,CUST8177,Swiggy Instamart,28:29.5,19,Snacks,468.0,Very satisfied with the servi,5.0,No,No
+164,ORD000165,CUST9479,Swiggy Instamart  ,54:29.5,10,Snackz,422.0,Quick and reliable!,5.0,No,No
+165,ORD000166,CUST8397,Blinkit,50:29.5,35,Beverages,863.0,Quick and reliable!,5.0,No,No
+166,ORD000167,CUST2982,Swiggy Instamart,07:29.5,41,Snacks,145.0,Very satisfied with the service.,5.0,Yes,No
+167,ORF000168,CUST5061,Blinkit,31:29.5,16,Personal Care,1490.0,"Easy to order, loved it!",5.0,No,No
+168,ORD000169,CUST4681,Blinkit,07:29.5,42,Personal Care,1291.0,"Horrible experience, never ordering again.",1.0,Yes,Yes
+169,ORD000170,CUST2049,Swiggy Instamart,36:29.5,25,Dairy,599.0,"Easy to order, loved it!",5.0,No,No
+170,ORD000171,CUST6539,Swiggy Instamart,25:29.5,36,Personal Care,47.6,Delivery person was rude.,2.0,No,Yes
+171,ORD000172,CUST1344,Swiggy Instamart,36:29.5,32,Beverages,613.0,Good quality products.,4.0,No,No
+172,ORD000173,CUST4770,JioMart,43:29.5,34,Dairy,121.0,Wrong item delivered.,1.0%,No,Yes
+173,ORD000174,CUST4608,Swiggy Instamart,51:29.5,35,PERSONAL CARE,178.0,Delivery person was rude.,2.0,NO,Yes
+174,ORD000175,CUST1117,JioMart,11:29.5,29,Beverages,310.0,"Easy to order, loved it!",5.0,No,No
+175,ORD000176,CHST2163,Blinkit,14:29.5,25,Personal Care,1727.0,Excellent experience!,5.0,No,No
+176,ORD000177,CUST1964,JioMart,17:29.5,33 , Grocery ,457.0,Items missing from order.,2.0,No,Yes
+177,ORD000178,CUST4750,Swiggy Instamart,30:29.5,27,Dairy,581.0,Excellent experience!,5.0,No,No
+178,ORD000179,CUST2104,Blinkit,07:29.5,23,Dairy,307.0,"  Very late delivery, not happy. ",2.0,No,Yes
+179,ORD000180,CUST1514,Blinkit,59:29.5,33,Grocery,1425.0,Wrong item delivered.,1.0,No,Yes
+180,ORD000181,CUST6413,Blinkit,00:29.5,24,Personal Care,1553.0,Quick and reliable!,5.0,No,No
+181,ORD000182,CUST2160,JioMart,41:29.5,28,Personal Care,752.0,"Easy to order, loved it!",5.0,No,No
+182,ORD000183,CUST9423,Swiggy Instamart,24:29.5,24,Fruits & Vegetables,67.5,"Easy to order, loved it!",5.0,No,No
+183,ORD000184,CUST4899,Gpunkit,31:29.5,45,Fruits & Vegetables,239.0,"Fast delivery, great service!",5.0,Yes,No
+184,ORD000185,CUST5562,Blinkit,11:29.5,31,Grocery,788.0,VERY SATISFIED WITH THE SERVICE.,5.0,No,No
+185,ORD000186,CUST8953,Blinkit,54:29.5,14,Fruits & Vegetables,112.0,"Easy to order, loved it!",5.0,No,No
+186,ORD000187,CUST4510,JioMart,57:29.5,42,Fruits & Vegetables,283.0,Quick and reliable!,5.0,Yes,  No 
+187,ORD000188,CUST9834,JioMart,59:29.5,11,Snacks,244.0,Very satisfied with the service,5.0,No,No
+188,ORD000189,CUST3167,Swiggy Instamart,06:29.5,51,Fruits & Vegetables,68.0,"Not fresh, disappointed.",2.0,Yes,Yes
+189,ORD000190, CUST8744 ,JioMart,25:29.5,30,Personal Care,1304.0,Excellent experience!,5.0,No,No
+190,ORD000191,VJSY4981,Blinkit,58:29.5,23,Personal Care,662.0,Very satisfied with the service.,5.0,No,No
+191,ORD000192,CUST8749,Swiggy Instamart,28:29.5,26,Snacks,290.0,"Not fresh, disappointed.",2.0,No,Yes
+192,ORD000193,CUST7669,Blinkit,04:29.5,14,Fruits & Vegetable,195.0,"Very late delivery, not happy.",2.0,No,Yes
+193,ORD000194,CUST4119,Blinkit,15:29.5,28,Personal Care,1017.0,Packaging could be better.,3.0,No,No
+194,ORD000195,CUST2545,JioMart,13:29.5,25,Snacks,418.0,Quick zje reliable!,5.0,No,No
+195,ORD000196,CUST2588,Swiggy Instamart,31:29.5,29,Grocery,800.0,Items missing from order.,2.0,No,Yes
+196,ORD000197,CUST8062,JioMart,57:29.5,38,Snacks,435.0,"Horrible experience, never ordering again.",1.0,No,Yes
+197,ORD000198,CUST6804,JioMart,07:29.5,33,Fruits & Vegetables,408.0,Quick and reliable!,5.0,No,No
+198,ORD000199,CUST7939,Swiggy Instamart,24:29.5,18,Personal Care,827.0,"Fast delivery, great service!",5.0,No,No
+199,ORD000200,CUST7735,Blinkit,27:29.5,20,Beverages,786.0,Excellent experience!,5.0,No,No
+200,ORD000201,CUST8651,Blinkit,48:29.5,32,Beverages,788.0,Quick and reliable!,5.0,No,No
+201,ORD000202,CUST1887,Swiggy Instamart,23:29.5,34,Dairy,661.0,"Fast delivery, great service!",5.0,No,No
+202,ORD000203,CUST2612,Blinkit,37:29.5,29,Beverages,492.0,Good quality products.,4.0,No,No
+203,ORD000204,CUST1993,Swiggy Instamart,30:29.5,35,Fruits & Vegetables,245.0,Delivery person was rude.,2.0,No,Yes
+204,ORD000205,CUST7596,Swiggy Instamart,45:29.5,31%,Beverages,245.0,"Very late delivery, not happy.",2.0,No,Yes
+205,ORD000206,CUST6559,JioMart,05:29.5,31,Personal Care,1634.0,"Horrible experience, never ordering again.",1.0,No,Yes
+206,ORD000207,CUST2790,Swiggy Instamart,29:29.5,38,Beverages,174.0,Good quality products.,4.0,No,No
+207,ORD000208,CUST5073,JioMart,36:29.5,49,Dairy,619.0,Items missing from order.,2.0,Yes,Yes
+208,ORD000209,CUST4139,Blinkit,05:29.5,32,Fruits & Vegetables,499.0,Very satisfied with the service.,5.0,No,No
+209,ORD000210,CUST4116,Blinkit,58:29.5,60,Beverages,936.0,Excellent experience!,5.0,Yes,No
+210,ORD000211,CUST9786,Blinkit,45:29.5,31,Dairy,722.0,"Horrible experience, never ordering again.",1.0,No,Yes
+211,ORD000212,CUST8350,Blinkit,52:29.5,31,Beverages,470.0,"Horrible experience, never ordering again.",1.0,No,Yes
+212,ORD000213,CUST3296,JioMart,29:29.5,49,Grocery,316.0,"Fast delivery, great service!",5.0,Yes,No
+213,ORD000214,CUST7912,Blinkit,15:29.5,28,Dairy,226.0,Delivery person was rude.,2.0,no,Yes
+214,ord000215,CUST4006,Swiggy Instamart,07:29.5,11,Grocery,585.0,Delivery person was rude.,2.0,No,Yes
+215,ORD000216,CUST5563,Swiggy Instamart,31:29.5,19,Fruits & Vegetables,690.0,"Horrible experience, never ordering again.",1.0,No,Yes
+216,ORD000217,CUST8579,Swiggy Instamart,37:29.5,39,Fruits & Vegetables,288.0,Wrong item delivered.,1.0,No,Yes
+217,ORD000218,CUST5092,JioMart,37:29.5,34,Snacks,491.0,Wrong item delivered.,1.0,No,Yes
+218,ORD000219,CUST2235,BLINKIT,40:29.5,20,  Beverages,576.0,"Very late delivery, not happy.",2.0,No,Yes
+219,ORD000220,CUST8260,Blinkit,46:29.5,10,Grocery,608.0,"Fast delivery, great service!",5.0,No,No
+220,ORD000221,CUST2604,Blinkit,24:29.5,26,Personal Care,413.0,Packaging could be better.,3.0,No,No
+221,ORD000222,CUST1828,JioMart,44:29.5,41,Dairy ,743.0,"Horrible experience, never ordering again.",1.0,Yes,Yes
+222,ORD000223,CUST9856,Swiggy Instamart,22:29.5,28,Dairy,560.0,"Essh to orret, lovrd it!",5.0,No,No
+223,ORD000224,CUST1241,Swiggy Instamart,49:29.5,  26,Beverages,219.0,Quick and reliable!,5.0,No, No  
+224,ORD000225,CUST2528,Blinkit,36:29.5,19,Snacks,313.0,"Not fresh, disappointed.",2.0,No,Yes
+225,ORD000226,CUST4872,Swiggy Instamart,29:29.5,26,Dairy,121.0,"Horrible experience, never ordering again.",1.0,No,Yes
+226,ORD000227,CUST3724, Swiggy Instamart,22:29.5,35,Snacks,76.0,"Easy to order, loved it!",5.0,No,No
+227,ORD000228,CUST7658,JioMart,29:29.5,28,Personal Care,274.0,Very satisfied with the service.,5.0,No,No
+228,ORD000229,CUST8956,JioMart,58:29.5,28,Dairy,322.0,"Very late delivery, not happy.",2.0,No, Yes
+229,ORD000230,CUST8886,JioMart,39:29.5,41,Dairy,256.0,Excellent experience!,5.0,Yes,No
+230,ORD000231,CUST4502,JioMart,03:29.5,22,Personal Care ,1384.0,"Fast delivery, great service!",5.0,No,No
+231,ORD000232,CUST7570,Blinkit,45:29.5,34,Beverages,396.0,Good quality products.,4.0,No,No
+232,ORD000233,CUST1960,JioMart,44:29.5,28,Grocery,1059.0,"Very late delivery, not happy.",2.0,No,Yes
+233,ORD000234,CUST3697,Swiggy Instamart,39:29.5,46,Dairy,408.0,Very satisfied with the service.,5.0,Yes,No
+234,ORD000235,CUST7209,Blinkit,24:29.5,38,Snacks,391.0,Items missing from order.,2.0,No,Yes
+235,ORD000236,CUST1035,Swiggy Instam,37:29.5,43,Grocery,897.0,"Easy to order, loved it!",5.0,Yes,No
+236,ORD000237,cust7396,Swiggy Instamart,22:29.5,  36,Dairy,187.0,"Horrible experience, never ordering again.",1.0,No,Yes
+237,ORD000238,CUST5345,Swiggy Instamart,00:29.5,25,Fruits & Vegetables,83.0,"Very late delivery, not happy",2.0,No,Yes
+238,ORD000239,CUST8454,JIOMART,21:29.5,44,Beverages,943.0,Excellent experience!,5.0,Yes,No
+239,ORD000240,CUST5673,JioMart,03:29.5,33,Dairy,412.0,Delivery person was rude.,2.0,No,Yes
+240,ORD000241,CUST7930,Blinkit,41:29.5,32,Beverages,332.0,Very satisfied with the service.,5.0,No,No
+241,ORD000242,CUST8973,Blinkit,42:29.5,22,Grocery,1219.0,Quick and reliable!,5.0,No,No
+242,ORD000243,CUST3536,JioMart,08:29.5,37,Bevera,581.0,Packaging could be better.,3.0,No,No
+243,ORD000244,CUST4111,Swiggy Instamart,03:29.5,25,Fruits & Vegetables,85.0,"Not fresh, disappointed.",2.0,No,Yes
+244,ORD000245,CUST5861,Blinkit,09:29.5,24,Snacks,426.0,Very satisfied with the service.,5.0,No,No
+245,ORD000246,CUST4566,JioMart,54:29.5,32,Snacks,90.0,Packaging could be better.,3.0,No,No
+246,ORD000247,CUST1958,JioMart,47:29.5,23,Snacks,443.0,"Very late delivery, not happy.",2.0,No,YES
+247,ORD000248,CUST9883,JioMart,09:29.5,22,Grocery,431.0,"Fast delivery, great service!",5.0,No,No
+248,ORD000249,CUST1998,Swiggy Instamart,44:29.5,20,Fruits & Vegetables,496.0,Very satisfied with the service.,5.0,No,No
+249,ORD000250,CUST6138,JioMart,23:29.5,40,Personal Care,1178.0,Quick and reliable!,5.0,No,No
+250,ORD000251,CUST1936,JioMart,51:29.5,44,Personal Care,1639.0,"Horrible experience, never ordering again.",1.0,Yes,Yes
+251,ORD000252,CUST1821,JioMart,46:29.5,49,Grocery,664.0,"Very late delivery, not happy.",2.0,Yes,Yes
+252,ORD000253,CUST8811,JioMqrt,27:29.5,39,Dairy,352.0,"Easy to order, loved it!",5.0,No,No
+253,ORD000254,CUST9238,Blinkit,20:29.5,6,Beverages,404.0,Good quality products.,4.0,No,No
+254,ORD000255,CUST9701,Blinkit,49:29.5,33,Grocery,1471.0,"Very late delivery, not happy.",2.0,No,Yes
+255,ORD000256,CUST3579,JioMart,14:29.5,27,Dairy,738.0,"Horrible experience, never ordering again.",1.0,No,Yes 
+256,ORD000257,CUST1931,Swiggy Instamart,13:29.5,53,Dairy,626.0,"Easy to order, loved it!",5.0,Yes,No
+257,ORD000258,CUST9320,Blinkit,28:29.5,33,Dairy,627.0,Quick and reliable!,5.0,No,No
+258,ORD000259,cust2312,JioMart,34:29.5,21,Fruits & Vegetables,72.0,"Very late delivery, not happy.",2.0,No,Yes
+259,ORD000260,CUST4044,Blinkit,08:29.5,22,Fruits & Vegetables,402.0,Quick and reliable!,5.0,No,No
+260,ORD000261,CUST2122,Blinkit,34:29.5,12,Beverag,882.0,Packaging could be better.,3.0,No,No
+261,ORD000262,CUST2113,Swiggy Instamart,01:29.5,29,Grocery,683.0,Very satisfied with the service.,5.0,No,No
+262,ORD000263,CUST4853,JioMart, 07:29.5 ,14,Dairy,299.0,Packaging could be better.,3.0,No,No
+263,ORD000264,CUST7615,JioMart,11:29.5,9,Personal Care,878.0,Items missing from order.,2.0,No,Yes
+264,ORD000265,CUST2964,Swiggy Instamart,54:29.5,20,Snacks,81.0,"Very late delivery, not happy.",2.0,No,Yes
+265,ORD000266,CUST5033,Swiggy Instamart,43:29.5,19,Grocery,357.0,"Not fresh, disappointed.",2.0,No,Yes
+266,ORD000267,CUST1651,JioMart,51:29.5,30,Snacks,351.0,Excellent experience!,5.0,No,No
+267,ORD000268,CUST2343,JioMart,01:29.5,33,Grocery,535.0,Items missing from order.,1.9351874211727789,No,Yes
+268,ORD000269,CUST7868,Swiggy Instamart,53:29.5,30,Grocery,808.0,"Very late delivery, not happy.",2.0,No,Ges
+269,ORD000270,CUST9565,Blinkit,21:29.5,28,Snacks,400.0,"Not fresh, disappointed.",2.0,No,Yes
+270,ORD000271,CUST6183,Blinkit,57:29.5,33,Dairy,341.0,Very satisfied with the service.,5.0,No,No
+271,ORD000272,CUST5272,Swiggy Instamart,11:29.5,41,Beverages,644.0,"Easy to order, loved it!",5.0,Yes,No
+272,ORD000273,CUST4346,Blinkit,28:29.5,20,Fruits & Vegetables,439.0,Wrong item delivered.,1.0,No,Yes
+273,ORD000274,CUST6147,Swiggy Instamart,35:29.5,33,Grocery,1418.0,Very satisfied with the service.,5.0,No,No
+274,ORD000275,CUST4910,Blinkit,59:29.5,30,Snacks,141.0,Packaging could be better.,3.0,No,No
+275,ORD000276,CUST5351,Blinkit,58:29.5,34,Personal Care,1534.0,Good quality products.,4.0,No,No
+276,ORD000277,CUST7484,JioMart, 54:29.5,28,Beverages,891.0,Wrong item delivered.,1.0,No,Yes
+277, ORD000278,Cust3144,JioMart,30:29.5,21,Beverages,665.0,Quick and reliable!,5.0,No,No
+278,ORD000279,CUST5915,Blinkit,50:29.5,28,Personal Care,254.0,Delivery person was rude.,2.0,No,Yes
+279,ORD000280,CUST8491,Blinkit,12:29.5,22,Fruits & Vegetables,86.0,"Easy to order, loved it!",5.0,No,No
+280,ORD000281,CUST6180,JioMart,55:29.5,20,Grocery,615.0,Very satisfied with the service.,5.0,No,No
+281,ORD000282,CUST2188,JioMart,40:29.5,41,Dairy,314.0,"Easy to order, loved it!",5.0,Yes,No
+282,ORD000283,CUST1152,JioMart,11:29.5,31,Personal Care,1910.0,Delivery person was rude.,2.0,No,Yes
+283,ORD000284,CUST8508,Swiggy Instamart,05:29.5,10,Fruits & Vegetables,260.0,"Horrible experience, never ordering again.",1.0,No,Yes
+284,ORD000285,CUST2638,Blinkit,55:29.5,5,Grocery,505.0,"Fast delivery, great service!",5.0,No,No
+285,ORD000286,CUST2200,JioMart,15:29.5,28,Pdrspnal Care,446.0,Packaging could be better.,3.0,no,No
+286,ORD000287,CUST9808,Blinkit,15:29.5,23,Grocery,1474.0,"Horrible experience, never ordering again.",1.0,  No ,Yes
+287,ORD000288,CUST4492,Swiggy Instamart,03:29.5,30,Snacks,126.0,Wrong item delivered.,1.0,No,Yes
+288,ORD000289,CUST9288,Swiggy Instamart,48:29.5,32,Dairy,258.0,"Horrible experience, never ordering again.",1.0,No,Yes
+289,ORD000290,CUST5345,JioMart,58:29.5,29,Dairy,594.0,Very satisfied with the service.,5.0,No,No  
+290,ORD000291,CUST3170,Swiggy Instam,34:29.5,22,Becerwgws,477.0,Good Quality Products.,4.0,No,No
+291,ORD000292,CUST6718,Blinkit,38:29.5,39,Grocery,206.0,"Easy to order, loved it!",5.0,No,No
+292,ORD000293,FIST2127,JioMart,50:29.5,18,Snacks,264.0,Wrong item delivered.,1.0,No,Yes
+293,ORD000294,CUST5002,Blinkit,12:29.5,42,Dairy,564.0,Items missing from order.,2.0,Yes,Yes
+294,ORD000295,CUST7054,Blinkit,25:29.5,35,Dairy,563.0,"Easy to order, loved it!",5.0,No,No
+295,ORD000296,CUST5669,swiggy instamart,10:29.5,23,Fruitz & Vsgetwblds,558.0,Items missing from order.,2.0,No,Yes
+296,ORD000297,CUST3584,Swiggy Instamart,11:29.5,34,Fruits & Vegetables,219.0,Very satisfied with the service.,5.0,No,No
+297,PRD000298,CUST8179,Swiggy Instamart,05:29.5,26,Beverages,969.0,"Vwry lwtr felivdry, not haplj.",2.0,No,Yes
+298,ORD000299,CUST9900,Swiggy Instamart,22:29.5,43,Dairy,398.0,Excellent experience!,5.0,Yes,No
+299,ORD000300,CUST5956,Swiggy Instamart,15:29.5,23,Snacks,265.0,"Not fresh, disappointed.",2.0,No,Yes
+300,ORD000301,CUST9666,JolMarf,17:29.5,38,  Dairy,613.0,Good quality products.,4.0,No,No
+301,ORD000302,CUST1128,Blinkit,59:29.5,17,Grocery,358.0,Quick and reliable!,5.0,No,No
+302,ORD000303,CUST5905,Blinkit,55:29.5,33,Snacks,491.0,Delivery person was rude.,2.0,No,Yes
+303,ORD000304,CUST2697,Blinkit,44:29.5,32,Snacks,317.0,Items missing from order.,2.0,No,YES
+304,ORD000305,CUST3200,Blinkit,03:29.5,36,Personal Care,1864.0,Very wqtusfied witu yye service.,5.0,No,Ni
+305,ORD000306,CUST5333,Swiggy Instamart,48:29.5,34,Personal Care,1194.0,Delivery person was rude.,2.0,No,Yes
+306,ORD000307,CUST2891,Blinkit,31:29.5,26,Fruits & Vegetables,632.0,"Horrible experience, never ordering again.",1.0,No  ,Yes
+307,ORD000308,CUST2753,JioMart,04:29.5,10,Fruits & Vegetables,390.0,Excellent experience!,5.0,No,No
+308,ORD000309,CUST3546,JioMart,36:29.5,16,Dairy,175.0,"Very late delivery, not happy.",2.0,No,Yes
+309,ORD000310,CUST5462,Blinkit,50:29.5,9,Snacks,88.0,Delivery person was rude.,2.0,No,Yes
+310,ORD000311,CUST5616,Blinkit,17:29.5,27,Beverages,689.0,"Horrible experience, never ordering again.",1.0,No,Yes
+311,ORD000312,CUST4450,JioMart,38:29.5,41,Beverages,672.0,Items missing from order.,2.0,Yes,Yes
+312,ORD000313,CUST6617,JioMart,30:29.5,22,Snacks,297.0,"Horrible experience, never ordering again.",1.0,No,Yes
+313,ORD000314,CUST4335,Swiggy Instamart,53:29.5,26,Snacks,416.0,Packaging could be better.,3.0,No,No
+314,ORD000315,CUST5325,JioMart,31:29.5,24,Beverages,433.0,Good quality products.,4.0,No,No
+315,ORD000316,CUST9280,Swiggy Instamart,33:29.5,32,Snacks,125.0,"Fast delivery, great service!",5.0,No,No
+316,ORD000317,CUST9004,Swiggy Instamart,27:29.5,31,Snacks,257.0,Excellent experience!,5.0,No,No
+317,ORD000318,CUST5114,Swiggy Instamart,41:29.5,25,Dairy,496.0,Packaging could be better.,3.0,No,No
+318,ORD000319,CUST1832,Swiggy Instamart,21:29.5,20,Snacks,460.0,Quick and reliable!,5.0,No,No
+319,ORD000320,CUST2512,Swiggy Instamart,06:29.5,36,Beverages,382.0,Packaging could be better.,3.0,No,No
+320,ORD000321,CUST7939,Blijoit,09:29.5,40,Beverages,739.0,Delivery person was rude.,2.0,No,Yes
+321,ORD000322,CUST5533,JioMart,07:29.5,38,Beverages,825.0,Items missing from order.,2.0,No,Yes
+322,ord000323,CUST1722 ,Swiggy Instamart,40:29.5,18,Grocery,826.0,Items missing from order.,2.0,No,Yes
+323,ORD000324,CUST1058,JioMart,58:29.5,7,Beverages,548.0,"Easy to order, loved it!",5.0,No,No
+324,ORD000325,CUST6464,JioMart,21:29.5,27,Personal Care,1586.0,"Horrible experience, never ordering again.",1.0,No,Yes
+325,ORD000326,CUST3143,Swiggy Instamart,51:29.5,43,Dairy,138.0,Good quality products.,4.0,Yes,No
+326,ORD000327,CUST5291,Blinkit,01:29.5,10,Personal Care,551.0,Packaging could be better.,3.0,No,No
+327,ORD000328,CUST36,Swiggy Instamart,47:29.5,25,Dairy,209.0,"Horrible experience, never ordering again.",1.0,No,Yes
+328,ORD000329,CUST8239,Blinkit,04:29.5,46,Personal Care,587.0,"Easy to order, loved it!",5.0,Yes,No
+329,ORD000330,CUST8007,JioMart,07:29.5,39,Dairy,157.0,Excellent experience!,5.0,NO,No
+330,ORD000331,CUST1158,Blinkit,21:29.5,32,Dairy,210.0,"Easy to order, loved it!",5.0,No,No
+331,ORD000332,CUST2832,Blinkit,01:29.5,18,Dairy,406.0,"Easy to order, loved it!",5.0,No,No
+332,ORD000333,CUST2232,Blinkit,43:29.5,44,Grocery,1117.0,"Easy to order, loved it",5.0,Yes,No
+333,ORD000334,CUST3442,JioMart,03:29.5,28,Fruits & Vegetables,83.0,Packaging could be better.,3.0,No,No
+334,ORD000335,CUST9938,JioMart,30:29.5,7,Personal Care,1299.0,Quick and reliable!,5.0,No,No
+335,ORD000336,CUST1590,Blinkit,47:29.5,44,Beverages,932.0,Very satisfied with the service.,5.0,Yes,No
+336,ORD000337,CUST7049,Blinkit,19:29.5,19,Snacks,173.0,"Very Late Delivery, Not Happy.",2.0,No,YES
+337,ORD000338,CUST3426,Swiggy Instamart,04:29.5,61,Fruits & Vegetables,95.0,"Easy to order, loved it!",5.0,Yes,No
+338,ORD000339,CUST8041,Blinkit,37:29.5,28,Snacks,165.0,"Not fresh, disappointed.",2.0,No,Yes
+339,ORD00034,cust3088,Swiggy Instamart,55:29.5,34,Dairy,619.0,"Very late delivery, not happy.",2.0,No,Yes
+340,ORD000341,CUST1685,Blinkit,11:29.5,30,Dairy,317.0,Packaging could be better.,3.0,No,No
+341,ORD000342,CUST6050,Swiggy Instamart,51:29.5,27,Personal Care,1314.0,"Not fresh, disappointed.",2.0,NO,Yes
+342,ORD000343,CUST6974,JioMart,24:29.5,37,Dairy,338.0,Very satisfied with the service.,5.0,No,No
+343,ORD000344,CUST1653,Blinkit,36:29.5,32,Beverages,498.0,Items missing from order.,2.0,No,Yes
+344,ORD0003,CUST6862,Blinkit,21:29.5,30,Fruits & Vegetables,89.0,Wrong item delivered.,1.0,No,Yes
+345,ORD000346,CUST4441,Blinkit,33:29.5,19,Snacks,419.0,Very satisfied with the service.,5.0,No,No
+346,ORD000347,CUST5088,Blinkit,53:29.5,28,Personal Care,978.0,Wrong item delivered.,1.0,No,Yes
+347,ORE000348,CUST2684,Swiggy Instamart,30:29.5,18,Personal Care,775.0,"Fast delivery, great service!",5.0,No,No
+348,ORD000349,CUST6794,Blinkit,13:29.5,34,Beverages,377.0,"EASY TO ORDER, LOVED IT!",5.0,No,No
+349,ORD000350,CUST7658,JioMart,14:29.5,33,Personal Care,213.0,Delivery person was rude.,2.0,No,Yes
+350,ORD000351,CUST3532,JioMart,03:29.5,31,Grocery,1063.0,"Not fresh, disappointed.",2.0,No,Yes
+351,ORD000352,CUST4878,Blinkit,01:29.5,42,Personal Care,1038.0,Packaging could be better.,3.0,Yes,No
+352,ORD000353,CUST3662,JioMart,18:29.5,38,Grocery,1457.0,Quick and reliable!,5.0,No,No
+353,ORD000354,CUST3900,Blinkit,34:29.5,50,Snacks,209.0,Packaging could be better.,3.0,Yes,No
+354,ORD000355,CUST7755,Blinkit,29:29.5,39,Grocery,1468.0,Very satisfied with the service.,5.0,No,No
+355,ORD000356,CUST1406,JioMart,54:29.5,31,Personal Care,1446.0,Excellent experience!,5.0,No,No
+356,ORD000357,CUST3938,Blinkit,57:29.5,27,Dairy,210.0,Jtemx missknv frpk orfwr.,2.0,No,Yes
+357,ORD000358,CUST6442,JioMart,42:29.5,15,Fruits & Vegetables,517.0,"Fast delivery, great service!",5.0,No,No
+358,ORD000359  ,CUST7745,Swiggy Instamart,36:29.5,43,Beverages,275.0,Good quality products.,4.0,Yes,No
+359,ORD000360,CUST5065,Blinkit,11:29.,35,Grocery,1449.0,"Very late delivery, not happy.",2.0,NO,Yes
+360,ORD000361,CUST5371,Swiggy Instamar,57:29.5,25,Snacks,408.0,Items missing from order.,2.0,No,Yes
+361,ORD000362,CUST3608,JioMart,04:29.5,33,Fruits & Vegetables,591.0,Delivery person was rude.,2.0,No,Yes
+362,ORD000363,CUST2771,Zwkggj Jbstamatt,44:29.5,31,Fruits & Vegetables,584.0,"Very late delivery, not happy.",2.0,No,Yes
+363,ORD000364,CUST7267,Swiggy Instamart,24:29.5,29,Personal Care,1131.0,Very satisfied with the service.,5.0,No,No
+364,ORD000365,CUST1634,  JioMart  ,56:29.5,39,Snacks,238.0,Excellent experience!,5.0,No,No
+365,ORD000366,CUST8711,Swiggy Instamart,19:29.5,14,Snacks,62.0,Items missing from order. ,2.0,No,Yes
+366,ORD000367,CUST4644,Swiggy Instamart,51:29.5,38,Grocery,1334.0,"Not fresh, disappointed.",2.0,No,Yes
+367,ORD000368,CUST4269,JioMart,07:29.5,43,Snacks,216.0,Good quality products.,4.0,Yes,No
+368,ORD000369,CUST8541,Swiggy Instamart,09:29.5,18,Dairy,641.0,Very satisfied with the service.,5.0,No,No
+369,ORD000370,CUST6728,JioMart,32:29.5,10,Fruits & Vegetables,556.0,Packaging could be better.,3.0,No,No
+370,ORD000371,CUST6000,Swiggy Instamart,09:29.5,34,Snacks,378.0,"Not fresh, disappointed.",2.0,No,Yes
+371,ORD000372,CUST4728,JioMart,15:29.5,39,Grocery,823.0,"Not fresh, disappointed.",2.0,No,Yes
+372,ORD000373,CUST4652,JioMart,24:29.5,21,Dairy,362.0,Delivery person was rude.,2.0,No,Yes
+373,ORD000374,CUST1387,Swiggy Instamart,57:29.5,16,Dairy,517.0,Delivery person was rude.,2.0,No,Yes
+374,ORD000375,CJDR4164,Swiggy Instamart,21:29.5,11,Fruits & Vegetables,451.0,Delivery person was rude.,2.0,No,Yes
+375,ORD000376,CUST7528,Swiggy Instamart,26:29.5,40,Snacks,288.0,Delivery person was rude.,20.0,No,YES
+376,ORD000377,CUST6378,Blinkit,02:29.5,28,Snacks,392.0,Quick and reliable!,5.0,No,No
+377,ORD000378,CUST5564,Blinkit,37:2,43,Snacks,354.0,Wrong item delivered.,1.0,Yes,Yes
+378,ORD000379,CUST2137,Blinkit,  25:29.5,5,Grocery,1296.0,Packaging could be better.,3.0,No,No
+379,ORD000380,CUST5573,JioMart,24:29.5,30,Fruits & Vegetables,332.0,Delivery person was rude.,2.0,No,Yes
+380,  ORD000381 ,CUST6753,Swiggy Instamart,08:29.5,41,Grocery,1016.0,Packaging could be better.,3.0,Yes,No
+381,ORD000382,CUST9346,JioMart,53:29.5,20,personal care,1585.0,"Horrible experience, never ordering again.",1.0,No,Yes
+382,ORD000383,CUST7548,Blinkit,31:29.5,37,SNACKS,296.0,"Not fresh, disappointed.",2.0,No,Yes
+383,ORD000384,CUST9785,Swiggy Instamart,40:29.5,19,Snacks,242.0,Very satisfied with the service.,5.0,No,No
+384,ORD000385,CUST6425,JioMart,25:29.5,20,Dairy,206.0,"Not fresh, disappointed.",2.0,No,Yes
+385,ORD000386,CUST1452,Swiggy Instamart,34:29.5,30,Beverages,444.0,Good quality products.,4.0,No,No
+386,ORD000387,CUST2889,JioMart,56:29.5,23,Beverages,432.0,"Horrible experience, never ordering again.",1.0,No,Yes
+387,ORD000388, CUST5279,Swiggy Instamart,04:29.5,43,Snacks,204.0,"Horrible experience, never ordering again.",1.0,Yes,Yes
+388,ORD000389,CUST3925,Blinkit,48:29.5,30,Personal Care,1701.0,"Very late delivery, not happy.",2.0,No,Yes
+389,ORD000390,CUST5349,Blinkit,16:29.5,44,Beverages,750.0,Packaging could be better.,3.0,Yes,No
+390,ORD00039,CUST1626,Swiggy Instamart,01:29.5,36,Beverages,197.0,Good quality products.,4.0,No,No
+391,ORD000392,CUST2776,JioMart,32:29.5,20,Grocery,1106.0,Good quality products.,4.0,No,No
+392,ORD000393,CUST8119,Blin,15:29.5,32,Personal Care,403.0,Good quality products.,4.0,No,No
+393,ORD000394,CUST6663,Blinkit,31:29.5,21,Beverages,591.0,Items missing from order.,2.0,No,Yes
+394,ORD000395,CUST6139,Blinkit,30:29.5,41,Personal Care,1000.0,Wrong item delivered.,1.0,Yes,Yes
+395,ORD000396,CUST8149,Swiggy Instamart,10:29.5,44,Dairy,598.0,"Not fresh, disappointed.",2.0,Yes,Yes
+396,ord000397,CUST9379,Swiggy Instamart,30:29.5,12,Personal Care,255.0,Delivery person was rude.,2.0,No,Yes
+397,ORD000398,CUST2894,JioMart,38:29.5,35, Grocery ,708.0,"Fast delivery, great service!",5.0,No,No
+398,ORD000399,CUST7311,JioMart,12:29.5,42,Personal Care,521.0,"Fast delivery, great service!",5.0,Yes,No
+399,ORD000400, CUST4114 ,JioMart,48:29.5,38,Fruits & Vegetables,494.0,Very satisfied with the service.,5.0,No,No
+400,ORD000401,CUST5173,Swiggy Instamart,29:29.5,28,Personal Care,1767.0,Wrong item delivered.,1.0,No,Yes
+401,ORD000402,CUST1727,Swiggy Instamart,27:29.5,57,Dairy,765.0,Excellent experience!,5.0,Yes,No
+402,ORD000403,CUST8144,JioMart,48:29.5,32,Snacks,390.0,Packaging could be better.,3.0,No,No
+403,ORD000404,CUST1027,JioMart,09:29.5,15,Personal Care,1757.0,Good quality products.,4.0,No,No
+404,ORD000405,CUST9518,Swiggy Instamart,57:29.5,36,Fruits & Vegetables,56.0,"Horrible experience, never ordering again.",1.0,No,Yes
+405,ORD000406,CUST9821,JioMart,50:29.5,40,Beverages,675.0,Very satisfied with the service.,5.0,No,No
+406,ORD000407,CUST4228,BLINKIT,05:29.5,35,Snacks,298.0,Wrong item delivered.,1.0,Ho,Yes
+407,ORD000408,CUST6967,Swiggy Instamart,22:29.5,32,Sna,164.0,"Very late delivery, not happy.",2.0,No,Yes
+408,ORD000409,CUST8066,JioMart, 33:29.5 ,16,Beverages,708.0,Delivery person was rude.,2.0,No,Yes
+409,ORD000410,CUST2146,Swiggy Instamart,16:29.5,13,Snacks,121.0,Excellent experience!,5.0,No,No
+410,ORD000411,CUST6409,Blinkit,59:29.5,20,Fruits & Vegetables,659.0,Wrong item delivered.,1.0,No,Yes
+411,ORD000412,CUST6143,Swiggy Instamart,31:29.5,5,Snacks,104.0,"Fast delivery, great service!",5.0,No,No
+412,ORD000413,CUST3041,Swiggy Instamart,26:29.5,45,Sna,52.0,"Fast delivery, great servic",5.0,Yes,No
+413,ORD000414,CUST5920,Swiggy Instamart,45:29.5,30,Grocery,1264.0,Excellent experience!,5.0,No,No
+414,ORD000415,CUST9308,Swiggy Instamart,23:29.5,26,Fruits & Vegetables,204.0,Good quality products.,4.0,No,No
+415,ORD000416,CUST6067,Blinkit,42:29.5,15,Beverages,577.0,Packaging could be better.,3.0,No,No
+416,ORD000417,CUST7691,Swiggy Instamart,32:29.5,17,Dairy,698.0,Wrong item delivered.,1.0,No,Yes
+417,ORD000418,CUST6344,Swiggy Instamart,25:29.5,30,Dairy,474.0,"Fast delivery, great service!",5.0,No,No
+418,ORD000419,CUST7592,JioMart,55:29.5,27,Personal Care,108.0,Items missing from order.,2.0,No,Yes
+419,ORD000420,CUST5844,Swiggy Instamart,23:29.5,31,Personal Care,1058.0,"Easy to order, loved it!",5.0,No,NO
+420,ORD000421,CUST3085,JioMart,33:29.5,16,Snacks,320.0,"Very late delivery, not happy.",2.0,No,Yes
+421,ORD000422 ,CUST4143,Blinkit,21:29.5,33,Fruits & Vegetables,58.0,"Fast delivery, great service!",5.0,No,No
+422,ORD000423,CUST7888,Blinkit,13:29.5,42,Snacks,188.0,Quick and reliable!,5.0,Yes,No
+423,ORD000424,CUST7211,Blinkit,18:29.5,27,Beverages,789.0,Good quality products.,4.0,N,No
+424,ORD000425,CUST3851,Blinkit,23:29.5,37,Snacks,210.0,Delivery person was rude.,2.0,No,Yes
+425,ORD000426,CUST5930,JioMart,35:29.5,28,Snacks,276.0,Good quality products.,4.0,No,No
+426,ORD000427,CUST7653,Swiggy Instamart,19:29.5,26,Groce,1169.0,"Not fresh, disappointed.",2.0,No,Yes
+427,ORD000428,CUST9977,Blinkit,03:29.5,34,Fruits & Vegetables,135.0,Items missing from order.,2.0,No,Yes
+428,ORD000429,CUST1006,Swiggy Instamart,43:29.5,25,Fruits & Vegetables,203.0,Excellent experience!,5.0,No,No
+429,ORD000430,CUST5978,JioMart,36:29.5,23,Grocery,1484.0,"Not fresh, disappointed.",2.0,No,Yes
+430,ORD000431,CUST5700,JioMart,43:29.5,40,Beverages,275.0,"Fast delivery, great service!",5.0,No,No
+431,ORD000432,CUST4443,JioMart,23:29.5,11,Dairy,299.0,Delivery person was rude.,2.0,No,Yes
+432,ORD000433,CUST8043,Blinkit,36:29.5,30,Snacks,91.0,Wrong item delivered.,1.0,No,Yes
+433,ORD000434, CUST6279 ,Swiggy Instamart,42:29.5,19,Beverages,184.0,"Not fresh, disappointed.",2.0,No,Yes
+434,ORD000435,CUST8618,Swiggy Instamart,28:29.5,48,Dairy,277.0,"Very late delivery, not happy.",2.0,Yes,Yes
+435,ORD000436,CUST8238,Swiggy Instamart,51:29.5,39,Snacks,232.0,Good quality products.,4.0,No,No
+436,ORD000437,CUST8244,JioMart,32:29.5,42,Beverages,848.0,Packaging could be better.,3.0,Yes,No
+437,ORD000438,CUST4501,Blinkit,57:29.5,31,Personal Care,173.0,Excellent experience!,5.0,No,No
+438,ORD000439,CUST9375,JioMart,45:29.5,36,Personal Care,219.0,Excellent experience!,5.0,No,No
+439,ORD000440,CUST8752,JioMart,12:29.5,32,Dairy,688.0,"Not fresh, disappointed.",2.0,No,Yes
+440,ORD000441,CUST3780,Swiggy Instamart,37:29.5,24,Personal Care,400.0,"Not fresh, disappointed.",2.0,No,Yes
+441,ORD000442,CUST2389,JioMart,18:29.5,47,Fruits & Vegetables,467.0,"Easy to order, loved it!",5.0,Yes,No
+442,ORD000443,CUXT5649,Swiggy Instamart,52:29.5,37,Fruits & Vegetables,261.0,"Not fresh, disappointed.",2.0,No,Yes
+443,ORD000444,CUST9445,Blinkit,16:29.5,21,Personal Care,1017.0,"Fast delivery, great service!",5.0,No,No
+444,ORD000445,CUST6491,Swiggy Instamart,38:29.5,14,Fruits & Vegetables,385.0,Delivery person was rude.,2.0,No,Yes
+445,ORD000446,CUST2530,Blinkit,22:29.5,19,Personal Care,323.0,Good quality products.,4.0,No,No
+446,ORD000447,CUST4848,Swiggy Instamart,17:29.5,30,Grocery,241.0,Quick and reliable!,5.0,No,No
+447,ORD000448,CUST6085,JioMart,54:29.5,23,Dairy,441.0,"very late delivery, not happy.",2.0,No,Yes
+448,ORD000449,CUST4680,JioMart,59:29.5,39,Dairy,552.0,Quick and reliable!,5.0,No,N
+449,ORD000450,CUST4262,Blinkit,54:29.5,32,Personal Care,1756.0,Delivery person was rude.,2.0,No,Yes
+450,ORD000451,CUST3414,Blinkit,53:29.5,27,Dairy,741.0,Wrong item delivered.,1.0,No,Yes
+451,ORD000452,CUST1400,Blinkit,17:29.5,30,Snacks,292.0,Excellent experience!,5.0,No,No
+452,ORD000453,CUST1757,Swiggy Instamart,39:29.5,28,Beverages,483.0,Quick and reliable!,5.0,No,No
+453,ORD000454,CUST5011,Swiggy Instamart,31:29.5,27,Sna,120.0,Quick and reliable!,5.0,No,No
+454,ORD000455,CUST8784,Blinkit,34:29.5,33,Grocery,1257.0,"Not fresh, disappointed.",2.0,No,Yes
+455,ORD000456,CUST2193,JioMart,21:29.5,24,Snacks,292.0,Good quality products.,4.0,No,No
+456,ORD000457,CUST8461,Swiggy Instamart,04:29.5,18,Dairy,251.0,"Fast delivery, great service!",5.0,No,No
+457,ORD000458,CUST7790,Swiggy Instamart,13:29.5,37,Beverages,922.0,Good quality products.,4.0,No,No
+458,ORD000459,CUST4185,Swiggy Instamart,30:29.5,22,Dairy,573.0,"Horrible experience, never ordering again.",1.0,No,Yes
+459,ORD000460,CUST7291,Blinkit,34:29.5,42,Personal Care,261.0,"Easy to order, loved it!",5.0,Yes,No
+460,ORD000461,CUST9099,Blinkit,54:29.5,28,Fruits & Vegetables,698.0,Quick and reliable!,5.0,No,No
+461,ORD000462,CUST7547,Blinkit,48:29.5,25,Snacks,431.0,Delivery person was rude.,2.0,No,Yes
+462,ORD000463,CUST4997,Blinkit,52:29,20,Beverages,441.0,Packaging could be better.,3.0,No,No
+463,ORD000464,CUST3417,Blinkit,55:29.5,26,Beverages,384.0,Excellent experience!,5.0,No,No  
+464,ORD000465,CUST1090,JioMart,19:29.5, 33  ,Personal Care,133.0,Packaging could be better.,3.0,No,No
+465,ORD000466,CUST2746,JioMart,59:29.5,22,BEVERAGES,921.0,Quick and reliable!,5.0,No,No
+466,ORD000467,CUST7965,Blinkit,58:29.5,37,Grocery,488.0,"Easg to ordwr, opved iy!",5.0,No,No
+467,ORD000468,CUST4585,Swiggy Instamart,21:29.5,18,Personal Care,922.0,"horrible experience, never ordering again.",1.0,No,Yes
+468,  ORD000469  ,CUST3881,Blinkit,51:29.5,39,Snacks,400.0,Excellent experience!,5.0,No,No
+469,ORD0004,CUST9486,jiomart,25:29.5,31,Grocery,912.0,Quick and reliable!,5.0,No,No
+470,ORD000471,CUST8611,JioMart,43:29.5,25,Snacks,450.0,"Fast delivery, great service!",5.0,No,No
+471,ORD000472,CUST1822,Swiggy Instamart,28:29.5,33,Personal Care,1870.0,"Fast delivery, great service!",5.0,No,No
+472,ORD000473,CUST5082,JioMart,01:29.5,46,Beverages,165.0,Items missing from order.,2.0,Yes,  Yes  
+473,ODD000474,CUST2988,Blinkit,14:29.5,41,Grocery,716.0,Excellent experience!,5.0,Yes,No
+474,ORD000475,CUST8478,Swiggy Instamart,13:29.5,33,Grocery,963.0,Wrong item delivered.,1.0,No,Yes
+475,ORD000476,CUST3184,Blinkit,34:29.5,39,Snacks,60.0,Wrong item delivered.,1.0,No,Yes
+476,ORD000477,CUST8,Blinkit,46:29.5,25,Fruits & Vegetables,269.0,"Horrible experience, never ordering again.",1.0,No,Yes
+477,ORD000478,CUST9702,Swiggy Instamart,42:29.5,23,Grocery,1434.0,Very satisfied with the service.,5.0,No,No
+478,ORD000479,CUST6198,Blinkit,43:29.5,37,Snacks,140.0,Packaging could be better.,3.0,No,No
+479,ORD000480,CUST8251,JioMart,16:29.5,32,Snacks,153.0,"Horrible experience, never ordering again.",1.0,No,Yes
+480,ORD000481,CUST9270,Blinkit,43:29.5,27,Personal Care,422.0,GOOD QUALITY PRODUCTS.,4.0,No,No
+481,ORD000482,  CUST7991  ,Swiggy Instamart,04:29.5,38,Snacks,245.0,Good quality products.,4.0,No,No
+482,ORD000483,CUST9976,Swiggy Instamart,56:29.5,30,Grocery,1388.0,Exfeloent exlsriemce!,5.0,No,No
+483,ORD000484,CUST8305,Swiggy Instamart,23:29.5  ,42,Grocery,1279.0,Packaging could be better.,3.0,Yes,No
+484,ORD000485,CUST3607,Blinkit,43:29.5,8,Snacks,416.0,"Horrible experience, never ordering again.",1.0,No,Yes
+485,ORD000486,CUST8777,  Swiggy Instamart ,44:29.5,24,Fruits & Vegetables,688.0,Excellent experience!,5.0,No,No
+486,ORD000487,CUST8373,Swiggy Instamart,32:29.5,39,Beverages,619.0,Wrong item delivered.,1.0,No,Yes
+487,ORD000488,CUST5246,Blinkit,19:29.5,46,Grocery,699.0,Very satisfied with the service.,5.0,Yes,No
+488,ORD000489,CUST5050,jiomart,10:29.5,43,Grocery,524.0,Good quality products.,4.0,Yes,No
+489,ORD000490,CUST5543,Blinkit,38:29.5,23,Personal Care,271.0,Packaging could be better.,3.0,No,No
+490,ORD000491,CUST9540,Swiggy Instamart,37:29.5,42,Grocery,1252.0,  Good quality products.  ,4.0,Yes,No
+491,ORD000492,CUST8939,Swiggy Instamart,11:29.5,11,Personal Care,410.0,"Very late delivery, not happy.",2.0,No,Yes
+492,ORD000493,CUST4919,Blinkit,50:29.5,20,Snacks,363.0, Delivery person was rude.,2.0,No,Yes
+493,ORD000494,CUST5499,JioMart ,57:29.5,27,Dairy,396.0,Very satisfied with the service.,5.0,No,No
+494,ORD000495,CUST8206,Swiggy Instamart,59:29.5,34,Snacks,317.0,Excellent experience!,5.0,No,No
+495,ORD000496,CUST2269,Swiggy Instamart,53:29.5,20,Grocery,534.0,Excellent experience!,5.0,No,No
+496,ORD000497,CUST5681,Swiggy Instamart,39:29.5,28,Beverages,781.0,Very satisfied with the service.,5.0,No,No
+497,ORD000498,CUST4841,Blinkit,36:29.5,43,Beverages,912.0,Good quality products.,4.0,Yes,No
+498,ORD000499,CUST5451,Swiggy Instamart,52:29.5,18,Beverages ,502.0,Good qualigy productd.,4.0,No,No
+499,ORD000500,Cust6502,JioMart,35:29.5,17,Snacks,349.0,"Horrible experience, never ordering aga",1.0,No,Yes
+500,ORD000501,CUST6238,Swiggy Instamart,27:29.5,22,Personal Care,824.0,Quick and reliable!,5.0,No,No
+501,ORD000502,CUST9849,Swiggy Instamart,30:29.5,53,Beverages,653.0,"Easy to order, loved it!",5.0,Yes,No
+502,ORD000503,CUST2320,JioMart,39:29.5,34,Dairy,781.0,Quick and reliable!,5.0,NO,No
+503,ORD000504,CUST3267,Swiggy Instamart,51:29.5,21,Beverages,923.0,Excellent experience!,5.0,No,No
+504,ORD000505,CUST3471,Blinkit,26:29.5,39,fruits & vegetables,143.0,"Not fresh, disappointed.",2.0,No,Yes
+505,ORD000506,CUST4788,Blinkit,08:29.5,11,Beverages,406.0,Delivery person was rude.,2.0,No,Yes
+506,ORD000507,CUST7275,Blinkit,57:29.5,28,Snacks,149.0,"Not fresh, disappointed.",2.0,No,Yes
+507,ORD000508,CUST3503,JioMart,18:29.5,31,Fruits & Vegetables,294.0,"Very late delivery, not happy.",2.0,No,Yes
+508,ORD000509,CUST4505,Swiggy Instamart,03:29.5,41,Snacks,230.0,"Very late delivery, not happy.",2.0,Yes,Yes
+509,  ORD000510,CUST2052,Blinkit,04:29.5,15,Snacks,281.0,"Horrible experience, never ordering again.",1.0,No,Yes
+510,ORD000511,CUST7797,JioMart,13:29.5,42,  Beverages,198.0,Excellent experience!,5.0,Yes,No
+511,ORD000512,CUST7678,Swiggy Instamart,45:29.5,40,Snacks,428.0,Items missing from order.,2.0,No,Yes
+512,ORD000513,CUST6421,JioMart,28:29.5,43,Snacks,263.0,"Very late delivery, not happy.",2.0,Yes,Yes
+513,ORD000514,CUST9890,Blinkit,06:29.5,17,Dairy,289.0,Delivery person was rude.,2.0,No,Yes
+514,ORD000515,CUST8633,Blinkit,42:29.5,47,Dairy,148.0,Excellent experience!,5.0,Yes,No
+515,ORD000516,Cust7812,Blinkit,01:29.5,11,Snacks,251.0,Quick and reliable!,5.0,No,No
+516,ORD000517,CUST2020,JioMart,57:29.5,17,Beverages,426.0,Very satisfied with the service.,5.0,No,No
+517,ORD000518,CUST4388,JioMar,13:29.5,31,Personal Care,1241.0,"Easy to order, loved it!",5.0,No,No
+518,ORD000519,CUST7883,Blinkit,53:29.5,26,Dairy,293.0,"Fast delivery, great service!",5.0,No,No
+519,ORD000520,CUST7381,JioMart,17:29.5,16,Beverages,623.0,"Horrible experience, never ordering again.",1.0,No,Yes
+520,ORD000521,CUST1320,Blinkit,43:29.5,53,Personal Care,1637.0,"Very late delivery, not happy.",2.0,Yes,Yes
+521,ORD000522,CUST7232,Blinkit,21:29.5,13,Dairy,643.0,"Easy to order, loved it!",5.0,No,No
+522,ORD000523,CUST8814,Swiggy Instamart,50:29.5,12,Beverages,524.0,"Fast delivery, great service!",5.0,No,No
+523,ORD000524,CUST1096,JioMart,11:29.5,33,Dairy,271.0,Good quality products.,4.0,No,No
+524,ORD000525,CUST6763,Blinkit,50:29.5,29,Fruits & Vegetables,528.0,"Horrible experience, never ordering again.",1.0,No,Yes
+525,ORD000526,CUST5892,Blinkit,20:29.5,15,Dairy,542.0,Quick and reliable!,5.0,No,No
+526,ORD000527,CUST7389,JioMart,  33:29.5  ,51,Personal Care,1231.0,Packaging could be better.,3.0, Yes  ,No
+527,ORD000528,CUST7865,Swiggy Instamart,03:29.5,31,Snafks,335.0,Good quality products.,4.0,No,No
+528,ORD000529,CUST9818,Swiggy Instamart,17:29.5,24,Grocery,810.0,"Very late delivery, not happy.",2.0,No,Yes
+529,ORD000530,CUST9947,Blinkit,  31:29.5,29,Snacks,296.0,"Very late delivery, not happy.",2.0,No,Yes
+530,ORD000531,CUST4613,JioMart,37:29.5,14,Fruits & Vegetables,277.0,"Horrible experience, never ordering again.",1.0, No ,Yes
+531,ORD000532,CUST8999,Swiggy Instamart,44:29.5,40,Personal Care,1381.0,Items missing from order.,2.0,No,Yes
+532,ORD000533,CUST4595,JioMart,47:29.5,32,Personal Care,1233.0,"Very late delivery, not happy.",2.0,No,Yes
+533,ORD000534,CUST5471,JioMart,07:29.5,27,Fruits & Vegetables,386.0,Items missing from order.,2.0,No,Yes
+534,ORD000535,CUST8,Blinkit,17:29.5,29,Personal Care,511.0,Delivery person was rude.,2.0,No,Yes
+535,ORD000536,CUST8956,Swiggy Instamart,57:29.5,21,Grocery,1266.0,Good quality products.,4.0, No,No
+536,ORD000537, CUST1475,Blinkit,47:29.5,41,Fruits & Vegetables,699.0,"Horrible experience, never ordering again.",1.0,Yes,Yes
+537,ORD000538,CUST7371,Swiggy Instamart,47:29.5,23,Dairy,288.0,"Fast delivery, great service!",5.0,No,No
+538,ORD000539,CUST6507,Swiggy Instamart,35:29.5,24,Dairy,152.0,"Fast delivery, great service!",5.0,No,No
+539,ORD000540,CUST7624,Swiggy Instamart,35:29, 31 ,Personal Care,1209.0,Packaging could be better.,3.0,No,No
+540,ORD000541,CUST3704,Swiggy Instamart,13:29.5,9,Fruits & Vegetables,186.0,Packaging could be better.,3.0,No,No
+541,ORD000542,CUST8657,Swiggy Instamart,04:29.5,35,Fruits & Vegetables,636.0,Very satisfied with the service.,5.0,No,No
+542,ORD000543,CUST3091,JioMart,27:29.5,29,Fruits & Vegetables,578.0,"Fast delivery, great service!",5.0,No,No
+543,ORD000544,CUST9751,Blinkit,07:29.5,35,Personal Care,1575.0,Items missing from order.,2.0,No,Yes
+544,ORD000545,CUST1441,JioMart,02:29.5,27,Snacks,93.0,Packaging could be better.,3.0,No,No
+545,ORD000546,CUST7455,Swiggy Instamart,44:29.5,21,Beverages,220.0,Very satisfied with the service.,5.0,No,No
+546,ORD000547,  CUST1444,Blinkit,50:29.5,31,Dairy,735.0,"Not fresh, disappointed.",2.0,No,Yes
+547,ORD000548,CUST2375,Swiggy Instamart,17:29.5,39,Snacks,129.0,Very satisfied with the service.,5.0,No,No
+548,ORD000549,CUST8022,Blinkit,35:29.5,24,Snacks,138.0,"Easy to order, loved it!",5.0,  No  ,No
+549,ORD000550,CUST3223,JioMart,41:29.5,38,Dairy,429.0,"Horrible experience, never ordering again.",1.0,No,Yes
+550,ORD000551,CUST8564,Blinkit,48:29.5,27,Fruits & Vegetables,192.0,Items missing from order.,2.0,No,Yes
+551,ORD000552,CUST3977,Blinkit,40:29.5,25,Snacks,218.0,Wrong item delivered.,1.0,No,Yes
+552,ORD000553,CUST1823,Blinkit,55:29.5,38,Dairy,270.0,Very satisfied with the service.,5.0,No,No
+553,ORD000554,CUST5262,BLINKIT,29:29.5,33,Fruits & Vegetables,292.0,Items missing from order.,2.0,No,Yes
+554,ORD000555,CUST7211,Blinkit,06:29.5,16,Snacks,101.0,"Fast delivery, great service!",5.0,No,No
+555,ORD000556,CUST6363,Swiggy Instamart,19:29.5,27,Personal Care,504.0,Items missing from order.,2.0,No,Yes
+556,ORD000557,CUST4467,Blinkit,31:29.5,18,Fruits & Vegetables,431.0,Items missing from order.,2.0,No,Yes
+557,ORD00055,CUST8449,Blinkit,40:29.5,35,Personal Care,1702.0,"Horrible experience, never ordering again.",1.0,No,Yes
+558,ORD000559,CUST6355,JioMart,29:29.5,20,Fruits & Vegetables,662.0,Packaging could be better.,3.0,No,No
+559,ORD000560,CUST6529,Blinkit,45:29.5,31,Beverages,246.0,"Easy to order, loved it!",5.0,No,No
+560,ORD000561,CUST7211,JioMart,19:29.5,35,Personal Care,1192.0,Excellent experience!,5.0,No,No

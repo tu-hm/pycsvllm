@@ -21,17 +21,17 @@ class CellInfo(BaseModel):
     """
     Model representing information about a specific cell in a dataset.
     """
-    row: int = Field(..., description="Row index")
-    column: str = Field(..., description="Column name")
-    value: str = Field(..., description="Cell value")
+    name: str = Field(..., description="Column name")
+    fixed_value: str = Field(..., description="Cell value")
 
 
 class ImprovesItem(BaseModel):
     """
     Model representing a suggested improvement for a dataset.
     """
-    description: str = Field(..., description="Description of suggested improvement")
-    position: CellInfo = Field(..., description="Location of the issue in the dataset")
+    description: str = Field(..., description="Description of the item")
+    row: int = Field(..., description="the row index")
+    attribute: List[CellInfo] = Field(..., description="list of fixed cell positions")
 
 
 class PotentialErrorQueryResponse(BaseModel):

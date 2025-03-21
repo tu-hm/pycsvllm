@@ -58,32 +58,42 @@ Provide detailed instructions on data analysis and data cleaning/normalization, 
 """
 
 FIND_JSON_SCHEMA_PROMPTS = """
-Given the CSV dataset below, some column info of dataset and any optional context provided, generate a **strict and valid JSON Schema** that adheres to the following requirements:
+**Task:**  
+Generate a **strict and valid JSON Schema** in **Draft 2020-12** for the given CSV dataset, adhering to the following requirements:  
 
-1. **Accurate Data Typing** – Infer and enforce the correct data types (e.g., `string`, `number`, `integer`, `boolean`, `array`, `object`).
-2. **Format Specification** – Apply appropriate formats where relevant (e.g., `date-time`, `email`, `uuid`, `uri`).
-3. **Pattern Validation** – Derive and enforce regex patterns for fields that contain structured or constrained values.
-4. **Value Constraints** – Extract and apply min/max values, string length constraints, and enumerated values where applicable.
-5. **Field Descriptions** – Provide meaningful descriptions based on the field names, values, and context.
-6. **Intelligent Schema Generation** – Ensure the schema is precise, comprehensive, and avoids unnecessary generalization.
+### **Schema Requirements:**  
+1. **Accurate Data Typing** – Infer and enforce the correct data types (`string`, `number`, `boolean`, `array`, `object`, 'null').  Prefer type number because python not support integer type.
+2. **Format Specification** – Apply relevant formats (`date-time`, `email`, `uuid`, `uri`, etc.) where applicable.  
+3. **Pattern Validation** – Derive and enforce regex patterns for fields with structured or constrained values.   
+5. **Field Descriptions** – Generate meaningful descriptions based on field names, sample values, and any provided context.  
+6. **Strictness & Precision** – The schema must be precise, avoiding unnecessary generalization while ensuring validity.  
 
-Your response **must** strictly follow this JSON format:
+### **Response Format (Strictly Follow This Structure):**  
 {{
     "json_schema": {{ ... }},  
     "other_info": "Additional details about the schema"
 }}
-**Do not** return anything outside this format.
+```  
+- **Do NOT** include extra explanations or any content outside this JSON structure, not ```json```.  
+- Ensure the output schema is complete, consistent, and strictly adheres to **Draft 2020-12** specifications.  
 
 ---
-**CSV Dataset:**
+
+### **Input Data:**  
+**CSV Dataset:**  
+```
 {data}
+```  
 
-**Column info in dataset:**
+**Column Metadata:**  
+```
 {column_info}
+```  
 
-**Additional Context (if any):**
+**Additional Context (if provided):**  
+```
 {context}
----
+```
 """
 
 CREATE_TABLE_SCHEMA_PROMPTS = """
@@ -148,6 +158,7 @@ You are given a **strict schema** for a CSV dataset along with a **partial datas
    - **Dates:** Ensure dates follow the **DD-MM-YYYY** format. For example, if a date is provided as **MM-DD-YYYY** or **MM:DD:YYYY**, convert it to the correct format.  
    - **Serial Numbers:** Validate entries against the expected pattern (e.g., **ABC-123**); if a serial number appears as **AB1-123**, correct the format.  
    - **General Consistency:** All entries in a given column should adhere to a single, uniform format.
+   - Not correct white space, you can remove it.
 
 2. **Number Formatting Errors:**  
    - Correct the decimal and thousand separators. For example, if the expected format uses a comma (e.g., **1,35** for decimals), convert any numbers using a dot (e.g., **1.35**) accordingly.  
@@ -193,12 +204,14 @@ Your response **must** strictly follow this JSON format:
 {{
     "improves": list[  
         {{
-            "description": "Explain why the data needs correction in simple terms.",  
-            "position": {{
-                "row": <<row_number>>, row is base 0 start at 0,  
-                "column": <<column_headername>>,  
-                "value": "<<corrected_value>>, default type is str that I can format"  
-            }}
+            "description": "Explain why the data needs correction in simple terms.", 
+            "row": <<row_number>>, row is base 0 start at 0,   
+            "attribute": list[
+                {{
+                    "name": <<column_headername>>,  
+                    "fixed_value": "<<corrected_value>>, default type is str that I can format"  
+                }} #list fixed items in one row.
+            ]
         }}  
     ] || can be none  
 }}
@@ -227,5 +240,58 @@ Your response **must** strictly follow this JSON format:
 ---
 
 This prompt is designed to guide you through a careful, context-aware data cleaning process while strictly adhering to the schema and returning your findings in the required JSON format.
+
+"""
+
+FIX_JSON_SCHEMA_ERROR = """
+I have a list of errors detected by JSON Schema validation and right JSON Schma of it.. 
+Each error corresponds to a row in my dataset and specifies an attribute that has an issue. 
+I need you to suggest fixes in the following structured format:
+
+```json
+[
+  {{
+    "row": number,
+    "attribute": [{{
+      "name": string,
+      "fixed_value": string
+    }}] # list of fixed values in one row
+  }}
+]
+```
+
+### Output:
+Your response **must** strictly follow this JSON format, no ```json```:
+
+
+{{
+    "improves": list[
+      {{
+        "description": "Explain why the data needs correction in simple terms.",
+        "row": number,
+        "attribute": list[ 
+            {{
+                "name": string,
+                "fixed_value": string
+            }}
+        ]
+      }}]
+    ]
+}}
+**Important:**  
+- Return **only** the required JSON structure—do not include any additional text or formatting outside this structure.  
+- Ensure every change is aligned with the expected formats, constraints, and regex patterns defined in the schema.
+
+Ensure that:
+- Dates are formatted correctly.
+- Numbers follow the expected constraints.
+- Text values match required patterns.
+- Any other JSON Schema validation issues are fixed accordingly.
+
+***Now, I give you the JSON Schema of the right data***
+{schema}
+
+**Now, here is the list of errors I need you to fix:**
+{errors}
 
 """

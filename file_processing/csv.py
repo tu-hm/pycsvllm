@@ -6,6 +6,8 @@ from jsonschema.validators import Draft202012Validator
 from langchain_core.prompts import ChatPromptTemplate
 from typing import List, Dict
 
+from pandas import DataFrame
+
 from file_processing.schema import (
     CSVJsonSchemaResponse,
     PotentialErrorQueryResponse,
@@ -15,7 +17,7 @@ from llm import base_llm
 from llm.prompts import (
     FIND_JSON_SCHEMA_PROMPTS,
     SYSTEM_MESSAGE,
-    GET_ISSUE_OF_DATA
+    GET_ISSUE_OF_DATA, FIX_JSON_SCHEMA_ERROR
 )
 
 class CSVLoader:
@@ -32,7 +34,7 @@ class CSVLoader:
         """
         self.name = name
         self.filepath = filepath
-        self.data = pd.read_csv(filepath, index_col=0)
+        self.data = pd.read_csv(filepath)
         self.schema = {}
 
     def read_data(self, filepath: str) -> None:
@@ -112,19 +114,14 @@ class CSVLoader:
             # Handle different data types
             if pd.api.types.is_numeric_dtype(col_series):
                 info['type_category'] = 'numerical'
-                info.update({
-                    'min': col_series.min(),
-                    'max': col_series.max(),
-                    'mean': col_series.mean(),
-                    'median': col_series.median(),
-                    'std': col_series.std()
-                })
+                # info.update({
+                # })
             elif pd.api.types.is_datetime64_any_dtype(col_series):
                 info['type_category'] = 'datetime'
-                info.update({
-                    'min_date': col_series.min(),
-                    'max_date': col_series.max()
-                })
+                # info.update({
+                #     'min_date': col_series.min(),
+                #     'max_date': col_series.max()
+                # })
             elif pd.api.types.is_categorical_dtype(col_series):
                 info['type_category'] = 'categorical'
             elif pd.api.types.is_bool_dtype(col_series):
@@ -132,7 +129,7 @@ class CSVLoader:
                 info['value_distribution'] = col_series.value_counts().to_dict()
             else:
                 info['type_category'] = 'string/object'
-                info['max_length'] = col_series.str.len().max()
+                # info['max_length'] = col_series.str.len().max()
 
             # Handle unique values
             if unique_count <= unique_threshold:
@@ -160,8 +157,7 @@ class CSVLoader:
         chain = chain_message | base_llm
         chain.bind(response_format="json_object")
 
-        format_data = self.get_sample_data(
-            min(self.get_length(), 10))
+        format_data = self.data
 
         relevant_info = self.get_column_info(format_data)
 
@@ -306,41 +302,80 @@ class CSVLoader:
             else:
                 raise ValueError(f"Unsupported pandas dtype: {dtype}")
 
-    def apply_improvements(self, improvements: List[ImprovesItem]) -> None:
+    def apply_improvements(self, improvements: List[ImprovesItem]) -> DataFrame:
         """
         Apply improvements to the DataFrame, using schema types or inferred pandas types.
 
-        :param improvements: List of improvements specifying row, column, and new value.
+        :param improvements: List of improvements specifying row, columns, and new values.
         :raises ValueError: If column/row is invalid or value cannot be parsed.
         """
         for item in improvements:
-            column = item.position.column
-            row = item.position.row
-            value = item.position.value
+            row = int(item.row)  # Ensure row index is an integer
 
-            # Ensure column exists in DataFrame
-            if column not in self.data.columns:
-                raise ValueError(f"Column '{column}' not found in DataFrame.")
-
-            # Decide whether to use schema or pandas dtype
-            if self.schema:
-                if column not in self.schema["properties"]:
-                    raise ValueError(f"Column '{column}' not found in schema.")
-                type_or_dtype = self.schema["properties"][column]["type"]
-            else:
-                type_or_dtype = self.data[column].dtype
-
-            # Parse the value
-            try:
-                parsed_value = self.parse_value(value, type_or_dtype)
-            except ValueError as e:
-                raise ValueError(f"Failed to parse '{value}' for column '{column}': {e}")
-
-            # Ensure row is valid
             if row < 0 or row >= len(self.data):
                 raise ValueError(f"Row {row} is out of range (0 to {len(self.data) - 1}).")
 
-            # Update the DataFrame
-            column_index = self.data.columns.get_loc(column)
-            self.data.iloc[row, column_index] = parsed_value
+            for cell in item.attribute:
+                column = cell.name
+                value = cell.fixed_value
+
+                if column not in self.data.columns:
+                    raise ValueError(f"Column '{column}' not found in DataFrame.")
+
+                # Decide whether to use schema type or pandas dtype
+                if self.schema and column in self.schema["properties"]:
+                    type_or_dtype = self.schema["properties"][column]["type"]
+                else:
+                    type_or_dtype = self.data[column].dtype
+
+                # Parse the value
+                try:
+                    parsed_value = self.parse_value(value, type_or_dtype)
+                except ValueError as e:
+                    raise ValueError(f"Failed to parse '{value}' for column '{column}': {e}")
+
+                # Update the DataFrame
+                self.data.loc[row, column] = parsed_value
+
         return self.data
+
+    def _fix_error_for_item(self, schema: dict, list_items_to_fix: list) -> PotentialErrorQueryResponse:
+        """
+        Scans for potential errors within a specific range of data.
+
+        :param schema: JSON schema for validation.
+        :param range_query: Tuple representing start and end row indices.
+        :return: Potential error response object.
+        """
+        message = [('system', SYSTEM_MESSAGE), ('human', FIX_JSON_SCHEMA_ERROR)]
+        chain_message = ChatPromptTemplate.from_messages(message)
+        chain = chain_message | base_llm
+        chain.bind(response_format="json_object")
+
+        response = chain.invoke(input={
+            "schema": str(schema),
+            "errors": str(list_items_to_fix),
+        })
+
+        # print(response.content)
+
+        try:
+            content_json = json.loads(response.content)
+            if "improves" in content_json:
+                return PotentialErrorQueryResponse(**content_json)
+            else:
+                raise ValueError("Invalid JSON format received from API.")
+        except json.JSONDecodeError:
+            raise ValueError("Response is not a valid JSON object.")
+
+    def fix_error_schema(self, schema, list_items_to_fix, batch_size: int = 30) -> List[ImprovesItem]:
+        len_list = len(list_items_to_fix)
+        list_improves: List[ImprovesItem] = []
+        for i in range(0, len_list, batch_size):
+            end = min(len_list, i + batch_size)
+            items_to_fix = list_items_to_fix[i:end]
+            items = self._fix_error_for_item(schema=schema, list_items_to_fix=items_to_fix).improves
+            list_improves.extend(items)
+        return list_improves
+
+
