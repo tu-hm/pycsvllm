@@ -1,87 +1,61 @@
-Order ID,Customer ID,Platform,Order Date & Time,Delivery Time (Minutes),Product Category,Order Value (INR),Customer Feedback,Service Rating,Delivery Delay,Refund Requested
-ORD000001,CUST2824,JioMart,19:29.5,30,Fruits & Vegetables,382,"Fast delivery, great service!",5,No,No
-ORD000563,CUST7906,Blinkit,46:29.5,24,Grocery,575,Packaging could be better.,3,No,No
-ORD000564,CUST5133,JioMart,52:29.5,30,Snacks,468,Wrong item delivered.,1,No,Yes
-ORD000565,CUST2341,JioMart,46:29.5,23,Dairy,275,Good quality products.,4,No,No
-ORD000566,CUST8705,Swiggy Instamart,01:29.5,25,Snacks,267,Quick and reliable!,5,No,No
-ORD000567,CUST1317,Blinkit,32:29.5,20,Beverages,896,"Horrible experience, never ordering again.",1,No,Yes
-ORD000568,CUST9837,Blinkit,51:29.5,30,Beverages,462,"Very late delivery, not happy.",2,No,Yes
-ORD000569,CUST1853,JioMart,30:29.5,34,Grocery,1380,Packaging could be better.,3,No,No
-ORD000570,CUST6733,Blinkit,07:29.5,21,Beverages,912,Items missing from order.,2,No,Yes
-ORD000571,CUST4673,JioMart,17:29.5,21,Dairy,703,"Fast delivery, great service!",5,No,No
-ORD000572,CUST2124,Blinkit,56:29.5,45,Snacks,190,Items missing from order.,2,Yes,Yes
-ORD000573,CUST1659,JioMart,22:29.5,21,Grocery,1428,Wrong item delivered.,1,No,Yes
-ORD000574,CUST1508,Blinkit,50:29.5,37,Personal Care,1354,Good quality products.,4,No,No
-ORD000575,CUST5051,Swiggy Instamart,16:29.5,40,Dairy,543,Wrong item delivered.,1,No,Yes
-ORD000576,CUST4266,Blinkit,53:29.5,32,Snacks,284,Items missing from order.,2,No,Yes
-ORD000577,CUST1333,Blinkit,29:29.5,33,Fruits & Vegetables,286,"Fast delivery, great service!",5,No,No
-ORD000578,CUST3496,Swiggy Instamart,32:29.5,30,Personal Care,1468,Wrong item delivered.,1,No,Yes
-ORD000579,CUST4908,Blinkit,02:29.5,16,Fruits & Vegetables,469,Quick and reliable!,5,No,No
-ORD000580,CUST3068,Swiggy Instamart,39:29.5,40,Personal Care,667,Delivery person was rude.,2,No,Yes
-ORD000581,CUST8758,Blinkit,16:29.5,25,Beverages,164,"Not fresh, disappointed.",2,No,Yes
-ORD000582,CUST2874,JioMart,54:29.5,38,Snacks,495,"Very late delivery, not happy.",2,No,Yes
-ORD000583,CUST4571,JioMart,04:29.5,29,Beverages,823,Good quality products.,4,No,No
-ORD000584,CUST8619,Blinkit,09:29.5,34,Fruits & Vegetables,153,"Very late delivery, not happy.",2,No,Yes
-ORD000585,CUST5198,Blinkit,43:29.5,32,Grocery,281,Delivery person was rude.,2,No,Yes
-ORD000586,CUST7043,Blinkit,41:29.5,25,Snacks,325,"Horrible experience, never ordering again.",1,No,Yes
-ORD000587,CUST3749,JioMart,27:29.5,37,Beverages,446,Delivery person was rude.,2,No,Yes
-ORD000588,CUST2876,Blinkit,12:29.5,16,Dairy,589,"Fast delivery, great service!",5,No,No
-ORD000589,CUST3683,JioMart,50:29.5,42,Beverages,235,Packaging could be better.,3,Yes,No
-ORD000590,CUST6096,Swiggy Instamart,16:29.5,41,Grocery,916,Packaging could be better.,3,Yes,No
-ORD000591,CUST2771,JioMart,46:29.5,27,Fruits & Vegetables,437,Excellent experience!,5,No,No
-ORD000592,CUST1420,JioMart,23:29.5,32,Fruits & Vegetables,633,"Not fresh, disappointed.",2,No,Yes
-ORD000593,CUST6111,Swiggy Instamart,40:29.5,27,Dairy,756,"Easy to order, loved it!",5,No,No
-ORD000594,CUST7149,JioMart,27:29.5,21,Grocery,559,Items missing from order.,2,No,Yes
-ORD000595,CUST7498,Blinkit,07:29.5,29,Grocery,738,"Horrible experience, never ordering again.",1,No,Yes
-ORD000596,CUST4249,Blinkit,35:29.5,32,Personal Care,1376,"Not fresh, disappointed.",2,No,Yes
-ORD000597,CUST2245,JioMart,36:29.5,43,Personal Care,1760,Excellent experience!,5,Yes,No
-ORD000598,CUST4978,Blinkit,52:29.5,28,Snacks,167,Excellent experience!,5,No,No
-ORD000599,CUST2669,JioMart,42:29.5,30,Snacks,314,Delivery person was rude.,2,No,Yes
-ORD000600,CUST5941,Blinkit,11:29.5,43,Snacks,383,Items missing from order.,2,Yes,Yes
-ORD000601,CUST2983,Blinkit,14:29.5,35,Beverages,737,"Horrible experience, never ordering again.",1,No,Yes
-ORD000602,CUST1672,JioMart,24:29.5,16,Fruits & Vegetables,52,Excellent experience!,5,No,No
-ORD000603,CUST6688,Blinkit,03:29.5,29,Grocery,827,"Horrible experience, never ordering again.",1,No,Yes
-ORD000604,CUST9728,JioMart,03:29.5,38,Fruits & Vegetables,292,Items missing from order.,2,No,Yes
-ORD000605,CUST8018,Blinkit,16:29.5,54,Personal Care,1482,"Very late delivery, not happy.",2,Yes,Yes
-ORD000606,CUST7071,Blinkit,16:29.5,31,Beverages,165,"Not fresh, disappointed.",2,No,Yes
-ORD000607,CUST2129,Swiggy Instamart,43:29.5,9,Beverages,980,Good quality products.,4,No,No
-ORD000608,CUST9289,Swiggy Instamart,51:29.5,11,Personal Care,1887,"Very late delivery, not happy.",2,No,Yes
-ORD000609,CUST6590,JioMart,16:29.5,23,Dairy,486,"Fast delivery, great service!",5,No,No
-ORD000610,CUST1207,Swiggy Instamart,09:29.5,20,Personal Care,769,Wrong item delivered.,1,No,Yes
-ORD000611,CUST7882,JioMart,06:29.5,38,Snacks,252,Items missing from order.,2,No,Yes
-ORD000612,CUST9031,Swiggy Instamart,13:29.5,48,Beverages,689,Good quality products.,4,Yes,No
-ORD000613,CUST2729,Blinkit,10:29.5,37,Beverages,140,Excellent experience!,5,No,No
-ORD000614,CUST8102,JioMart,57:29.5,39,Dairy,781,Wrong item delivered.,1,No,Yes
-ORD000615,CUST6934,JioMart,55:29.5,36,Dairy,576,Items missing from order.,2,No,Yes
-ORD000616,CUST8532,Blinkit,56:29.5,33,Personal Care,370,Items missing from order.,2,No,Yes
-ORD000617,CUST3506,JioMart,26:29.5,22,Beverages,482,Delivery person was rude.,2,No,Yes
-ORD000618,CUST8135,JioMart,31:29.5,37,Dairy,687,"Horrible experience, never ordering again.",1,No,Yes
-ORD000619,CUST3885,Swiggy Instamart,28:29.5,26,Grocery,1384,Very satisfied with the service.,5,No,No
-ORD000620,CUST9548,JioMart,10:29.5,38,Fruits & Vegetables,691,Quick and reliable!,5,No,No
-ORD000621,CUST5425,Blinkit,54:29.5,34,Fruits & Vegetables,136,"Very late delivery, not happy.",2,No,Yes
-ORD000622,CUST9817,Swiggy Instamart,28:29.5,30,Beverages,354,Excellent experience!,5,No,No
-ORD000623,CUST8921,Swiggy Instamart,13:29.5,22,Personal Care,248,Excellent experience!,5,No,No
-ORD000624,CUST8616,Blinkit,13:29.5,29,Grocery,292,Good quality products.,4,No,No
-ORD000625,CUST8136,Blinkit,07:29.5,24,Beverages,160,Items missing from order.,2,No,Yes
-ORD000626,CUST5397,Swiggy Instamart,17:29.5,12,Dairy,665,Very satisfied with the service.,5,No,No
-ORD000627,CUST6280,JioMart,25:29.5,18,Dairy,489,Very satisfied with the service.,5,No,No
-ORD000628,CUST5022,Swiggy Instamart,11:29.5,32,Snacks,209,Items missing from order.,2,No,Yes
-ORD000629,CUST2419,Blinkit,52:29.5,5,Personal Care,418,Delivery person was rude.,2,No,Yes
-ORD000630,CUST5569,Swiggy Instamart,29:29.5,53,Fruits & Vegetables,246,Quick and reliable!,5,Yes,No
-ORD000631,CUST8385,Blinkit,20:29.5,24,Fruits & Vegetables,377,"Easy to order, loved it!",5,No,No
-ORD000632,CUST4995,Swiggy Instamart,29:29.5,38,Grocery,716,Quick and reliable!,5,No,No
-ORD000633,CUST8613,JioMart,02:29.5,8,Personal Care,1200,Quick and reliable!,5,No,No
-ORD000634,CUST7209,Swiggy Instamart,58:29.5,20,Snacks,225,"Not fresh, disappointed.",2,No,Yes
-ORD000635,CUST6511,Swiggy Instamart,28:29.5,40,Snacks,122,Wrong item delivered.,1,No,Yes
-ORD000636,CUST1470,Blinkit,46:29.5,34,Fruits & Vegetables,232,"Not fresh, disappointed.",2,No,Yes
-ORD000637,CUST9098,Blinkit,37:29.5,26,Beverages,644,Wrong item delivered.,1,No,Yes
-ORD000638,CUST6325,Blinkit,40:29.5,49,Fruits & Vegetables,286,Excellent experience!,5,Yes,No
-ORD000639,CUST3979,Swiggy Instamart,08:29.5,15,Dairy,162,"Horrible experience, never ordering again.",1,No,Yes
-ORD000640,CUST8988,JioMart,16:29.5,40,Dairy,103,Very satisfied with the service.,5,No,No
-ORD000641,CUST4475,Blinkit,15:29.5,25,Grocery,1278,Packaging could be better.,3,No,No
-ORD000642,CUST6813,Blinkit,35:29.5,21,Snacks,91,Quick and reliable!,5,No,No
-ORD000643,CUST5232,Swiggy Instamart,19:29.5,10,Snacks,215,"Horrible experience, never ordering again.",1,No,Yes
-ORD000644,CUST6576,Blinkit,38:29.5,11,Grocery,1220,Good quality products.,4,No,No
-ORD000645,CUST5581,JioMart,08:29.5,31,Beverages,543,Good quality products.,4,No,No
-ORD000646,CUST5526,JioMart,34:29.5,30,Personal Care,1640,Packaging could be better.,3,No,No
-ORD000647,CUST1166,Blinkit,04:29.5,22,Grocery,1261,Delivery person was rude.,2,No,Yes
+Order ID,Customer ID,Platform,Order Date & Time,Delivery Time (Minutes),Product Category,Order Value (INR),Customer Feedback,Service Rating,Delivery Delay,Refund Requested,CustomerCountry,CustomerAddress,CustomerCity,CustomerName,CustomerType,CustomerPostCode,CustomerCountryCode,Currency,JobCustomer,Phone,OrderValue,OrderPaymentMethod,OrderDeliveryMethod,OrderTotalItems
+ORD000514,CUST9890,Blinkit,06:29.5,17,Dairy,289,Delivery person was rude.,2,No,Yes,South Africa,"60 Jane Hẻm, JohnHuyện, 543022",Quận JohnHuyện,Quang Bùi,Diamond,802043,VA,MNT,Kỹ sư nông nghiệp,00 2224347,₫234.68,Visa,VIP,4
+ORD000343,CUST6974,JioMart,24:29.5,37,Dairy,338,Very satisfied with the service.,5,No,No,Kenya,"76 John Tổ, JohnXã, 213652",JohnThành phố,Huy Vũ,Bronze,487887,BR,IQD,Sales Representative,+84-70-977 4740,₫3.02,Money,Fast,5
+ORD000178,CUST4750,Swiggy Instamart,30:29.5,27,Dairy,581,Excellent experience!,5,No,No,Suriname,"29 Trần Ngõ, Quận JaneHuyện, 702403",Quận JohnXã,Thành Trí Mai,Bronze,456137,ZW,GHS,Kỹ sư phần mềm,(01)610-0817,₫4.63,Exchange,Fast,10
+ORD000087,CUST3340,JioMart,38:29.5,51,Beverages,640,Wrong item delivered.,1,Yes,Yes,Antigua and Barbuda,"281 John Dãy, Thị xã JohnQuận, 509630",Thành phố JaneHuyện,Châu Lê,Bronze,415080,FR,MZN,Chuyên viên phân tích thị trường,(07) 0690 8017,₫619.03,Visa,VIP,3
+ORD000334,CUST3442,JioMart,03:29.5,28,Fruits & Vegetables,83,Packaging could be better.,3,No,No,Moldova,"1 Mai Đường, JaneThành phố, 563161",JohnQuận,Quang Hoàng Phạm,Vip,325555,SB,LRD,Kế toán,+84-78-804 9399,₫98.26,Visa,Standard,2
+ORD000141,CUST6947,JioMart,20:29.5,15,Dairy,517,"Horrible experience, never ordering again.",1,No,Yes,Seychelles,"835 Jane Hẻm, Thị xã JaneHuyện, 954389",Huyện JaneHuyện,Hạnh Hoàng,Vip,573381,DK,SDG,Nhân viên kinh doanh,09 7888769,₫87.27,Visa,Standard,8
+ORD000322,CUST5533,JioMart,07:29.5,38,Beverages,825,Items missing from order.,2,No,Yes,United Kingdom,"53 Hoàng Tổ, Thị xã JohnPhường, 273013",Quận JaneQuận,Anh Dương,Gold,136310,TH,ZWD,Dược sĩ,05 4028262,"₫21,268.61",MasterCard,Fast,8
+ORD000532,CUST8999,Swiggy Instamart,44:29.5,40,Personal Care,1381,Items missing from order.,2,No,Yes,Russia,"5 Phạm Dãy, JaneQuận, 716487",Thị xã JaneThị xã,Duyên Phạm,Sliver,332463,GQ,BND,Kiến trúc sư phần mềm,09 7614 7308,₫801.71,Visa,Standard,6
+ORD000102,CUST2796,JioMart,52:29.5,5,Personal Care,377,Items missing from order.,2,No,Yes,Myanmar,"50 Jane Số, JanePhường, 547100",Thành phố JanePhường,Quý ông Trọng Mai,Vip,522453,PS,CUP,Kỹ sư nông nghiệp,05 1962900,₫8.76,MasterCard,Standard,7
+ORD000520,CUST7381,JioMart,17:29.5,16,Beverages,623,"Horrible experience, never ordering again.",1,No,Yes,Kenya,"42 Jane Hẻm, Quận JohnThành phố, 188647",JohnHuyện,Minh Mai,Sliver,421153,JM,NOK,Nhân viên lễ tân,(00)350-7449,"₫45,289.03",Exchange,Fast,7
+ORD000412,CUST6143,Swiggy Instamart,31:29.5,5,Snacks,104,"Fast delivery, great service!",5,No,No,Nicaragua,"838 Trần Làng, Quận JohnHuyện, 369049",JaneHuyện,Trung Bùi,Sliver,493147,NE,HUF,Giáo viên,+84 76 1184626,"₫5,305.34",Exchange,VIP,2
+ORD000555,CUST7211,Blinkit,06:29.5,16,Snacks,101,"Fast delivery, great service!",5,No,No,Finland,"685 Lê Làng, Quận JohnPhường, 322735",JaneThị xã,Chị Hà Bùi,Sliver,775080,GD,FJD,Nhà thiết kế đồ họa,(01)106-8464,"₫89,504.86",MasterCard,VIP,3
+ORD000156,CUST9645,JioMart,11:29.5,22,Grocery,583,Good quality products.,4,No,No,Mauritius,"508 Jane Số, JanePhường, 902090",Thị xã JohnHuyện,Cô Chi Lê,Sliver,296214,AL,CLP,Giáo viên,07 0135862,"₫54,369.65",Money,Fast,3
+ORD000056,CUST5554,JioMart,08:29.5,25,Fruits & Vegetables,657,Packaging could be better.,3,No,No,Guinea-Bissau,"850 Dương Tổ, JohnHuyện, 969415",Huyện JaneQuận,Thành Mai,Sliver,297246,AL,MUR,Nghệ sĩ,+84-29-293 5492,₫90.46,Exchange,Fast,10
+ORD000540,CUST7624,Swiggy Instamart,35:29.5,31,Personal Care,1209,Packaging could be better.,3,No,No,Marshall Islands,"51 Jane Đường, Huyện JohnHuyện, 518307",Huyện JaneQuận,Vũ Văn Phạm,Bronze,571574,BF,TWD,Biên dịch viên,+84-72-673601,₫80.15,MasterCard,VIP,4
+ORD000173,CUST4770,JioMart,43:29.5,34,Dairy,121,Wrong item delivered.,1,No,Yes,Portugal,"640 John Tổ, Thành phố JohnQuận, 543200",JohnHuyện,Ông Hoàng Nguyễn,Bronze,971006,CL,SPL,Giám đốc kinh doanh,(06) 3889 6961,₫1.93,Exchange,Standard,8
+ORD000391,CUST1626,Swiggy Instamart,01:29.5,36,Beverages,197,Good quality products.,4,No,No,Republic of Ireland,"037 Vũ Dãy, JaneQuận, 780953",JohnThành phố,Bác Tú Dương,Gold,554218,KI,ZAR,Chuyên viên tư vấn tuyển sinh,(06) 1138 4269,₫281.34,Money,Standard,10
+ORD000166,CUST8397,Blinkit,50:29.5,35,Beverages,863,Quick and reliable!,5,No,No,Bahrain,"11 Bùi Làng, JohnXã, 483639",Huyện JohnHuyện,Chị Chi Mai,Gold,895906,SO,VND,Tư vấn khách hàng,(01)373-2156,"₫8,897.97",Visa,VIP,2
+ORD000145,CUST4946,Blinkit,11:29.5,42,Personal Care,959,Delivery person was rude.,2,Yes,Yes,North Korea,"300 John Đường, Thị xã JanePhường, 566038",Thành phố JohnQuận,Hoàng Mai,Gold,914668,RO,ERN,Nông dân,+84-16-584859,₫50.57,Money,VIP,6
+ORD000508,CUST3503,JioMart,18:29.5,31,Fruits & Vegetables,294,"Very late delivery, not happy.",2,No,Yes,Democratic Republic of the Congo,"418 Nguyễn Hẻm, JohnThị xã, 228199",Thành phố JohnHuyện,Chị Hải Lê,Gold,243917,UZ,PYG,Lập trình viên,+84-95-469 5500,"₫15,030.66",Money,Standard,9
+ORD000449,CUST4680,JioMart,59:29.5,39,Dairy,552,Quick and reliable!,5,No,No,Democratic Republic of the Congo,"001 Hoàng Khu, Thị xã JohnQuận, 985169",JohnHuyện,Thành Đặng,Bronze,255915,IQ,KYD,Tư vấn khách hàng,(02) 7914 8924,₫154.36,Exchange,VIP,3
+ORD000011,CUST1520,JioMart,32:29.5,25,Fruits & Vegetables,553,"Fast delivery, great service!",5,No,No,Tajikistan,"4 Jane Ngõ, JohnQuận, 474460",JohnThị xã,Quang Trần,Sliver,422753,NR,ERN,Biên dịch viên,07 6551956,₫969.52,Visa,Standard,4
+ORD000330,CUST8007,JioMart,07:29.5,39,Dairy,157,Excellent experience!,5,No,No,Australia,"85 John Ngõ, Thị xã JohnQuận, 968071",JanePhường,Quý cô Bảo Nguyễn,Vip,771469,JO,MUR,Nhân viên lễ tân,+84 01 9902663,₫6.50,MasterCard,VIP,2
+ORD000415,CUST9308,Swiggy Instamart,23:29.5,26,Fruits & Vegetables,204,Good quality products.,4,No,No,Namibia,"580 John Dãy, Quận JaneHuyện, 737109",JaneThị xã,Quý ông Nam Vũ,Vip,648147,FI,SEK,Digital Marketer,(02)777-3366,₫77.72,MasterCard,Fast,10
+ORD000246,CUST4566,JioMart,54:29.5,32,Snacks,90,Packaging could be better.,3,No,No,Belgium,"JohnThị xã, 25 John Khu, 454540",Thành phố JohnThị xã,Châu Hữu Trần,Gold,205101,EC,ARS,Nhân viên hành chính,06 0656214,"₫18,129.64",Money,VIP,9
+ORD000262,CUST2113,Swiggy Instamart,01:29.5,29,Grocery,683,Very satisfied with the service.,5,No,No,Kiribati,"606 Hoàng Đường, JaneThành phố, 752026",Thành phố JaneHuyện,Nhật Đức Dương,Diamond,287567,KN,AUD,Nhân viên khách sạn,07 7716473,₫74.94,Visa,VIP,2
+ORD000007,CUST2679,JioMart,22:29.5,22,Personal Care,1693,"Fast delivery, great service!",5,No,No,Portugal,"8 Trần Đường, Huyện JaneThành phố, 300446",JaneHuyện,Hương Lê,Diamond,530428,LC,GIP,Kiểm toán,+84-10-298872,"₫72,700.25",Visa,Fast,2
+ORD000303,CUST5905,Blinkit,55:29.5,33,Snacks,491,Delivery person was rude.,2,No,Yes,Namibia,"9 Phạm Làng, Thành phố JohnHuyện, 766617",Huyện JohnPhường,Bác Phúc Trần,Vip,698201,PA,SEK,Nghệ sĩ,+84-03-937 5131,₫33.41,Exchange,Standard,2
+ORD000073,CUST6313,Swiggy Instamart,11:29.5,35,Dairy,425,"Fast delivery, great service!",5,No,No,Palestine,"3 Jane Làng, Huyện JaneXã, 682759",JohnThị xã,Hà Đức Vũ,Sliver,709593,MV,JOD,Công nhân sản xuất,06 3348 3322,"₫36,431.52",Visa,Standard,5
+ORD000444,CUST9445,Blinkit,16:29.5,21,Personal Care,1017,"Fast delivery, great service!",5,No,No,Oman,"358 John Đường, Thành phố JohnXã, 237316",Thành phố JaneQuận,Anh Văn Lê,Bronze,414350,TH,AZN,Chuyên viên nhân sự,(04)052-3839,₫384.00,Exchange,Standard,7
+ORD000245,CUST5861,Blinkit,09:29.5,24,Snacks,426,Very satisfied with the service.,5,No,No,Zambia,"67 Lê Dãy, JaneQuận, 938734",JohnThành phố,Cô Hà Bùi,Gold,964105,IR,MVR,Kỹ sư phần mềm,07 9900 6357,"₫16,711.95",Exchange,Fast,8
+ORD000084,CUST9179,Blinkit,32:29.5,10,Beverages,910,Very satisfied with the service.,5,No,No,Sweden,"67 Trần Đường, JaneThị xã, 333315",Thành phố JaneQuận,Quý cô Khoa Mai,Sliver,560151,TR,JMD,Chuyên viên bán hàng trực tuyến,+84 02 0210184,₫455.45,MasterCard,Standard,10
+ORD000082,CUST6155,Blinkit,45:29.5,36,Personal Care,1848,Good quality products.,4,No,No,Costa Rica,"15 Jane Số, Thành phố JanePhường, 770805",JohnPhường,Ông Hoàng Bùi,Gold,959532,ZW,SYP,Kỹ sư phần mềm,07 7671940,₫569.92,Visa,Fast,7
+ORD000149,CUST2133,Blinkit,15:29.5,42,Fruits & Vegetables,617,Excellent experience!,5,Yes,No,Slovakia,"96 Phạm Khu, JohnHuyện, 343832",Quận JanePhường,Quý cô Lan Bùi,Diamond,900642,MR,BTN,Kiến trúc sư,(03) 8733 0999,₫391.91,MasterCard,VIP,2
+ORD000542,CUST8657,Swiggy Instamart,04:29.5,35,Fruits & Vegetables,636,Very satisfied with the service.,5,No,No,Luxembourg,"955 Vũ Khu, JaneHuyện, 574886",Thị xã JohnPhường,Chị Phương Lê,Sliver,171915,NR,UYU,Giám đốc kinh doanh,02 5485584,₫70.06,Money,Standard,6
+ORD000236,CUST1035,Swiggy Instamart,37:29.5,43,Grocery,897,"Easy to order, loved it!",5,Yes,No,Palau,"JaneQuận, 0 Jane Hẻm, 883651",Thị xã JohnThành phố,Cô An Mai,Vip,255410,ER,TWD,Trưởng phòng kinh doanh,07 8555 2619,"₫8,170.41",MasterCard,Standard,3
+ORD000433,CUST8043,Blinkit,36:29.5,30,Snacks,91,Wrong item delivered.,1,No,Yes,Lebanon,"JaneThị xã, 149 John Tổ, 147258",JaneHuyện,Hoàng Hoàng,Gold,617316,FJ,MOP,Chuyên viên nhân sự,04 6705 7734,₫38.52,Exchange,VIP,9
+ORD000549,CUST8022,Blinkit,35:29.5,24,Snacks,138,"Easy to order, loved it!",5,No,No,Czech Republic,"78 John Số, Quận JohnHuyện, 442216",JohnHuyện,Thành Lê,Sliver,739930,TN,LBP,Chuyên viên phân tích thị trường,08 8922 9538,₫113.64,Exchange,Fast,9
+ORD000079,CUST5386,JioMart,35:29.5,35,Beverages,276,Excellent experience!,5,No,No,Finland,"58 Jane Đường, JanePhường, 386930",JaneQuận,Cô Hải Nguyễn,Sliver,176524,KR,GGP,Kiểm toán,(08)313-0593,₫5.71,MasterCard,Fast,5
+ORD000533,CUST4595,JioMart,47:29.5,32,Personal Care,1233,"Very late delivery, not happy.",2,No,Yes,Djibouti,"17 John Đường, JohnPhường, 849111",Huyện JohnXã,Cô Xuân Hoàng,Diamond,975741,GH,CAD,Tester,+84-06-008236,₫36.25,Visa,Standard,9
+ORD000375,CUST4164,Swiggy Instamart,21:29.5,11,Fruits & Vegetables,451,Delivery person was rude.,2,No,Yes,New Zealand,"JohnXã, 75 Jane Ngõ, 717839",Thành phố JaneThành phố,Thành Dương,Diamond,765531,KE,SLL,Tester,(01) 4456 4696,₫56.41,MasterCard,Fast,2
+ORD000031,CUST6514,Swiggy Instamart,08:29.5,8,Beverages,757,Excellent experience!,5,No,No,CÃ´te d'Ivoire,"1 Jane Số, Huyện JaneHuyện, 831010",JohnHuyện,Thành Lê,Gold,462367,PA,VEF,Kỹ sư phần mềm,09 0240827,"₫24,012.04",Money,Fast,8
+ORD000146,CUST2290,JioMart,01:29.5,32,Snacks,155,"Very late delivery, not happy.",2,No,Yes,Chad,"2 John Làng, JohnThị xã, 736721",JohnThị xã,Quý cô Nhật Dương,Sliver,250953,KE,MNT,Nhân viên hành chính,+84-11-438 1536,₫0.78,MasterCard,VIP,10
+ORD000133,CUST3646,Blinkit,06:29.5,29,Beverages,580,Very satisfied with the service.,5,No,No,Bangladesh,"5 Hoàng Đường, JanePhường, 584914",JaneHuyện,Hạnh Lê,Gold,407419,LS,COP,Công nhân sản xuất,02 5294 9357,₫42.48,MasterCard,Fast,4
+ORD000370,CUST6728,JioMart,32:29.5,10,Fruits & Vegetables,556,Packaging could be better.,3,No,No,Lithuania,"873 Trần Đường, Thành phố JohnPhường, 479709",Huyện JohnThị xã,Huy Nguyễn,Sliver,839561,VC,BHD,UX/UI Designer,05 3374 8180,"₫14,489.94",Visa,Standard,10
+ORD000411,CUST6409,Blinkit,59:29.5,20,Fruits & Vegetables,659,Wrong item delivered.,1,No,Yes,Botswana,"89 John Ngõ, JaneXã, 348789",Thị xã JohnQuận,Bà Duyên Đặng,Bronze,536277,VA,MGA,Kiểm toán,(02)282-7781,"₫4,314.62",Money,Standard,3
+ORD000371,CUST6000,Swiggy Instamart,09:29.5,34,Snacks,378,"Not fresh, disappointed.",2,No,Yes,Bhutan,"9 Jane Dãy, Thành phố JanePhường, 424942",Huyện JohnPhường,Ánh Phạm,Sliver,483521,BB,CNY,Y tá,(08)070-2301,₫6.91,Visa,Fast,6
+ORD000074,CUST1916,Swiggy Instamart,30:29.5,33,Snacks,284,"Very late delivery, not happy.",2,No,Yes,Tunisia,"1 Đặng Tổ, JohnXã, 498747",Thành phố JaneThành phố,Ông Thành Phạm,Bronze,394062,HN,BZD,Điều Dưỡng,+84-82-381 4935,₫2.26,Exchange,Standard,5
+ORD000040,CUST8527,JioMart,11:29.5,36,Dairy,632,Quick and reliable!,5,No,No,Peru,"740 Vũ Khu, JaneQuận, 541623",Huyện JaneQuận,Quý cô Xuân Dương,Bronze,995711,YE,BBD,Nhà báo,+84 12 3324286,"₫6,070.42",Money,Standard,5
+ORD000091,CUST9830,Blinkit,18:29.5,8,Personal Care,183,Very satisfied with the service.,5,No,No,Cambodia,"021 Mai Khu, Thành phố JaneThành phố, 414895",Huyện JohnQuận,Quý cô Xuân Nguyễn,Bronze,830168,KZ,PGK,Sales Representative,00 8936909,"₫8,046.28",MasterCard,Standard,1
+ORD000071,CUST5422,JioMart,48:29.5,25,Dairy,641,"Not fresh, disappointed.",2,No,Yes,Samoa,"50 Jane Dãy, JaneThị xã, 495170",Thị xã JohnPhường,Quý cô Yến Vũ,Sliver,205032,CY,ALL,Điều Dưỡng,+84-83-751780,₫856.51,Visa,Fast,10
+ORD000003,CUST5506,JioMart,21:29.5,25,Beverages,599,Items missing from order.,2,No,Yes,Papua New Guinea,"584 Đặng Làng, Quận JanePhường, 879228",JohnThành phố,Trọng Thế Trần,Diamond,339969,MZ,CZK,Biên dịch viên,(08) 6196 7544,"₫7,953.23",Visa,VIP,7
+ORD000558,CUST8449,Blinkit,40:29.5,35,Personal Care,1702,"Horrible experience, never ordering again.",1,No,Yes,Tanzania,"0 John Khu, Thị xã JohnQuận, 908292",JaneHuyện,Bảo Hoàng,Bronze,407268,KI,COP,Kỹ sư giám sát,+84 18 8970019,"₫9,295.75",Visa,Standard,9
+ORD000273,CUST4346,Blinkit,28:29.5,20,Fruits & Vegetables,439,Wrong item delivered.,1,No,Yes,Republic of the Congo,"72 John Khu, JohnXã, 174854",JohnThành phố,Hải Mai Bảo Đặng,Diamond,510964,BN,RWF,Marketing Manager,+84 29 7323375,₫377.07,MasterCard,Standard,10
+ORD000186,CUST8953,Blinkit,54:29.5,14,Fruits & Vegetables,112,"Easy to order, loved it!",5,No,No,Venezuela,"056 Đặng Tổ, Thị xã JohnThị xã, 213142",Huyện JanePhường,Bảo Mai,Gold,941595,SC,CHF,Nhân viên khách sạn,08 5694342,"₫6,187.70",Money,VIP,5
+ORD000164,CUST8177,Swiggy Instamart,28:29.5,19,Snacks,468,Very satisfied with the service.,5,No,No,Ghana,"9 Jane Số, Thành phố JohnPhường, 302172",JohnQuận,Bà Duyên Vũ,Diamond,572302,KW,PYG,Luật sư,(07)476-9005,"₫25,149.63",Visa,VIP,1
+ORD000557,CUST4467,Blinkit,31:29.5,18,Fruits & Vegetables,431,Items missing from order.,2,No,Yes,Tanzania,"018 Đặng Làng, JaneThị xã, 698620",JaneXã,Mai Hoàng,Vip,632536,AO,CVE,Digital Marketer,+84 79 3218404,₫337.30,Exchange,Fast,9
+ORD000080,CUST2084,Swiggy Instamart,15:29.5,24,Dairy,147,Very satisfied with the service.,5,No,No,Bahamas,"3 Lê Làng, Huyện JaneQuận, 779718",JohnThành phố,Minh Hoàng Hoàng,Vip,781792,DK,SEK,Chuyên viên bảo mật,(08) 4593 4526,₫9.53,Visa,VIP,10
+ORD000366,CUST8711,Swiggy Instamart,19:29.5,14,Snacks,62,Items missing from order.,2,No,Yes,Dominican Republic,"2 Vũ Hẻm, JaneXã, 699704",JaneThị xã,Hà Bảo Hoàng,Gold,239964,TD,OMR,Kiến trúc sư,(02)959-5957,₫92.41,Money,Standard,6
+ORD000408,CUST6967,Swiggy Instamart,22:29.5,32,Snacks,164,"Very late delivery, not happy.",2,No,Yes,Belgium,"Quận JaneHuyện, 5 John Làng, 320127",Thị xã JaneQuận,Chị Hồng Trần,Vip,632223,AU,HTG,Kiến trúc sư,+84 34 0419861,₫2.90,Exchange,VIP,9
