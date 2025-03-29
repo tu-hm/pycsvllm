@@ -20,7 +20,7 @@ data1 = CSVLoader(
 list_error = CSVLoader.validate_dataset(df=data1.data, schema=schema)
 # print(list_error)
 # print(data1._fix_error_for_item(schema=schema, list_items_to_fix=list_error[0:30]))
-list_improvements = data1.fix_error_schema(schema=schema, list_items_to_fix=list_error[0:50])
+list_improvements = data1.fix_error_schema(schema=schema, list_items_to_fix=list_error)
 
 data1.apply_improvements(list_improvements)
 # print(data1.data)

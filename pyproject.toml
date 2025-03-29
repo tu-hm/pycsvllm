@@ -20,4 +20,7 @@ dependencies = [
     "typing>=3.10.0.0",
     "langchain-community>=0.3.18",
     "jsonschema>=4.23.0",
+    "notebook>=7.3.3",
+    "jupyter>=1.1.1",
+    "faker>=37.1.0",
 ]

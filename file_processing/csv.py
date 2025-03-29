@@ -368,10 +368,11 @@ class CSVLoader:
         except json.JSONDecodeError:
             raise ValueError("Response is not a valid JSON object.")
 
-    def fix_error_schema(self, schema, list_items_to_fix, batch_size: int = 30) -> List[ImprovesItem]:
+    def fix_error_schema(self, schema, list_items_to_fix, batch_size: int = 50) -> List[ImprovesItem]:
         len_list = len(list_items_to_fix)
         list_improves: List[ImprovesItem] = []
         for i in range(0, len_list, batch_size):
+            print("process at batch from", i, i + batch_size)
             end = min(len_list, i + batch_size)
             items_to_fix = list_items_to_fix[i:end]
             items = self._fix_error_for_item(schema=schema, list_items_to_fix=items_to_fix).improves
