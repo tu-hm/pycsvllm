@@ -1,10 +1,11 @@
 import json
+from concurrent.futures import ThreadPoolExecutor
 
 import numpy as np
 import pandas as pd
 from jsonschema.validators import Draft202012Validator
 from langchain_core.prompts import ChatPromptTemplate
-from typing import List, Dict
+from typing import List, Dict, Any
 
 from pandas import DataFrame
 
@@ -339,7 +340,8 @@ class CSVLoader:
 
         return self.data
 
-    def _fix_error_for_item(self, schema: dict, list_items_to_fix: list) -> PotentialErrorQueryResponse:
+    def _fix_error_for_item(self, schema: dict, list_items_to_fix: DataFrame) -> PotentialErrorQueryResponse | dict[
+        str, list[Any]]:
         """
         Scans for potential errors within a specific range of data.
 
@@ -347,14 +349,14 @@ class CSVLoader:
         :param range_query: Tuple representing start and end row indices.
         :return: Potential error response object.
         """
-        message = [('system', SYSTEM_MESSAGE), ('human', FIX_JSON_SCHEMA_ERROR)]
+        message = [('system', SYSTEM_MESSAGE), ('human', GET_ISSUE_OF_DATA)]
         chain_message = ChatPromptTemplate.from_messages(message)
         chain = chain_message | base_llm
         chain.bind(response_format="json_object")
 
         response = chain.invoke(input={
             "schema": str(schema),
-            "errors": str(list_items_to_fix),
+            "data": list_items_to_fix.to_csv(index=False),
         })
 
         # print(response.content)
@@ -366,17 +368,27 @@ class CSVLoader:
             else:
                 raise ValueError("Invalid JSON format received from API.")
         except json.JSONDecodeError:
-            raise ValueError("Response is not a valid JSON object.")
+            return PotentialErrorQueryResponse(
+                improves=[]
+            )
 
-    def fix_error_schema(self, schema, list_items_to_fix, batch_size: int = 50) -> List[ImprovesItem]:
-        len_list = len(list_items_to_fix)
+    def fix_error_schema(self, schema, batch_size: int = 20) -> List[ImprovesItem]:
         list_improves: List[ImprovesItem] = []
-        for i in range(0, len_list, batch_size):
-            print("process at batch from", i, i + batch_size)
-            end = min(len_list, i + batch_size)
-            items_to_fix = list_items_to_fix[i:end]
-            items = self._fix_error_for_item(schema=schema, list_items_to_fix=items_to_fix).improves
-            list_improves.extend(items)
+        len_list = self.data.shape[0]
+
+        def process_batch(start: int):
+            print("Processing batch from", start, start + batch_size)
+            end = min(len_list, start + batch_size)
+            items_to_fix = self.get_range_data(start, end)
+            list_improve = self._fix_error_for_item(schema=schema, list_items_to_fix=items_to_fix)
+            return list_improve.improves
+
+        with ThreadPoolExecutor() as executor:
+            results = list(executor.map(process_batch, range(0, len_list, batch_size)))
+
+        for res in results:
+            list_improves.extend(res)
+
         return list_improves
 
 

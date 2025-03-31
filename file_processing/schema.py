@@ -22,7 +22,7 @@ class CellInfo(BaseModel):
     Model representing information about a specific cell in a dataset.
     """
     name: str = Field(..., description="Column name")
-    fixed_value: str = Field(..., description="Cell value")
+    fixed_value: str | float = Field(..., description="Cell value")
 
 
 class ImprovesItem(BaseModel):
@@ -38,4 +38,4 @@ class PotentialErrorQueryResponse(BaseModel):
     """
     Model representing a response containing potential errors in a dataset.
     """
-    improves: List[ImprovesItem] = Field(..., description="List of suggested improvements")
+    improves: List[ImprovesItem] | None = Field(..., description="List of suggested improvements")

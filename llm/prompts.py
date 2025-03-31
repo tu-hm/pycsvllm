@@ -1,60 +1,7 @@
 # system_message = 'You are helpful assistant that expert in data analysis and data cleaning and find the data pattern smart'
 
 SYSTEM_MESSAGE = """
-Provide detailed instructions on data analysis and data cleaning/normalization, outlining key concepts and techniques.
-
-# Steps
-
-1. **Data Analysis**:
-   - Define the objectives of the data analysis.
-   - Collect relevant data from primary and secondary sources.
-   - Use statistical methods to summarize the data (descriptive statistics).
-   - Visualize the data using plots and graphs to identify patterns and trends.
-   - Perform exploratory data analysis to generate hypotheses.
-
-2. **Data Cleaning**:
-   - Identify and handle missing values.
-   - Remove duplicates and inconsistencies in the data.
-   - Correct structural errors such as incorrect data types or misplaced entries.
-   - Filter out irrelevant data that does not contribute to the analysis goals.
-
-3. **Data Normalization**:
-   - Identify the need for data normalization based on the analysis requirements.
-   - Choose an appropriate normalization technique (e.g., Min-Max Scaling, Z-score Normalization, Decimal Scaling).
-   - Apply the normalization method to scale the data within the desired range or distribution.
-
-# Output Format
-
-- You should given the json format that user have defined. No ```json``` like this, only the data, no other comment or explain.
-
-# Examples
-
-**Example 1**:
-- **Objective**: Analyze sales data to identify trends.
-- **Data Analysis**:
-  - Summarized sales data to calculate average monthly sales.
-  - Used line graphs to visualize monthly sales trends.
-- **Data Cleaning**:
-  - Addressed missing values in the sales column by filling in the median sales value.
-  - Removed duplicate transaction records.
-- **Data Normalization**:
-  - Applied Min-Max Scaling to the sales figures to normalize data between 0 and 1.
-
-**Example 2**:
-- **Objective**: Prepare customer data for machine learning model.
-- **Data Analysis**:
-  - Conducted descriptive statistics on customer demographics.
-  - Visualized age distribution using a histogram.
-- **Data Cleaning**:
-  - Corrected categorical errors in the 'Gender' field.
-  - Filtered out entries with unrealistic ages.
-- **Data Normalization**:
-  - Utilized Z-score Normalization on numerical fields for model readiness. 
-
-# Notes
-
-- Ensure the selection of data cleaning and normalization methods suits the context and objectives.
-- Consider potential biases introduced during normalization, especially when preparing data for machine learning models.
+You are the system message, please return only the json format in the result, not '''json or explain else.
 """
 
 FIND_JSON_SCHEMA_PROMPTS = """
@@ -164,9 +111,6 @@ You are given a **strict schema** for a CSV dataset along with a **partial datas
    - Correct the decimal and thousand separators. For example, if the expected format uses a comma (e.g., **1,35** for decimals), convert any numbers using a dot (e.g., **1.35**) accordingly.  
    - Adjust number formatting without defaulting to a generic value.
 
-3. **Unit Inconsistencies:**  
-   - If the dataset uses mixed units (e.g., **1 cm** vs. **2 meters**), standardize units to maintain consistency across the dataset.
-
 4. **Spelling and Typographical Errors:**  
    - Fix misspellings and typographical errors while respecting contextual clues. For instance, correct **"Itally"** to **"Italy"**.
 
@@ -182,6 +126,34 @@ You are given a **strict schema** for a CSV dataset along with a **partial datas
 
 ---
 
+---
+
+### **Output Requirements**
+
+Your response **must** strictly follow this JSON format:
+
+
+{{
+    "improves": list[
+      {{
+        "description": "Explain why the data needs correction in simple terms.",
+        "row": number,
+        "attribute": list[ 
+            {{
+                "name": string,
+                "fixed_value": string
+            }}
+        ]
+      }}]
+    ] | empty_list
+}}
+
+**Important:**  
+- Return **only** the required JSON structure—do not include any additional text or formatting outside this structure.  
+- Provide a clear, concise explanation for each correction that ties back to the schema rules and real-world context.  
+- Ensure every change is aligned with the expected formats, constraints, and regex patterns defined in the schema.
+
+
 ### **Input Structure**
 
 - **Schema:**  
@@ -193,33 +165,6 @@ You are given a **strict schema** for a CSV dataset along with a **partial datas
   ```
   {data}
   ```
-
-
----
-
-### **Output Requirements**
-
-Your response **must** strictly follow this JSON format:
-
-{{
-    "improves": list[  
-        {{
-            "description": "Explain why the data needs correction in simple terms.", 
-            "row": <<row_number>>, row is base 0 start at 0,   
-            "attribute": list[
-                {{
-                    "name": <<column_headername>>,  
-                    "fixed_value": "<<corrected_value>>, default type is str that I can format"  
-                }} #list fixed items in one row.
-            ]
-        }}  
-    ] || can be none  
-}}
-
-**Important:**  
-- Return **only** the required JSON structure—do not include any additional text or formatting outside this structure.  
-- Provide a clear, concise explanation for each correction that ties back to the schema rules and real-world context.  
-- Ensure every change is aligned with the expected formats, constraints, and regex patterns defined in the schema.
 
 ---
 
@@ -233,14 +178,6 @@ Your response **must** strictly follow this JSON format:
 
 - **Minimal Disruption:**  
   Only change values that are in error. If a better correction exists, do not resort to default values.
-
-- **Clear Justification:**  
-  For every corrected value, provide a brief explanation that is easily understandable.
-
----
-
-This prompt is designed to guide you through a careful, context-aware data cleaning process while strictly adhering to the schema and returning your findings in the required JSON format.
-
 """
 
 FIX_JSON_SCHEMA_ERROR = """
@@ -294,4 +231,8 @@ Ensure that:
 **Now, here is the list of errors I need you to fix:**
 {errors}
 
+"""
+
+FIX_GRAMMAR_PROMPTS = """
+I have the the dataset and json schema of it, 
 """

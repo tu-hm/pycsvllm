@@ -1,0 +1,13 @@
+column_name,reference_value
+Platform,"JioMart, Blinkit, Swiggy Instamart"
+Product Category,"Fruits & Vegetables, Dairy, Beverages, Personal Care, Grocery, Snacks"
+Customer Feedback,"Fast delivery, great service!, Quick and reliable!, Items missing from order., Horrible experience, never ordering again., Very satisfied with the service., Very late delivery, not happy., Excellent experience!, Easy to order, loved it!, Good quality products., Not fresh, disappointed., Wrong item delivered., Delivery person was rude., Packaging could be better."
+Service Rating,"5, 2, 1, 4, 3"
+Delivery Delay,"No, Yes"
+Refund Requested,"No, Yes"
+CustomerType,"Sliver, Bronze, Vip, Diamond, Gold"
+OrderPaymentMethod,"Visa, Money, Exchange, MasterCard"
+OrderDeliveryMethod,"Fast, VIP, Standard"
+OrderTotalItems,"9, 6, 8, 5, 4, 2, 7, 1, 10, 3"
+productName,"pham.com, vu.com, mai.com, le.com, nguyen.com, dang.org, dang.biz, duong.com, tran.info, vu.net, pham.info, bui.com, dang.com, hoang.net, dang.info, vu.biz, nguyen.net, tran.com, hoang.biz, le.biz, duong.org, vu.info, tran.net, mai.info, mai.net, le.info, bui.biz, bui.org, hoang.com, hoang.info, mai.org, nguyen.org, pham.biz, duong.net, le.net, hoang.org, duong.info, nguyen.info, bui.info, bui.net, nguyen.biz, le.org, duong.biz, dang.net, tran.biz, pham.org, mai.biz, pham.net, tran.org, vu.org"
+productType,"Baby, Tech, Laptop, Fashion, Food, Mobile, Beauty, Wallets, Other, Appliances"
