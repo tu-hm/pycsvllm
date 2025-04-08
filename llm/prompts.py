@@ -140,7 +140,7 @@ Your response **must** strictly follow this JSON format:
         "row": number,
         "attribute": list[ 
             {{
-                "name": string,
+                "name": string, // column must be right name like in dataset. not change it.
                 "fixed_value": string
             }}
         ]
