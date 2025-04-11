@@ -1,5 +1,5 @@
 from file_processing.csv import CSVLoader
-from llm.prompts import find_simple_json_schema_message
+from llm_providers.prompts import find_simple_json_schema_message
 
 
 class Manager:

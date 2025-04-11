@@ -12,8 +12,8 @@ from file_processing.schema import (
     PotentialErrorQueryResponse,
     ImprovesItem
 )
-from llm import base_llm
-from llm.prompts import (
+from llm_providers import base_llm
+from llm_providers.prompts import (
     FIND_JSON_SCHEMA_PROMPTS,
     SYSTEM_MESSAGE,
     GET_ISSUE_OF_DATA,
@@ -455,8 +455,6 @@ class CSVLoader:
         df_copy = self.data # Operate directly on the internal DataFrame
 
         for item in improvements:
-            # Ensure row index is valid - use item.row or item.position.row
-            # Prefer item.row if available and primary, otherwise fallback. Check definition of ImprovesItem.
             row_idx = getattr(item, 'row', getattr(getattr(item, 'position', None), 'row', None))
             if row_idx is None:
                 print(f"Warning: Skipping improvement item - missing row index: {item}")
@@ -491,18 +489,15 @@ class CSVLoader:
                         # Simple approach: prefer non-null type if available, otherwise first type
                         target_type = next((t for t in target_type if t != "null"), target_type[0])
                 else:
-                    # Fallback to DataFrame column's dtype
                     target_type = df_copy[col_name].dtype
 
-                # Parse the value and update the DataFrame
                 try:
                     parsed_value = self.parse_value(new_value_str, target_type)
-                    # Use .loc for safe assignment by index and column
                     df_copy.loc[row_idx, col_name] = parsed_value
                 except (ValueError, TypeError) as e:
                     print(f"Warning: Skipping fix for row {row_idx}, column '{col_name}'. "
                           f"Could not apply value '{new_value_str}'. Error: {e}")
-                except Exception as e: # Catch unexpected errors during update
+                except Exception as e:
                      print(f"Warning: Unexpected error applying fix for row {row_idx}, col '{col_name}': {e}")
 
 

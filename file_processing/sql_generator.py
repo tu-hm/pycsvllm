@@ -3,8 +3,8 @@ import json
 from langchain_core.prompts import ChatPromptTemplate
 
 from file_processing.schema import CreateQueryResponse
-from llm import base_llm
-from llm.prompts import SYSTEM_MESSAGE, CREATE_TABLE_SCHEMA_PROMPTS
+from llm_providers import base_llm
+from llm_providers.prompts import SYSTEM_MESSAGE, CREATE_TABLE_SCHEMA_PROMPTS
 
 def generate_create_table(schema, table_name, columns):
     message = [('system', SYSTEM_MESSAGE), ('human', CREATE_TABLE_SCHEMA_PROMPTS)]
