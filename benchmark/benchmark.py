@@ -40,13 +40,62 @@ def benchmark_data_cleaning(
         'columns': {}
     }
 
+    import re
+
     def is_equal(a, b):
-        if pd.isna(a) and pd.isna(b):
-            return True
-        try:
-            return bool(a == b)
-        except:
-            return False
+        """
+        Compare two values for equality, coercing between str, int/float, and bool when possible.
+        Returns True if values are equivalent after coercion, False otherwise.
+        """
+
+        def try_bool(x):
+            if isinstance(x, bool):
+                return x
+            if not isinstance(x, str):
+                return None
+            val = x.strip().lower()
+            if val in ('true', '1', 'yes', 'y', 't'):
+                return True
+            if val in ('false', '0', 'no', 'n', 'f'):
+                return False
+            return None
+
+        def try_number(x):
+            # ints and floats stay as-is
+            if isinstance(x, (int, float)) and not isinstance(x, bool):
+                return x
+            if not isinstance(x, str):
+                return None
+            x = x.strip()
+            # integer?
+            if re.fullmatch(r'[+-]?\d+', x):
+                try:
+                    return int(x)
+                except ValueError:
+                    pass
+            # float?
+            if re.fullmatch(r'[+-]?(\d*\.\d+|\d+\.\d*)([eE][+-]?\d+)?', x):
+                try:
+                    return float(x)
+                except ValueError:
+                    pass
+            return None
+
+        # 1) Try boolean comparison
+        bool_a = try_bool(a)
+        bool_b = try_bool(b)
+        if bool_a is not None and bool_b is not None:
+            return bool_a == bool_b
+
+        # 2) Try numeric comparison
+        num_a = try_number(a)
+        num_b = try_number(b)
+        if num_a is not None and num_b is not None:
+            return num_a == num_b
+
+        # 3) Fallback: compare as strings
+        # Coerce everything to str and compare
+        return str(a) == str(b)
 
     for col in clean_df.columns:
         col_metrics = {

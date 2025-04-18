@@ -4,8 +4,9 @@ from benchmark.benchmark import benchmark_data_cleaning
 from file_processing.csv import CSVLoader
 from file_processing.generate_messy_data import make_dataset_messy
 
-
-
+# df = CSVLoader(filepath='public/economy_delivery_data/real_data_generate.csv', name='real_data_generate')
+# messy_data, err = make_dataset_messy(df=df.data, change_percent=0.20)
+# messy_data.to_csv('public/economy_delivery_data/real_data_messy.csv', index=False)
 
 data = CSVLoader(
     filepath='public/economy_delivery_data/true_data_table.csv',
@@ -17,7 +18,7 @@ referencing_data = CSVLoader(
     name='referencing_data',
 )
 
-schema = data.generate_schema(other_info=referencing_data.data.to_dict())
+schema = data.generate_schema(context_info=referencing_data.data.to_dict())
 
 print(schema)
 
@@ -26,7 +27,7 @@ data1 = CSVLoader(
     name='real_data_messy',
 )
 
-list_improvements = data1.fix_error_schema(schema=schema)
+list_improvements = data1.fix_error_schema(schema=schema, batch_size=10)
 
 data1.apply_improvements(list_improvements)
 # print(data1.data)

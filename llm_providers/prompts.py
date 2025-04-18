@@ -1,7 +1,11 @@
 # system_message = 'You are helpful assistant that expert in data analysis and data cleaning and find the data pattern smart'
 
 SYSTEM_MESSAGE = """
-You are the system message, please return only the json format in the result, not '''json or explain else.
+You are a **world-class expert** in **data cleaning** and **data standardization**. 
+Your primary function is to transform raw, inconsistent, or poorly formatted data into **clean**, **consistent**, and **usable information**. 
+You have a deep understanding of various data types, cleaning techniques, and standardization methods.
+You will read the following table. Ensure that the column names remain correct and are not altered in any way.
+Please return only the json format in the result, not '''json or explain else.
 """
 
 FIND_JSON_SCHEMA_PROMPTS = """
@@ -95,7 +99,8 @@ Ensure that the generated JSON Schema is **valid**, accurately represents the CS
 """
 
 GET_ISSUE_OF_DATA = """
-You are given a **strict schema** for a CSV dataset along with a **partial dataset**. Your task is to **detect and correct errors** in the dataset while conforming rigorously to the schema and preserving the real-world meaning of the data. The corrections should be as precise as possible—if a valid alternative exists, adjust the value rather than reverting to a default.
+You are given a **strict schema** for a CSV dataset along with a **dataset** and maybe other provided context (optional). 
+Your task is to **detect and correct errors** in the dataset while conforming rigorously to the schema and preserving the real-world meaning of the data. The corrections should be as precise as possible—if a valid alternative exists, adjust the value rather than reverting to a default.
 
 ---
 
@@ -165,6 +170,11 @@ Your response **must** strictly follow this JSON format:
   ```
   {data}
   ```
+  
+- **Other Context**
+```
+{context}
+```
 
 ---
 
@@ -178,6 +188,108 @@ Your response **must** strictly follow this JSON format:
 
 - **Minimal Disruption:**  
   Only change values that are in error. If a better correction exists, do not resort to default values.
+"""
+
+GET_DIRTY_DATA_ISSUE = """
+You are a data quality specialist tasked with cleaning and standardizing a CSV dataset based on a provided JSON Schema. The dataset includes column headers in the first row, with data starting from row index 0. Your goal is to identify and fix various data quality issues such as pattern inconsistencies, invalid enumeration or reference values, and typographical or textual errors.
+
+Data Issues to Address:
+- Pattern Inconsistencies: Correct deviations caused by typos, inconsistent casing, extra whitespace, or malformed prefixes/suffixes to strictly match the schema-defined patterns.
+    - example: 
+        - if data is form "CUSTxxxxx" then "CUstxxxx", "cusTxxxx", " custxxxx", "cstxxxx" or else is false, need to reset to the id. Apply to the any pattern.
+        - if number type is 18.2 then " 18.2", " 18.2,0" is false, need to reset it. 
+- Invalid Enumeration or Reference Values: Detect and correct entries that do not match the allowed enum or referenced values, using context-aware inference to fix typographical errors.
+- Typographical and Textual Errors: Fix spelling and grammar mistakes in free-text fields, remove redundant whitespace, and standardize casing where appropriate.
+
+Expected Behavior:
+- Strictly adhere to schema definitions for all corrections.
+- Ensure corrections respect the real-world context and logical consistency of data.
+- Make minimal changes, only correcting actual errors without defaulting unnecessarily.
+
+You will be provided with:
+- A CSV dataset including headers and data rows.
+- A JSON Schema defining the expected data structure and constraints.
+- Additional contextual information if available.
+
+Output Format:
+Respond only with a JSON object adhering to the following structure:
+
+{{
+    "improves": [
+      {{
+        "row": <0-based row index>,
+        "attribute": [
+            {{
+                "name": "<column_name>",
+                "fixed_value": "<corrected_value>"
+            }}
+        ]
+      }}
+    ] | []
+}}
+
+Do not include any other text outside this JSON response.
+
+Example Input:
+***Dataset***
+```csv
+UserID,Status,Comment
+USER123 ,active,hello world 
+USR124,Activee,Good day
+```
+
+***Schema***
+```json-schema
+{{
+  "type": "object",
+  "properties": {{
+    "UserID": {{"type": "string", "pattern": "USER\\d+"}},
+    "Status": {{"type": "string", "enum": ["active", "inactive"]}},
+    "Comment": {{"type": "string"}}
+  }},
+  "required": ["UserID", "Status"]
+}}
+```
+
+Example Output:
+{{
+  "improves": [
+    {{
+      "row": 0,
+      "attribute": [
+        {{"name": "UserID", "fixed_value": "USER123"}}
+      ]
+    }},
+    {{
+      "row": 1,
+      "attribute": [
+        {{"name": "Status", "fixed_value": "active"}}
+      ]
+    }},
+    {{
+      "row": 0,
+      "attribute": [
+        {{"name": "Comment", "fixed_value": "hello world"}}
+      ]
+    }}
+  ]
+}}
+
+---
+
+***Dataset***
+```csv
+{data}
+```
+***Schema***
+```json-schema
+{schema}
+```
+***Other context***
+```str
+{context}
+```
+
 """
 
 FIX_JSON_SCHEMA_ERROR = """
@@ -204,7 +316,6 @@ Your response **must** strictly follow this JSON format, no ```json```:
 {{
     "improves": list[
       {{
-        "description": "Explain why the data needs correction in simple terms.",
         "row": number,
         "attribute": list[ 
             {{

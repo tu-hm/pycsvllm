@@ -29,7 +29,6 @@ class ImprovesItem(BaseModel):
     """
     Model representing a suggested improvement for a dataset.
     """
-    description: str = Field(..., description="Description of the item")
     row: int = Field(..., description="the row index")
     attribute: List[CellInfo] = Field(..., description="list of fixed cell positions")
 

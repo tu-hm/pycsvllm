@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 from jsonschema.validators import Draft202012Validator
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.language_models import BaseChatModel
 
 from file_processing.schema import (
     CSVJsonSchemaResponse,
@@ -17,7 +18,7 @@ from llm_providers.prompts import (
     FIND_JSON_SCHEMA_PROMPTS,
     SYSTEM_MESSAGE,
     GET_ISSUE_OF_DATA,
-    FIX_JSON_SCHEMA_ERROR # Note: This wasn't used in the original fix_error_schema method
+    FIX_JSON_SCHEMA_ERROR, GET_DIRTY_DATA_ISSUE  # Note: This wasn't used in the original fix_error_schema method
 )
 
 class CSVLoader:
@@ -26,7 +27,7 @@ class CSVLoader:
     for CSV data using pandas and an external LLM service.
     """
 
-    def __init__(self, filepath: str, name: str = ''):
+    def __init__(self, filepath: str, name: str = '', model: BaseChatModel = base_llm):
         """
         Initializes the CSVLoader with the path to a CSV file.
 
@@ -38,6 +39,7 @@ class CSVLoader:
         self.name: str = name
         self.data: pd.DataFrame = pd.read_csv(filepath)
         self.schema: Dict[str, Any] = {}
+        self.model: BaseChatModel = model
 
     def read_data(self, filepath: str) -> None:
         """
@@ -177,7 +179,7 @@ class CSVLoader:
         message = [('system', SYSTEM_MESSAGE), ('human', prompt_template)]
         chain_message = ChatPromptTemplate.from_messages(message)
 
-        chain = chain_message | base_llm
+        chain = chain_message | self.model
         chain = chain.bind(response_format="json_object")
 
         response = chain.invoke(input=input_data)
@@ -208,7 +210,7 @@ class CSVLoader:
         input_payload = {
             "data": self.to_str(),
             "context": context_info,
-            "column_info": json.dumps(column_info, indent=2), # Provide structured info
+            "column_info": str(column_info), # Provide structured info
         }
 
         content_json = self._invoke_llm_for_json(prompt, input_payload)
@@ -227,7 +229,7 @@ class CSVLoader:
         """Generates and assigns the JSON schema to the instance's schema attribute."""
         self.schema = self.generate_schema(prompt=prompt)
 
-    def _scan_error_for_range(self, schema: Dict[str, Any], row_range: Tuple[int, int]) -> PotentialErrorQueryResponse:
+    def _scan_error_for_range(self, schema: Dict[str, Any], row_range: Tuple[int, int], prompt: str = GET_ISSUE_OF_DATA, other_context: str = '') -> PotentialErrorQueryResponse:
         """
         Invokes LLM to find potential data issues within a specific row range based on a schema.
 
@@ -246,9 +248,10 @@ class CSVLoader:
         input_payload = {
             "schema": json.dumps(schema, indent=2),
             "data": range_data.to_csv(index=False),
+            "context": other_context,
         }
 
-        content_json = self._invoke_llm_for_json(GET_ISSUE_OF_DATA, input_payload)
+        content_json = self._invoke_llm_for_json(prompt, input_payload)
 
         try:
             error_response = PotentialErrorQueryResponse(**content_json)
@@ -271,11 +274,13 @@ class CSVLoader:
                 item.row += batch_start_index
         return items
 
-    def scan_error(self, schema: Dict[str, Any], batch_size: int = 10) -> List[ImprovesItem]:
+    def scan_error(self, schema: Dict[str, Any], batch_size: int = 10, prompt: str = GET_ISSUE_OF_DATA, other_context: str = '') -> List[ImprovesItem]:
         """
         Scans the entire dataset in batches for potential errors using the LLM and a schema.
 
         Args:
+            other_context: other context help scan error better (optional).
+            prompt: prompt that help scan error better, it should accept params is schema, data and context (optional).
             schema: The JSON schema to validate against.
             batch_size: The number of rows to process in each LLM call.
 
@@ -291,7 +296,7 @@ class CSVLoader:
                 continue
 
             try:
-                batch_response = self._scan_error_for_range(schema, (start_index, end_index))
+                batch_response = self._scan_error_for_range(schema=schema, row_range=(start_index, end_index), prompt=prompt, other_context=other_context)
                 adjusted_improvements = self._adjust_improvement_row_indices(
                     start_index, batch_response.improves
                 )
@@ -359,7 +364,7 @@ class CSVLoader:
             raise ValueError(f"Cannot parse '{value}' as boolean.")
 
     @staticmethod
-    def parse_value(value_str: str, target_type: Any) -> Any:
+    def parse_value(value_str: Any, target_type: Any) -> Any:
         """
         Parses a string value into a target type defined by schema or pandas dtype.
 
@@ -504,7 +509,7 @@ class CSVLoader:
         self.data = df_copy # Update the instance data
         return self.data
 
-    def _fix_errors_for_batch(self, schema: Dict[str, Any], batch_df: pd.DataFrame) -> List[ImprovesItem]:
+    def _fix_errors_for_batch(self, schema: Dict[str, Any], batch_df: pd.DataFrame, prompt: str = GET_DIRTY_DATA_ISSUE, other_context: str = '') -> List[ImprovesItem]:
         """
         Internal method to call the LLM for fixing errors in a specific batch DataFrame.
 
@@ -518,9 +523,10 @@ class CSVLoader:
         input_payload = {
             "schema": json.dumps(schema, indent=2),
             "data": batch_df.to_csv(index=False),
+            "context": other_context,
         }
 
-        prompt_to_use = GET_ISSUE_OF_DATA # As used in original code
+        prompt_to_use =  prompt
 
         try:
             content_json = self._invoke_llm_for_json(prompt_to_use, input_payload)
@@ -536,7 +542,11 @@ class CSVLoader:
             return []
 
 
-    def fix_error_schema(self, schema: Dict[str, Any], batch_size: int = 20) -> List[ImprovesItem]:
+    def fix_error_schema(self,
+                         schema: Dict[str, Any],
+                         batch_size: int = 20,
+                         prompt: str = GET_DIRTY_DATA_ISSUE,
+                         other_context: str = '') -> List[ImprovesItem]:
         """
         Uses an LLM to identify and suggest fixes for data inconsistencies based on a schema,
         processing the data in parallel batches.
@@ -549,6 +559,8 @@ class CSVLoader:
         Args:
             schema: The JSON schema to check against.
             batch_size: The number of rows per parallel processing batch.
+            prompt: prompt that use to get data, it must accept three variables schema, data, and context.
+            other_context: context that support prompt
 
         Returns:
             A list of `ImprovesItem` objects suggesting fixes across the dataset.
@@ -567,7 +579,7 @@ class CSVLoader:
         def process_batch(args):
             batch_schema, df_batch, start_idx = args
             print(f"Processing batch for fixing: Rows {start_idx} to {start_idx + len(df_batch)}")
-            items = self._fix_errors_for_batch(batch_schema, df_batch)
+            items = self._fix_errors_for_batch(batch_schema, df_batch, prompt=prompt, other_context=other_context)
             corrected_items = self._adjust_improvement_row_indices(start_idx, items)
             return corrected_items
 
