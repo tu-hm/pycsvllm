@@ -27,7 +27,7 @@ data1 = CSVLoader(
     name='real_data_messy',
 )
 
-list_improvements = data1.fix_error_schema(schema=schema, batch_size=10)
+list_improvements = data1.fix_error_schema(schema=schema, batch_size=10, other_context='column')
 
 data1.apply_improvements(list_improvements)
 # print(data1.data)
