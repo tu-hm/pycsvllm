@@ -26,4 +26,5 @@ dependencies = [
     "num2words>=0.5.14",
     "regex>=2024.11.6",
     "rapidfuzz>=3.13.0",
+    "thefuzz>=0.22.1",
 ]

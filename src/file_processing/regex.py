@@ -101,7 +101,7 @@ def correct_to_pattern(
     strip_diacritics: bool = True,
     allow_transpose: bool = True,
     allow_insertion: bool = True,
-    max_edits: Optional[int] = None,
+    max_edits: Optional[int] = 1000,
 ) -> Optional[str]:
     rx = re.compile(pattern) if isinstance(pattern, str) else pattern
     wants_hyphen = "-" in rx.pattern
@@ -169,5 +169,5 @@ if __name__ == "__main__":
         "us3r-12ba",
     ]
     for txt in samples:
-        fix = correct_to_pattern(pattern, txt, max_edits=None)
+        fix = correct_to_pattern(pattern, txt)
         print(f"{txt!r:<15} → {fix}")

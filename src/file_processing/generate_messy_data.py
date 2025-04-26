@@ -4,6 +4,7 @@ import pandas as pd
 import random
 from decimal import Decimal
 from typing import Callable, List
+from dateutil import parser as _dateutil_parser
 
 from num2words import num2words
 from datetime import datetime
@@ -66,49 +67,64 @@ def format_number_random(value):
 
     return random.choice(candidates)(num)
 
-def mess_up_datetime_format_unknown_input(date_str):
-    known_formats = [
-        "%Y-%m-%d %H:%M:%S",
-        "%d/%m/%Y",
-        "%m-%d-%Y %I:%M %p",
-        "%Y.%m.%d %H:%M",
-        "%d %b %Y %H:%M:%S",
-        "%Y%m%dT%H%M%S",
-        "%b %d %Y %I:%M%p",
-        "%d-%m-%y",
-        "%I:%M:%S %p, %d/%m/%y",
-        "%Y/%m/%d %H:%M:%S"
-    ]
 
-    output_formats = [
-        "%d/%m/%Y",
-        "%m-%d-%Y %I:%M %p",
-        "%Y.%m.%d %H:%M",
-        "%A, %B %d, %Y",
-        "%d %b %Y %H:%M:%S",
-        "%Y%m%dT%H%M%S",
-        "%b %d %Y %I:%M%p",
-        "%d-%m-%y",
-        "%I:%M:%S %p, %d/%m/%y",
-        "%Y/%m/%d %H:%M:%S"
-    ]
+KNOWN_INPUT_FORMATS = [
+    "%Y-%m-%d",
+    "%Y-%m-%d %H:%M:%S",
+    "%d/%m/%Y",
+    "%m-%d-%Y %I:%M %p",
+    "%Y.%m.%d %H:%M",
+    "%d %b %Y %H:%M:%S",
+    "%Y%m%dT%H%M%S",
+    "%b %d %Y %I:%M%p",
+    "%d-%m-%y",
+    "%I:%M:%S %p, %d/%m/%y",
+    "%Y/%m/%d %H:%M:%S"
+]
 
+DEFAULT_OUTPUT_FORMATS = [
+    "%d/%m/%Y",
+    "%m-%d-%Y %I:%M %p",
+    "%Y.%m.%d %H:%M",
+    "%A, %B %d, %Y",
+    "%d %b %Y %H:%M:%S",
+    "%Y%m%dT%H%M%S",
+    "%b %d %Y %I:%M%p",
+    "%d-%m-%y",
+    "%I:%M:%S %p, %d/%m/%y",
+    "%Y/%m/%d %H:%M:%S"
+]
+
+def _extra_format_variants(dt: datetime) -> list[str]:
+    sep = random.choice(["/", "-", ".", " "])
+    v1 = dt.strftime(f"%-d{sep}%-m{sep}%y")
+    v2 = dt.strftime(f"%m{sep}%d{sep}%y, %H:%M")
+    v3 = dt.strftime("%Y-%m-%dT%I:%M %p").replace(" ", "")
+    v4 = dt.strftime("%B %-d") + dt.strftime("%d").zfill(2)[-2:].translate(str.maketrans("0123", "tsnr")) + dt.strftime(" ’%y")
+    return [v1, v2, v3, v4]
+
+def mess_up_datetime_format(date_str: str,
+                            output_formats: list[str] | None = None,
+                            add_extra_variants: bool = True) -> str:
     dt = None
-    for fmt in known_formats:
+    for fmt in KNOWN_INPUT_FORMATS:
         try:
             dt = datetime.strptime(date_str, fmt)
             break
         except ValueError:
             continue
-
     if dt is None:
-        raise ValueError("Unknown datetime format: " + date_str)
-
-    return dt.strftime(random.choice(output_formats))
+        if _dateutil_parser is None:
+            raise ValueError(f"Unknown datetime format and python-dateutil not available: {date_str}")
+        dt = _dateutil_parser.parse(date_str, fuzzy=True)
+    formats_pool = list(output_formats or DEFAULT_OUTPUT_FORMATS)
+    if add_extra_variants:
+        formats_pool.extend(_extra_format_variants(dt))
+    return dt.strftime(random.choice(formats_pool))
 
 def mess_up_string(s, noise_level=0.3):
     messy = []
-    whitespace = [' ', '\t', '\n']
+    whitespace = [' ']
     all_chars = string.ascii_letters + string.digits + string.punctuation
     for char in s:
         if random.random() < noise_level:
@@ -139,10 +155,18 @@ def make_messy_data_number(
     return df_out
 
 def make_messy_data_string(df: pd.DataFrame, column: list[str]) -> pd.DataFrame:
+    df_out = df.copy(deep=True)
     for col in column:
         for i in range(df.shape[0]):
-            df.loc[i, col] = mess_up_string(df.loc[i, col])
-    return df
+            df_out.loc[i, col] = mess_up_string(df_out.loc[i, col])
+    return df_out
+
+def make_messy_data_datetime(df: pd.DataFrame, column: list[str]) -> pd.DataFrame:
+    df_out = df.copy(deep=True)
+    for col in column:
+        for i in range(df.shape[0]):
+            df_out.loc[i, col] = mess_up_datetime_format(df_out.loc[i, col])
+    return df_out
 
 
         

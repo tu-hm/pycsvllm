@@ -7,11 +7,13 @@ import pandas as pd
 from jsonschema.validators import Draft202012Validator
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.language_models import BaseChatModel
+from thefuzz import fuzz
 
+from src.file_processing.regex import correct_to_pattern
 from src.file_processing.schema import (
     CSVJsonSchemaResponse,
     PotentialErrorQueryResponse,
-    ImprovesItem
+    ImprovesItem, NotImprovesItem
 )
 from src.llm_providers import base_llm
 from src.llm_providers.prompts import (
@@ -548,8 +550,51 @@ class CSVLoader:
         improvements, cant_improvements = self._fix_error(column_list, batch_size, PROMPT_FIX_DATETIME_FORMATION, formation, few_shot_context)
         return improvements, cant_improvements
 
-    def fix_regex_pattern_error(self, column_list: list[str], batch_size: int = 50, formation: List[Tuple[str, str]] = []):
-        pass
+    def fix_regex_pattern_error(self, column: str, pattern: str = ''):
+        if pattern == '':
+            pattern = self.schema['properties'][column]['pattern']
+
+        improvements = []
+        cant_improvements = []
+
+        for i in range(self.num_rows):
+            improvements.append(ImprovesItem(
+                row=i,
+                attr=[{
+                        "name": column,
+                        "value" : correct_to_pattern(pattern,  self.data.loc[i, column])}]
+                ))
+
+        return improvements, cant_improvements
+
+    def fix_reference_value_error(self, column: str, reference_values: list[str]):
+        improvements = []
+        cant_improvements = []
+
+        for i in range(self.num_rows):
+            best_value = ''
+            best_ratio = 0
+            for ref_value in reference_values:
+                ratio = fuzz.ratio(self.data.loc[i, column], ref_value)
+                if ratio > best_ratio and ratio >= 50:
+                    best_ratio = ratio
+                    best_value = ref_value
+
+            if best_ratio > 0:
+                improvements.append(ImprovesItem(
+                    row=i,
+                    attr=[{
+                        "name": column,
+                        "value" : best_value}]
+                    ))
+            else:
+                cant_improvements.append(NotImprovesItem(
+                    row=i,
+                    attr=[column]
+                ))
+
+        return improvements, cant_improvements
+
 
 
 
