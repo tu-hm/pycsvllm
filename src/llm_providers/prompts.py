@@ -45,7 +45,7 @@ Response Format (Strict JSON Structure):
 Provide only the following JSON structure as your output. Do not include any introductory text, explanations, markdown formatting (like ```json ... ``` code fences), or any other content outside of this exact structure.
 
 {{
-    "schema": {{
+    "json_schema": {{
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         // ... the rest of the generated JSON schema according to the requirements ...
         "type": "object", // Or "array" if the root is an array of objects

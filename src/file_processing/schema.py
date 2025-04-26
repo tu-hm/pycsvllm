@@ -6,7 +6,7 @@ class CSVJsonSchemaResponse(BaseModel):
     """
     Model representing a JSON schema response.
     """
-    schema: Dict = Field(..., description="JSON schema output")
+    json_schema: Dict = Field(..., description="JSON schema output")
     other_info: str = Field(..., description="Additional schema-related information")
 
 
@@ -24,6 +24,9 @@ class CellInfo(BaseModel):
     name: str = Field(..., description="Column name")
     value: str = Field(..., description="Cell value")
 
+class CellErrorInfo(BaseModel):
+    row: int = Field(..., description="the row index")
+    attr: List[str] = Field(..., description="list of fixed cell positions")
 
 class ImprovesItem(BaseModel):
     """
@@ -34,7 +37,7 @@ class ImprovesItem(BaseModel):
 
 class NotImprovesItem(BaseModel):
     row: int = Field(..., description="the row index")
-    attr: List[CellInfo] = Field(..., description="list of fixed cell positions")
+    attr: List[str] = Field(..., description="list of fixed cell positions")
 
 class PotentialErrorQueryResponse(BaseModel):
     """

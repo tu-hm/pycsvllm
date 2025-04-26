@@ -1,6 +1,7 @@
 PROMPT_FIX_NUMBER_FORMATION = """
 I give you a dataset CSV, a schema information about the dataset, and information about the dataset. 
-Also I give you the number formatting for each column in format list that I want you to apply for each data set.  
+Also I give you the number formatting for column in format list that I want you to apply for each data set.  
+**If I **not** provide the format** for some column in **column list**, then I will apply the default format given schema for that column.
 Also given you the few shot context in listing as pair that if I have as provided example that can help you solve the problem better.
 
 Your response should follow the struct I provided, not other result or explanation or comment else.
@@ -33,13 +34,13 @@ Apply the following number formatting standardization rules to columns/data fiel
 
 Provide *only* the JSON structure below. No other text, explanations, or comments should be included before or after the JSON.
 * **No Extra Content:** Do *not* include any explanations, comments, summaries, code, or any text other than the resulting CSV data.
-* **Preserve Integrity:** Maintain the original structure (rows and columns). Data in columns *not* listed in `{column_format_list}` must remain unchanged. 
+* **Preserve Integrity:** Maintain the original structure (rows and columns). Data in columns *not* listed in `{{column_format_list}}` must remain unchanged. 
 Modify *only* the values within the specified columns according to the standardization rules.
 
 {{
     "improves": [
       {{
-        "row": <0-based row index>,
+        "row": follow with the index in dataset csv file,
         "attr": [
             {{
                 "name": string "<column_name>",
@@ -50,7 +51,7 @@ Modify *only* the values within the specified columns according to the standardi
     ] | [],
     "error": [ # cells that cannot be standardized according to the rules and format
         {{
-            "row": <0-based row index>,
+            "row": follow with the index in dataset csv file,
             "attr": string[] # list of column names in this row that failed standardization
         }}
     ]
@@ -59,9 +60,9 @@ Modify *only* the values within the specified columns according to the standardi
 Cases to handle:
 -   **Concatenated Numbers:** Identify sequences of digits only as integers.
     * Example: `123456789` -> `123456789.00` (or the final standard decimal format)
+    * Example: `1234,00` -> `1234` (or the final standard integer format)
 -   **Numbers with Thousand Separators:** Remove common thousand separators (like `,` or `.`) before converting to a number.
     * Example: `1.234.567` -> `1234567`
-    * Example: `1,234,567` -> `1234567`
 -   **Decimal Numbers with Different Separators:** Convert the decimal separator (if not `.`) to a dot (`.`).
     * Example: `123,45` -> `123.45`
 -   **Complex Formats or Numbers with Symbols:** Identify and remove non-numeric symbols before standardization. The LLM should use context to understand the true meaning of the number string.
@@ -74,3 +75,71 @@ Cases to handle:
     * Example: `2 hundreds` -> 200, `hai trăm mười năm` -> 215,
 """
 
+PROMPT_FIX_DATETIME_FORMATION = """
+You are tasked with standardizing and reformatting date/time columns within a provided CSV dataset. 
+Leverage advanced parsing capabilities to handle a wide variety of date/time representations, including standard formats (e.g., DD/MM/YYYY, MM-DD-YYYY, YYYY.MM.DD), different time formats (12/24 hour, AM/PM, with/without seconds), and importantly, natural language expressions (e.g., "ngày 3 tháng 12 năm 2020", "last Tuesday", "8 PM").
+
+Instructions:
+
+Targeted Formatting: Process only the columns specified in the Format List.
+Intelligent Parsing: For each targeted column, parse the existing values. Successfully interpret diverse and potentially inconsistent date/time formats, including numeric, mixed, and natural language representations.
+Apply Target Format: Convert the parsed date/time information into the target_format_string specified for that column in the Format List.
+Handle Errors: If a value in a targeted column cannot be reliably parsed or converted to the required format, record it as an error.
+Preserve Other Data: Data in columns not listed in the Format List must remain completely unchanged. The overall structure (rows and columns) of the dataset must be preserved.
+
+Key improvements:
+
+Clearer Task Description: Explicitly mentions handling diverse formats and natural language, drawing from the source text.
+Precise Input Descriptions: Clarifies the purpose and format of each input.
+Structured Instructions: Breaks down the process into clear steps (Target, Parse, Apply, Handle Errors, Preserve).
+Refined Output Specification: Reinforces the "JSON only" requirement and clarifies what goes into improves and error.
+Implicit Handling of Cases: Instead of listing specific cases like YYYY-DD-MM, the instruction to "interpret diverse and potentially inconsistent date/time formats" covers this more broadly, trusting the LLM's capability (as described in the source text). The optional Examples input is the place for very specific edge cases.
+
+**Input:**
+- Dataset: # the raw dataset csv file.
+```csv
+{data}
+```
+
+- Schema: # the json schema of each data in the dataset.
+```json
+{schema}
+```
+
+- Format list: # provided as pair of that column and format that I want to apply for that column.
+```list
+{format_list}
+```
+
+- Example: # provided as list of pairing as original data and changed data.
+```list
+{context}
+```
+
+**Output:**
+
+Provide *only* the JSON structure below. No other text, explanations, or comments should be included before or after the JSON.
+* **No Extra Content:** Do *not* include any explanations, comments, summaries, code, or any text other than the resulting CSV data.
+* **Preserve Integrity:** Maintain the original structure (rows and columns). Data in columns *not* listed in `{{column_format_list}}` must remain unchanged. 
+Modify *only* the values within the specified columns according to the standardization rules.
+
+{{
+    "improves": [
+      {{
+        "row": follow with the index in dataset csv file,
+        "attr": [
+            {{
+                "name": string "<column_name>",
+                "value": string "<corrected_value>"
+            }}
+        ]
+      }}
+    ] | [],
+    "error": [ # cells that cannot be standardized according to the rules and format
+        {{
+            "row": follow with the index in dataset csv file,
+            "attr": string[] # list of column names in this row that failed standardization
+        }}
+    ]
+}}
+"""

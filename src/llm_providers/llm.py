@@ -11,8 +11,7 @@ from langchain_core.prompts import ChatPromptTemplate
 load_dotenv()
 
 base_llm: BaseChatModel = ChatOpenAI(
-    model='gpt-4.1-mini',
-    temperature=0,
+    model='o4-mini',
 )
 
 class LLMProvider:

@@ -24,4 +24,6 @@ dependencies = [
     "jupyter>=1.1.1",
     "faker>=37.1.0",
     "num2words>=0.5.14",
+    "regex>=2024.11.6",
+    "rapidfuzz>=3.13.0",
 ]

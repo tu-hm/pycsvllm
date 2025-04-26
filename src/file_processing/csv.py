@@ -8,7 +8,7 @@ from jsonschema.validators import Draft202012Validator
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.language_models import BaseChatModel
 
-from file_processing.schema import (
+from src.file_processing.schema import (
     CSVJsonSchemaResponse,
     PotentialErrorQueryResponse,
     ImprovesItem
@@ -20,7 +20,7 @@ from src.llm_providers.prompts import (
     GET_ISSUE_OF_DATA,
     GET_DIRTY_DATA_ISSUE  # Note: This wasn't used in the original fix_error_schema method
 )
-from src.llm_providers.prompts_fix_data import PROMPT_FIX_NUMBER_FORMATION
+from src.llm_providers.prompts_fix_data import PROMPT_FIX_NUMBER_FORMATION, PROMPT_FIX_DATETIME_FORMATION
 
 
 class CSVLoader:
@@ -139,21 +139,57 @@ class CSVLoader:
                 return False
         return True
 
+    def _get_representative_sample(
+        self,
+        sample_size: int = 50,
+        per_column_quota: int = 2,
+        null_fraction: float = 0.30,
+        random_state: int | None = None
+    ) -> pd.DataFrame:
+        rng = np.random.default_rng(random_state)
+        df = self.data
+        selected: set[int] = set()
+
+        for col in df.columns:
+            null_idx = df.index[df[col].isna()]
+            non_idx = df.index[df[col].notna()]
+            if len(null_idx):
+                selected.update(rng.choice(null_idx, min(per_column_quota, len(null_idx)), replace=False))
+            if len(non_idx):
+                selected.update(rng.choice(non_idx, min(per_column_quota, len(non_idx)), replace=False))
+
+        null_rows = df.index[df.isna().any(axis=1)]
+        non_rows = df.index.difference(null_rows)
+        need_null = min(int(sample_size * null_fraction), len(null_rows))
+        need_non = min(sample_size - need_null, len(non_rows))
+        selected.update(rng.choice(null_rows, need_null, replace=False))
+        selected.update(rng.choice(non_rows, need_non, replace=False))
+
+        selected = list(selected)
+        if len(selected) > sample_size:
+            selected = rng.choice(selected, sample_size, replace=False)
+        elif len(selected) < sample_size:
+            remaining = df.index.difference(selected)
+            extra = rng.choice(remaining, sample_size - len(selected), replace=False)
+            selected = np.concatenate([selected, extra])
+
+        return df.loc[selected].sample(frac=1, random_state=random_state)
+
     def generate_schema(
             self,
-            reference_data: pd.DataFrame,
-            other_column_info: dict[str, Any],
+            reference_data: pd.DataFrame = pd.DataFrame(),
+            other_column_info: dict[str, Any] = {},
             sample_size: int = 50
         ) -> CSVJsonSchemaResponse:
-        if self.valid_column_info(other_column_info):
+        if not self.valid_column_info(other_column_info):
             raise ValueError("The 'other_column_info' parameter must not contain column names that are not in the reference data.")
 
-        sample_data = self.get_sample_data(sample_size)
+        sample_data = self._get_representative_sample(sample_size)
 
         input_payload = {
             "data": sample_data.to_csv(index=True),
             "ref_data": reference_data.to_json(),
-            "column_info": other_column_info.to_str(), # Provide structured info
+            "column_info": str(other_column_info), # Provide structured info
         }
 
         prompt = FIND_JSON_SCHEMA_PROMPTS
@@ -167,9 +203,9 @@ class CSVLoader:
             raise ValueError(f"Invalid JSON structure received from LLM for schema generation: {e}")
 
 
-    def set_schema(self, prompt: str = FIND_JSON_SCHEMA_PROMPTS) -> None:
+    def set_schema(self, schema) -> None:
         """Generates and assigns the JSON schema to the instance's schema attribute."""
-        self.schema = self.generate_schema(prompt=prompt)
+        self.schema = schema
 
     def _scan_error_for_range(
             self,
@@ -449,12 +485,13 @@ class CSVLoader:
 
         return extracted_schema
 
-    def _fix_number_error(
+    def _fix_error_with_prompt(
             self,
             df: pd.DataFrame,
             schema: Dict[str, Any],
             formation: List[Tuple[str, str]] = None,
-            few_shot_context: List[Tuple[str, str]] = None
+            few_shot_context: List[Tuple[str, str]] = None,
+            prompt: str = PROMPT_FIX_NUMBER_FORMATION,
         ) -> PotentialErrorQueryResponse:
         formation_str = str(formation)
         few_shot_context = str(few_shot_context)
@@ -467,16 +504,18 @@ class CSVLoader:
         }
 
         try:
-            content = self._invoke_llm_for_json(PROMPT_FIX_NUMBER_FORMATION, input_payload)
+            content = self._invoke_llm_for_json(prompt, input_payload)
+            # print(content)
             response = PotentialErrorQueryResponse(**content)
             return response
         except (ValueError, TypeError, KeyError) as e:
-            return []
+            raise ValueError(f"Failed to process batch for error fixing. Error: {e}")
 
-    def fix_number_error(
+    def _fix_error(
             self,
             column_list: list[str],
-            batch_size: int = 30,
+            batch_size: int = 50,
+            prompt: str = PROMPT_FIX_NUMBER_FORMATION,
             formation: List[Tuple[str, str]] = None,
             few_shot_context: List[Tuple[str, str]] = None,
          ):
@@ -490,12 +529,27 @@ class CSVLoader:
         total_rows: int = self.num_rows
         data = self.data[column_list]
         schema = str(self.extract_column_schema(self.schema, column_list))
+        # print(f"Fixing number errors for columns: {column_list}")
         for start_index in range(0, total_rows, batch_size):
             end_index = min(start_index + batch_size, total_rows)
             data_segment = data.iloc[start_index:end_index]
-            response = self._fix_number_error(data_segment, schema, formation, few_shot_context)
+            response = self._fix_error_with_prompt(data_segment, schema, formation, few_shot_context, prompt=prompt)
             if response:
                 improvements.extend(response.improves)
-                cant_improvements.extend(response.cant_improves)
+                cant_improvements.extend(response.error)
 
         return improvements, cant_improvements
+
+    def fix_number_error(self, column_list: list[str], batch_size: int = 50, formation: List[Tuple[str, str]] = None, few_shot_context: List[Tuple[str, str]] = None):
+        improvements, cant_improvements = self._fix_error(column_list, batch_size, PROMPT_FIX_NUMBER_FORMATION,formation, few_shot_context)
+        return improvements, cant_improvements
+
+    def fix_datetime_error(self, column_list: list[str], batch_size: int = 50, formation: List[Tuple[str, str]] = None, few_shot_context: List[Tuple[str, str]] = None):
+        improvements, cant_improvements = self._fix_error(column_list, batch_size, PROMPT_FIX_DATETIME_FORMATION, formation, few_shot_context)
+        return improvements, cant_improvements
+
+    def fix_regex_pattern_error(self, column_list: list[str], batch_size: int = 50, formation: List[Tuple[str, str]] = []):
+        pass
+
+
+
