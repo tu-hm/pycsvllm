@@ -370,7 +370,3 @@ Ensure that:
 {errors}
 
 """
-
-FIX_GRAMMAR_PROMPTS = """
-I have the the dataset and json schema of it, 
-"""

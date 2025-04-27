@@ -22,7 +22,8 @@ from src.llm_providers.prompts import (
     GET_ISSUE_OF_DATA,
     GET_DIRTY_DATA_ISSUE  # Note: This wasn't used in the original fix_error_schema method
 )
-from src.llm_providers.prompts_fix_data import PROMPT_FIX_NUMBER_FORMATION, PROMPT_FIX_DATETIME_FORMATION
+from src.llm_providers.prompts_fix_data import PROMPT_FIX_NUMBER_FORMATION, PROMPT_FIX_DATETIME_FORMATION, \
+    FIX_GRAMMAR_PROMPTS
 
 
 class CSVLoader:
@@ -595,6 +596,35 @@ class CSVLoader:
 
         return improvements, cant_improvements
 
+    def _fix_typography_data_segment(self, segment_data: pd.DataFrame, few_shot_context: List[Tuple[str, str]]):
+        input_payload = {
+            "data": segment_data.to_csv(index=True),
+            "context": str(few_shot_context),
+        }
+
+        try:
+            content = self._invoke_llm_for_json(FIX_GRAMMAR_PROMPTS, input_payload)
+            response = PotentialErrorQueryResponse(**content)
+            return response
+        except (ValueError, TypeError, KeyError) as e:
+            raise ValueError(f"Failed to process batch for error fixing. Error: {e}")
+
+    def fix_typography_data(self, column_list: List[str], few_shot_context: List[Tuple[str, str]] = None, batch_size: int = 50):
+        improvements = []
+        cant_improvements = []
+
+        if column_list is None or len(column_list) == 0:
+            column_list = self.data.columns.tolist()
+
+        for start_index in range(0, self.num_rows, batch_size):
+            end_index = min(start_index + batch_size, self.num_rows)
+            segment_data = self.data[column_list].iloc[start_index:end_index]
+            response = self._fix_typography_data_segment(segment_data, few_shot_context)
+            if response:
+                improvements.extend(response.improves)
+                cant_improvements.extend(response.error)
+
+        return improvements, cant_improvements
 
 
 

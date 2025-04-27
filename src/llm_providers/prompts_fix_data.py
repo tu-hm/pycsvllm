@@ -143,3 +143,66 @@ Modify *only* the values within the specified columns according to the standardi
     ]
 }}
 """
+
+
+FIX_GRAMMAR_PROMPTS = """
+To meticulously review specified text columns within a provided CSV dataset, identify, and correct common textual errors such as misspellings, typographical errors, and misplaced/extra/missing characters. Your analysis and corrections must be applicable to both English and Vietnamese text.
+
+Process Input: Receive the raw CSV dataset, a list of target column names (Columns to Check), and optionally, a list of example corrections (Examples).
+Iterate and Analyze: Go through each row of the dataset. For each row, examine the text content within the cells belonging to the specified Columns to Check.
+Detect Errors: Using advanced natural language processing (NLP) capabilities trained on both English and Vietnamese, analyze the structure of individual words or short phrases within these cells. Identify potential errors like:
+Common typos (e.g., hte -> the, adress -> address).
+Phonetic misspellings (e.g., fone -> phone).
+Character insertion/deletion/substitution (e.g., Sepetember -> September, Hanoi. -> Hanoi).
+Incorrect diacritics in Vietnamese (e.g., nghành -> ngành, kĩ thuật -> kỹ thuật).
+Missing spaces in common phrases (e.g., NewYork -> New York, HoChiMinh -> Hồ Chí Minh) only if confidence is very high.
+Suggest Corrections: For each detected potential error, determine the most probable correct spelling or form based on your language models.
+Apply High-Confidence Corrections: Only apply a correction if you have high confidence that it is accurate and preserves the original meaning at the word/phrase level. If confidence is low, or if the word is ambiguous (e.g., proper nouns not in dictionaries, technical jargon, intentional stylistic spelling), leave the original text unchanged.
+Generate Output: Compile a list of all the corrections made.
+Scope Limitations (What NOT to do):
+
+DO NOT correct grammatical errors (e.g., leave "he go store" as is).
+DO NOT rephrase sentences or change sentence structure.
+DO NOT attempt to interpret or alter the meaning of the text beyond simple spelling/typo correction.
+DO NOT standardize formats like dates (e.g., 10/05/2023 vs May 10, 2023) or numbers unless it's a direct typo (e.g., 2O23 -> 2023).
+DO NOT change regional spelling variations if they are valid (e.g., color vs colour).
+DO NOT split or merge cells or modify the CSV structure itself.
+
+**Output:**
+
+Provide *only* the JSON structure below. No other text, explanations, or comments should be included before or after the JSON.
+* **No Extra Content:** Do *not* include any explanations, comments, summaries, code, or any text other than the resulting CSV data.
+* **Preserve Integrity:** Maintain the original structure (rows and columns). Data in columns *not* listed in `{{column_format_list}}` must remain unchanged. 
+Modify *only* the values within the specified columns according to the standardization rules.
+
+{{
+    "improves": [
+      {{
+        "row": follow with the index in dataset csv file,
+        "attr": [
+            {{
+                "name": string "<column_name>",
+                "value": string "<corrected_value>"
+            }}
+        ]
+      }}
+    ] | [],
+    "error": [ # cells that cannot be standardized according to the rules and format
+        {{
+            "row": follow with the index in dataset csv file,
+            "attr": string[] # list of column names in this row that failed standardization
+        }}
+    ]
+}}
+
+**Input:**
+- Dataset: # the raw dataset csv file.
+```csv
+{data}
+```
+
+- Example: # provided as list of pairing as original data and changed data.
+```list
+{context}
+```
+"""
