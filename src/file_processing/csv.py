@@ -1,6 +1,6 @@
 import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any, Tuple, Optional
 
 import numpy as np
 import pandas as pd
@@ -470,36 +470,31 @@ class CSVLoader:
 
     def _fix_error(
             self,
-            column_list: list[str] | None = None,
+            column_list: Optional[List[str]] = None,
             batch_size: int = 50,
             prompt: str = PROMPT_FIX_NUMBER_FORMATION,
-            formation: List[Tuple[str, str]] | None = None,
-            few_shot_context: List[Tuple[str, str]] | None = None,
+            formation: Optional[List[Tuple[str, str]]] = None,
+            few_shot_context: Optional[List[Tuple[str, str]]] = None,
+            max_workers: Optional[int] = None,
     ) -> Tuple[List[ImprovesItem], List[NotImprovesItem]]:
-        """
-        Run the LLM fixer on the selected columns, batch the calls,
-        and **wait for every batch to finish** before returning.
-        """
-        # ------------- setup -------------
         if not column_list:
             column_list = self.data.columns.tolist()
 
         schema_str = str(self.extract_column_schema(self.schema, column_list))
-        total_rows = self.num_rows
         data_subset = self.data[column_list]
 
-        # Build argument list first (important if num_rows changes later)
-        batch_args: list[tuple[pd.DataFrame, int]] = []
-        for start in range(0, total_rows, batch_size):
-            end = min(start + batch_size, total_rows)
-            if start == end:
-                continue
-            batch_df = data_subset.iloc[start:end]
-            batch_args.append((batch_df, start))
+        batches: List[pd.DataFrame] = [
+            data_subset.iloc[start:end].copy()
+            for start in range(0, self.num_rows, batch_size)
+            for end in [min(start + batch_size, self.num_rows)]
+            if start < end
+        ]
 
-        # ------------- worker -------------
-        def _process_batch(batch_df: pd.DataFrame, batch_start: int):
-            """Call the LLM once for this batch and shift indices."""
+        improvements: List[ImprovesItem] = []
+        cant_improvements: List[NotImprovesItem] = []
+        max_workers = max_workers or min(32, len(batches))
+
+        def _process_batch(batch_df: pd.DataFrame):
             resp = self._fix_error_with_prompt(
                 batch_df,
                 schema=schema_str,
@@ -509,19 +504,17 @@ class CSVLoader:
             )
             return resp.improves, resp.error
 
-        # ------------- execute in parallel -------------
-        improvements: list[ImprovesItem] = []
-        cant_improvements: list[NotImprovesItem] = []
-
-        with ThreadPoolExecutor(max_workers=5) as pool:
-            futures = [pool.submit(_process_batch, df, start) for df, start in batch_args]
-            for fut in as_completed(futures):
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            futures = {executor.submit(_process_batch, df): idx for idx, df in enumerate(batches)}
+            for future in as_completed(futures):
+                idx = futures[future]
                 try:
-                    ok, ko = fut.result()
+                    ok, ko = future.result()
                     improvements.extend(ok)
                     cant_improvements.extend(ko)
                 except Exception as exc:
-                    print(f"⚠️  A batch failed but was skipped: {exc}")
+                    cant_improvements.append({"batch_index": idx, "error": str(exc)})
+
         return improvements, cant_improvements
 
     def fix_number_error(self, column_list: list[str], batch_size: int = 50, formation: List[Tuple[str, str]] = None, few_shot_context: List[Tuple[str, str]] = None):
@@ -553,26 +546,25 @@ class CSVLoader:
         improvements = []
         cant_improvements = []
 
+        print(reference_values)
+
         for i in range(self.num_rows):
             best_value = ''
             best_ratio = 0
+            value = self.data.loc[i, column]
+            if value in reference_values:
+                continue
             for ref_value in reference_values:
                 ratio = fuzz.ratio(self.data.loc[i, column], ref_value)
-                if ratio > best_ratio and ratio >= 50:
+                if ratio > best_ratio:
                     best_ratio = ratio
                     best_value = ref_value
 
-            if best_ratio > 0:
-                improvements.append(ImprovesItem(
-                    row=i,
-                    attr=[{
-                        "name": column,
-                        "value" : best_value}]
-                    ))
-            else:
-                cant_improvements.append(NotImprovesItem(
-                    row=i,
-                    attr=[column]
+            improvements.append(ImprovesItem(
+                row=i,
+                attr=[{
+                    "name": column,
+                    "value" : best_value}]
                 ))
 
         return improvements, cant_improvements
@@ -590,22 +582,47 @@ class CSVLoader:
         except (ValueError, TypeError, KeyError) as e:
             raise ValueError(f"Failed to process batch for error fixing. Error: {e}")
 
-    def fix_typography_data(self, column_list: List[str], few_shot_context: List[Tuple[str, str]] = None, batch_size: int = 50):
-        improvements = []
-        cant_improvements = []
+    def _fix_typography_data_segment(self, segment_data: pd.DataFrame, few_shot_context: List[Tuple[str, str]]):
+        input_payload = {
+            "data": segment_data.to_csv(index=True),
+            "context": str(few_shot_context),
+        }
+        content = self._invoke_llm_for_json(FIX_GRAMMAR_PROMPTS, input_payload)
+        response = PotentialErrorQueryResponse(**content)
+        return response
 
-        if column_list is None or len(column_list) == 0:
+    def fix_typography_data(
+            self,
+            column_list: Optional[List[str]] = None,
+            few_shot_context: Optional[List[Tuple[str, str]]] = None,
+            batch_size: int = 50,
+            max_workers: Optional[int] = None,
+    ):
+        if not column_list:
             column_list = self.data.columns.tolist()
 
-        for start_index in range(0, self.num_rows, batch_size):
-            end_index = min(start_index + batch_size, self.num_rows)
-            segment_data = self.data[column_list].iloc[start_index:end_index]
-            response = self._fix_typography_data_segment(segment_data, few_shot_context)
-            if response:
-                improvements.extend(response.improves)
-                cant_improvements.extend(response.error)
+        batches: List[pd.DataFrame] = []
+        for start in range(0, self.num_rows, batch_size):
+            end = min(start + batch_size, self.num_rows)
+            batches.append(self.data[column_list].iloc[start:end].copy())
 
+        improvements, cant_improvements = [], []
+        max_workers = max_workers or min(32, len(batches))
+
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_idx = {
+                executor.submit(self._fix_typography_data_segment, batch, few_shot_context): idx
+                for idx, batch in enumerate(batches)
+            }
+            for future in as_completed(future_to_idx):
+                idx = future_to_idx[future]
+                try:
+                    resp = future.result()
+                    if resp:
+                        improvements.extend(resp.improves)
+                        cant_improvements.extend(resp.error)
+                except Exception as exc:
+                    cant_improvements.append({"batch_index": idx, "error": str(exc)})
         return improvements, cant_improvements
-
 
 
