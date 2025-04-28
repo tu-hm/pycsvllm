@@ -300,7 +300,7 @@ TXN298,Annual Software License,Software,1,5489.81,5489.81,2024-11-02,TechMart In
 TXN299,Notepad,Stationery,11,1.23,13.53,2024-07-25,QuickDeliver Ltd.,Lisa Parks
 TXN300,Laptop,Electronics,1,871.95,871.95,2024-11-25,OfficeSupplies Co.,Kayla Hanson
 TXN301,Printer,Electronics,3,179.61,538.83,2024-11-25,CloudSoft Corp.,Dawn Padilla
-TXN302,PrinterA,Electronics,13,234.5,3048.5,2024-05-04,CloudSoft Corp.,Cynthia Jenkins
+TXN302,Printer A,Electronics,13,234.5,3048.5,2024-05-04,CloudSoft Corp.,Cynthia Jenkins
 TXN303,Laptop Bag,Accessories,18,42.31,761.58,2024-08-14,TechMart Inc.,Aaron Hopkins
 TXN304,Monitor,Electronics,11,278.12,3059.32,2024-12-30,CloudSoft Corp.,Nicole Clay
 TXN305,Stapler,Office Supplies,11,5.46,60.06,2024-05-15,TechMart Inc.,Kevin Adams
@@ -426,7 +426,7 @@ TXN424,Printer Ink,Stationery,5,18.61,93.05,2024-03-21,QuickDeliver Ltd.,Laura W
 TXN425,Printer Ink,Stationery,3,18.22,54.66,2024-01-06,OfficeSupplies Co.,Stephanie Bennett
 TXN426,Notepad,Stationery,17,2.55,43.35,2024-10-31,CloudSoft Corp.,Stephanie Bennett
 TXN427,Annual Software License,Software,1,5117.84,5117.84,2024-01-13,CloudSoft Corp.,Jasmine Mcgee
-TXN428,Laptop Bag,Accessories,12,20.3,243.6,2024-04-19,FurniWorks Ltd.,Stephanie Bennett
+TXN428,Laptop Bags,Accessories,12,20.3,243.6,2024-04-19,FurniWorks Ltd.,Stephanie Bennett
 TXN429,Laptop Bag,Accessories,18,34.97,629.46,2024-03-23,OfficeSupplies Co.,Todd James
 TXN430,Laptop,Electronics,17,844.38,14354.46,2024-09-11,QuickDeliver Ltd.,Stephanie Bennett
 TXN431,Annual Software License,Software,1,8617.42,8617.42,2024-09-09,TechMart Inc.,Kelly Joseph

@@ -6,7 +6,28 @@ Also given you the few shot context in listing as pair that if I have as provide
 
 Your response should follow the struct I provided, not other result or explanation or comment else.
 
-Number Formatting Standardization Rules:
+
+**Standardization Rules**
+Plain integers: digit-only strings → integer → output with a fixed decimal portion if requested (123456 → 123456.00 when the desired format is decimal).
+
+Thousands separators: strip , or . thousands marks before parsing (1.234.567 → 1234567).
+
+Alternate decimal marks: convert a lone , acting as a decimal separator to . (123,45 → 123.45).
+
+Decorated numbers: remove currency symbols, percent signs, or other non-numeric characters, then convert
+
+$1,234.56 → 1234.56
+
+95% → 0.95 or 95.00 ↪ choose according to the requested column format or schema.
+
+Phone numbers (if identified as such by the schema or format list): do not treat as numeric; leave untouched or convert to your chosen canonical phone pattern (e.g. +84901234567).
+
+Verbal numbers: resolve common textual or mixed expressions into numerals ("two hundred" → 200, "hai trăm mười năm" → 215).
+
+Unresolvable values: if you cannot confidently standardize a cell, flag it as an error instead of guessing.
+
+
+**Number Formatting Standardization Rules**:
 Apply the following number formatting standardization rules to columns/data fields containing numerical values. The goal is to convert all numerical representations into a single, consistent standard format, using a dot (.) as the decimal separator and no thousand separators.
 
 **Input:**
@@ -56,23 +77,6 @@ Modify *only* the values within the specified columns according to the standardi
         }}
     ]
 }}
-
-Cases to handle:
--   **Concatenated Numbers:** Identify sequences of digits only as integers.
-    * Example: `123456789` -> `123456789.00` (or the final standard decimal format)
-    * Example: `1234,00` -> `1234` (or the final standard integer format)
--   **Numbers with Thousand Separators:** Remove common thousand separators (like `,` or `.`) before converting to a number.
-    * Example: `1.234.567` -> `1234567`
--   **Decimal Numbers with Different Separators:** Convert the decimal separator (if not `.`) to a dot (`.`).
-    * Example: `123,45` -> `123.45`
--   **Complex Formats or Numbers with Symbols:** Identify and remove non-numeric symbols before standardization. The LLM should use context to understand the true meaning of the number string.
-    * Example: `$1,234.56` -> `1234.56`
-    * Example: `95%` -> `0.95` (or `95.00` depending on how you want to represent percentages after standardization - clarify in specific instructions if needed)
-    * Example: `€1000` -> `1000.00`
--   **Phone Number Format:** For fields identified as phone numbers in the schema or context, either retain the original format or standardize to a specific phone number format (clarify the desired standard format if standardization is needed). The LLM needs to distinguish phone numbers from other types of numbers.
-    * Example: `(84) 90 123 4567` -> Keep as is, or standardize to `+84901234567` (clarify)
--   **Number that describe with text:** for some number can describe by text
-    * Example: `2 hundreds` -> 200, `hai trăm mười năm` -> 215,
 """
 
 PROMPT_FIX_DATETIME_FORMATION = """

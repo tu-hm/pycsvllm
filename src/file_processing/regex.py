@@ -66,16 +66,14 @@ def normalise(text: str, strip_diacritics: bool = True) -> str:
         text = "".join(ch for ch in text if ord(ch) not in _COMBINING)
     return text.upper()
 
-# ---------------------------------------------------------------------------
 
 @lru_cache(maxsize=256)
 def _allowed_chars(pattern: str) -> List[Set[str]]:
-    """Return the set of *legal* characters for each position in the pattern."""
     res: List[Set[str]] = []
     i = 0
     while i < len(pattern):
         m = _TOKEN_RE.match(pattern, i)
-        if not m:          # any literal we didn't understand
+        if not m:
             res.append(set(ALNUM + "-"))
             i += 1
             continue
@@ -90,11 +88,7 @@ def _allowed_chars(pattern: str) -> List[Set[str]]:
         else:
             res.append(set(ALNUM + "-"))
     return res
-
-# ---------------------------------------------------------------------------
-
 def _heuristic(s: str, allowed: List[Set[str]]) -> int:
-    """Minimum edits *still required* to make s legal (admissible for A*)."""
     return sum(ch not in allowed[i] for i, ch in enumerate(s[:len(allowed)]))
 
 def correct_to_pattern(
@@ -106,7 +100,6 @@ def correct_to_pattern(
     allow_insertion: bool = True,
     max_edits: int = 1000,
 ) -> Optional[str]:
-    # ---------- local helpers (use enclosing scope variables) --------------
     def _push(candidate: str, g: int, c: int):
         h = _heuristic(candidate, allowed)
         heapq.heappush(pq, (g + h, g, c, candidate))
@@ -121,14 +114,12 @@ def correct_to_pattern(
     rx = re.compile(pattern) if isinstance(pattern, str) else pattern
     wants_hyphen = "-" in rx.pattern
     allowed = _allowed_chars(rx.pattern)
-    max_len = len(allowed) + max_edits        # simple length guard
+    max_len = len(allowed) + max_edits
 
     start = normalise(raw, strip_diacritics=strip_diacritics)
     if rx.fullmatch(start):
         return start
 
-    # ---------- A* SEARCH ---------------------------------------------------
-    # heap item: (f = g + h, g = edits, cost, candidate_string)
     h0 = _heuristic(start, allowed)
     pq: List[Tuple[int, int, int, str]] = [(h0, 0, 0, start)]
     seen: Dict[str, Tuple[int, int]] = {start: (0, 0)}
@@ -138,9 +129,8 @@ def correct_to_pattern(
         if edits > max_edits:
             continue
 
-        # Generate neighbours ------------------------------------------------
         L = len(s)
-        # 1. single-char substitutions from CONFUSIONS
+
         for i, ch in enumerate(s):
             for alt, pen in CONFUSIONS.get(ch, ()):
                 if alt in allowed[i] and alt != ch:
@@ -152,7 +142,6 @@ def correct_to_pattern(
                             return cand
                         _push(candidate=cand, g=g, c=new_cost)
 
-        # 2. deletion
         for i in range(L):
             cand = s[:i] + s[i + 1 :]
             if len(cand) and len(cand) <= max_len and _record_better(cand, edits + 1, cost + 1, seen):
@@ -160,7 +149,6 @@ def correct_to_pattern(
                     return cand
                 _push(candidate=cand, g=edits + 1, c=cost + 1)
 
-        # 3. hyphen insertion where pattern wants it
         if wants_hyphen and "-" not in s:
             for i in range(1, L):
                 cand = s[:i] + "-" + s[i:]
@@ -169,7 +157,6 @@ def correct_to_pattern(
                         return cand
                     _push(candidate=cand, g=edits + 1, c=cost + 1)
 
-        # 4. transposition
         if allow_transpose:
             for i in range(L - 1):
                 if s[i] == s[i + 1]:
@@ -180,7 +167,6 @@ def correct_to_pattern(
                         return cand
                     _push(candidate=cand, g=edits + 1, c=cost + 1)
 
-        # 5. insertion of any legal char
         if allow_insertion:
             for i in range(L + 1):
                 legal_here = allowed[i] if i < len(allowed) else allowed[-1]
@@ -191,8 +177,7 @@ def correct_to_pattern(
                             return cand
                         _push(candidate=cand, g=edits + 1, c=cost + 2)
 
-    return None  # exhausted search
-
+    return None
 if __name__ == "__main__":
     pattern = r"USER\d{3}[A-Z]"
     samples = [

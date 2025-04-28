@@ -1,13 +1,16 @@
 import json
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import List, Dict, Any, Tuple, Optional
-
+import math
+import numbers
 import numpy as np
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
 import pandas as pd
+from jsonschema import validators
 from jsonschema.validators import Draft202012Validator
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.language_models import BaseChatModel
+from langchain_core.prompts import ChatPromptTemplate
 from thefuzz import fuzz
+from typing import List, Dict, Any, Tuple, Optional
 
 from src.file_processing.regex import correct_to_pattern
 from src.file_processing.schema import (
@@ -257,7 +260,22 @@ class CSVLoader:
 
     @staticmethod
     def validate_row(row_data: Dict[str, Any], schema: Dict[str, Any]) -> List[Dict[str, Any]]:
-        validator = Draft202012Validator(schema)
+        def is_nan(x):
+            return isinstance(x, numbers.Real) and math.isnan(x)
+        def validator_accepting_nan_as_null(base_cls):
+            """
+            Return a subclass of `base_cls` whose "null" type check also
+            returns True for NaN and numpy.nan.
+            """
+            tc = base_cls.TYPE_CHECKER.redefine(
+                "null",
+                lambda checker, inst: inst is None  # genuine null
+                                      or is_nan(inst)  # float('nan')
+                                      or (isinstance(inst, np.generic) and np.isnan(inst))  # numpy.nan
+            )
+            return validators.extend(base_cls, type_checker=tc)
+
+        validator = validator_accepting_nan_as_null(Draft202012Validator)(schema)
         errors = []
         for error in validator.iter_errors(row_data):
             attribute_name = error.path[0] if error.path else "Row Level"
@@ -266,10 +284,11 @@ class CSVLoader:
 
     @classmethod
     def validate_dataset(cls, df: pd.DataFrame, schema: Dict[str, Any]) -> List[Dict[str, Any]]:
+        df_clean = df.where(df.notna(), None)
         validation_results = []
-        for index, row in df.iterrows():
+        for index in range(df_clean.shape[0]):
 
-            row_dict = row.map(lambda x: x.item() if hasattr(x, 'item') else x).to_dict()
+            row_dict = df_clean.iloc[index].to_dict()
             errors = cls.validate_row(row_dict, schema)
             if errors:
                 validation_results.append({
@@ -530,7 +549,6 @@ class CSVLoader:
             pattern = self.schema['properties'][column]['pattern']
 
         improvements = []
-        cant_improvements = []
 
         for i in range(self.num_rows):
             improvements.append(ImprovesItem(
@@ -540,7 +558,7 @@ class CSVLoader:
                         "value" : correct_to_pattern(pattern,  self.data.loc[i, column])}]
                 ))
 
-        return improvements, cant_improvements
+        return improvements
 
     def fix_reference_value_error(self, column: str, reference_values: list[str]):
         improvements = []

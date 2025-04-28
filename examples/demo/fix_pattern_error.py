@@ -10,7 +10,7 @@ print(schema_data.json_schema)
 dirty_data = CSVLoader('../public/company-purchasing-dataset/messy_pattern_spend_analysis_dataset.csv')
 dirty_data.set_schema(schema_data.json_schema)
 
-list_improve, error = dirty_data.fix_regex_pattern_error('TransactionID')
+list_improve = dirty_data.fix_regex_pattern_error('TransactionID')
 dirty_data.apply_improvements(list_improve)
 print(len(list_improve))
 dirty_data.data.to_csv('../public/company-purchasing-dataset/clean_pattern_data.csv', index=False)

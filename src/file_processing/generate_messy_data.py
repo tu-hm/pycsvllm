@@ -34,7 +34,7 @@ _FORMATTERS: List[Callable[[float], str]] = [
     _commas,
     _scientific,
     _words,
-    _eu_decimal,
+    # _eu_decimal,
 ]
 
 

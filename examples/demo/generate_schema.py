@@ -10,3 +10,5 @@ schema_data = original_data.generate_schema(reference_data=reference_data.data)
 schema = schema_data.json_schema
 beauty_schema_info = json.dumps(schema, indent=4)
 print(beauty_schema_info)
+
+print(CSVLoader.validate_dataset(original_data.data, schema))
