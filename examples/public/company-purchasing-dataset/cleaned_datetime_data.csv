@@ -1,6 +1,6 @@
 TransactionID,ItemName,Category,Quantity,UnitPrice,TotalCost,PurchaseDate,Supplier,Buyer
 TXN001,Desk Chair,Furniture,10,113.15,1131.5,2024-04-19,TechMart Inc.,Kelly Joseph
-TXN002,Stapler,Office Supplies,16,12.62,201.92,2024-07-06,CloudSoft Corp.,Kelly Joseph
+TXN002,Stapler,Office Supplies,16,12.62,201.92,2024-06-07,CloudSoft Corp.,Kelly Joseph
 TXN003,Annual Software License,Software,1,5649.34,5649.34,2024-09-10,TechMart Inc.,Kelly Joseph
 TXN004,Notepad,Stationery,13,2.92,37.96,2024-01-21,FurniWorks Ltd.,Luis Holland
 TXN005,Notepad,Stationery,19,1.39,26.41,2024-02-03,TechMart Inc.,Cynthia Jenkins
@@ -30,14 +30,14 @@ TXN028,Desk Chair,Furniture,6,187.26,1123.56,2024-08-10,TechMart Inc.,Dawn Padil
 TXN029,Laptop Bag,Accessories,5,30.33,151.65,2024-10-11,OfficeSupplies Co.,Stephanie Bennett
 TXN030,Printer,Electronics,4,232.03,928.12,2024-06-15,OfficeSupplies Co.,Aaron Hopkins
 TXN031,Laptop,Electronics,16,980.67,15690.72,2024-05-13,QuickDeliver Ltd.,Luis Holland
-TXN032,Annual Software License,Software,1,5760.09,5760.09,2024-01-08,TechMart Inc.,Aaron Hopkins
+TXN032,Annual Software License,Software,1,5760.09,5760.09,January 8t8 ’24,TechMart Inc.,Aaron Hopkins
 TXN033,Monitor,Electronics,18,296.04,5328.72,2024-01-14,TechMart Inc.,Kevin Adams
 TXN034,Desk Chair,Furniture,3,106.75,320.25,2024-04-20,CloudSoft Corp.,Dawn Padilla
 TXN035,Annual Software License,Software,1,5563.23,5563.23,2024-10-26,TechMart Inc.,Laura White
 TXN036,Notepad,Stationery,13,2.62,34.06,2024-10-19,OfficeSupplies Co.,Stephanie Bennett
 TXN037,Printer Ink,Stationery,8,12.63,101.04,2024-09-11,OfficeSupplies Co.,Rebecca Bell
-TXN038,Whiteboard,Furniture,2,124.14,248.28,2024-05-08,FurniWorks Ltd.,Jessica Hodges
-TXN039,Laptop,Electronics,4,989.93,3959.72,2024-06-10,FurniWorks Ltd.,Nicole Clay
+TXN038,Whiteboard,Furniture,2,124.14,248.28,May 8t8 ’24,FurniWorks Ltd.,Jessica Hodges
+TXN039,Laptop,Electronics,4,989.93,3959.72,2024-10-06,FurniWorks Ltd.,Nicole Clay
 TXN040,Printer,Electronics,3,170.05,510.15,2024-09-02,QuickDeliver Ltd.,Rebecca Bell
 TXN041,Printer Ink,Stationery,8,13.86,110.88,2024-06-13,OfficeSupplies Co.,Dawn Padilla
 TXN042,Whiteboard,Furniture,3,108.27,324.81,2024-08-25,FurniWorks Ltd.,Kayla Hanson
@@ -72,7 +72,7 @@ TXN070,Desk Chair,Furniture,11,118.0,1298.0,2024-03-19,OfficeSupplies Co.,Walter
 TXN071,Stapler,Office Supplies,7,14.31,100.17,2024-03-02,OfficeSupplies Co.,Melissa Mckee
 TXN072,Notepad,Stationery,5,1.97,9.85,2024-05-20,TechMart Inc.,Kevin Adams
 TXN073,Laptop,Electronics,2,979.47,1958.94,2024-08-13,TechMart Inc.,Jasmine Mcgee
-TXN074,Laptop Bag,Accessories,5,46.27,231.35,2024-05-20,FurniWorks Ltd.,Luis Holland
+TXN074,Laptop Bag,Accessories,5,46.27,231.35,May 20nt ’24,FurniWorks Ltd.,Luis Holland
 TXN075,Stapler,Office Supplies,8,10.97,87.76,2024-12-27,QuickDeliver Ltd.,Jasmine Mcgee
 TXN076,Laptop,Electronics,2,903.12,1806.24,2024-02-04,TechMart Inc.,Noah Long
 TXN077,Printer,Electronics,18,281.14,5060.52,2024-10-06,OfficeSupplies Co.,Jessica Hodges
@@ -101,11 +101,11 @@ TXN099,Annual Software License,Software,1,9534.43,9534.43,2024-04-29,FurniWorks 
 TXN100,Laptop Bag,Accessories,10,20.4,204.0,2024-11-23,QuickDeliver Ltd.,Jasmine Mcgee
 TXN101,Laptop Bag,Accessories,17,24.34,413.78,2024-10-05,OfficeSupplies Co.,Todd James
 TXN102,Printer,Electronics,1,214.63,214.63,2024-08-02,TechMart Inc.,Walter Pena
-TXN103,Annual Software License,Software,1,8578.72,8578.72,2024-10-04,TechMart Inc.,Nicole Clay
+TXN103,Annual Software License,Software,1,8578.72,8578.72,2024-04-10,TechMart Inc.,Nicole Clay
 TXN104,Printer Ink,Stationery,11,11.27,123.97,2024-08-29,CloudSoft Corp.,Jasmine Mcgee
 TXN105,Laptop,Electronics,1,848.76,848.76,2024-12-25,CloudSoft Corp.,Nicole Clay
 TXN106,Whiteboard,Furniture,6,115.95,695.7,2024-12-24,OfficeSupplies Co.,Walter Pena
-TXN107,Whiteboard,Furniture,2,124.67,249.34,2024-09-08,TechMart Inc.,Melissa Mckee
+TXN107,Whiteboard,Furniture,2,124.67,249.34,2024-08-09,TechMart Inc.,Melissa Mckee
 TXN108,Laptop Bag,Accessories,16,23.11,369.76,2024-08-25,FurniWorks Ltd.,Stephanie Bennett
 TXN109,Printer,Electronics,6,286.22,1717.32,2024-10-06,OfficeSupplies Co.,Aaron Hopkins
 TXN110,Whiteboard,Furniture,14,175.56,2457.84,2024-08-17,FurniWorks Ltd.,Todd James
@@ -115,7 +115,7 @@ TXN113,Stapler,Office Supplies,19,11.32,215.08,2024-07-11,QuickDeliver Ltd.,Todd
 TXN114,Notepad,Stationery,15,2.49,37.35,2024-01-02,TechMart Inc.,Kayla Hanson
 TXN115,Desk Chair,Furniture,18,150.2,2703.6,2024-04-26,TechMart Inc.,Kelly Joseph
 TXN116,Whiteboard,Furniture,19,174.66,3318.54,2024-08-12,QuickDeliver Ltd.,Amy Warner
-TXN117,Printer,Electronics,15,194.47,2917.05,2024-09-07,OfficeSupplies Co.,Kayla Hanson
+TXN117,Printer,Electronics,15,194.47,2917.05,2024-07-09,OfficeSupplies Co.,Kayla Hanson
 TXN118,Printer Ink,Stationery,16,19.45,311.2,2024-01-08,QuickDeliver Ltd.,Jessica Hodges
 TXN119,Stapler,Office Supplies,19,9.39,178.41,2024-12-19,TechMart Inc.,Cynthia Jenkins
 TXN120,Laptop Bag,Accessories,12,38.94,467.28,2024-12-27,QuickDeliver Ltd.,Kelly Joseph
@@ -124,8 +124,8 @@ TXN122,Whiteboard,Furniture,2,186.73,373.46,2024-06-19,OfficeSupplies Co.,Luis H
 TXN123,Stapler,Office Supplies,16,12.78,204.48,2024-02-20,CloudSoft Corp.,Stephanie Bennett
 TXN124,Notepad,Stationery,1,2.72,2.72,2024-03-30,FurniWorks Ltd.,Barry Johnson
 TXN125,Desk Chair,Furniture,6,118.67,712.02,2024-01-20,TechMart Inc.,Melissa Mckee
-TXN126,Laptop,Electronics,4,994.88,3979.52,2024-03-04,FurniWorks Ltd.,Laura White
-TXN127,Printer Ink,Stationery,3,18.63,55.89,2024-11-05,CloudSoft Corp.,Barry Johnson
+TXN126,Laptop,Electronics,4,994.88,3979.52,2024-04-03,FurniWorks Ltd.,Laura White
+TXN127,Printer Ink,Stationery,3,18.63,55.89,2024-05-11,CloudSoft Corp.,Barry Johnson
 TXN128,Stapler,Office Supplies,8,12.92,103.36,2024-07-31,FurniWorks Ltd.,Walter Pena
 TXN129,Printer Ink,Stationery,10,14.97,149.7,2024-05-01,QuickDeliver Ltd.,Amy Warner
 TXN130,Laptop Bag,Accessories,10,26.48,264.8,2024-04-20,CloudSoft Corp.,Luis Holland
@@ -141,8 +141,8 @@ TXN139,Monitor,Electronics,13,239.84,3117.92,2024-09-24,QuickDeliver Ltd.,Luis H
 TXN140,Printer Ink,Stationery,8,11.53,92.24,2024-02-29,OfficeSupplies Co.,Cynthia Jenkins
 TXN141,Annual Software License,Software,1,5452.69,5452.69,2024-05-12,FurniWorks Ltd.,Cynthia Jenkins
 TXN142,Annual Software License,Software,1,6342.34,6342.34,2024-06-27,CloudSoft Corp.,Jasmine Mcgee
-TXN143,Stapler,Office Supplies,13,8.92,115.96,April 9t9 ’24,TechMart Inc.,Kevin Adams
-TXN144,Laptop Bag,Accessories,18,41.98,755.64,June 12sn ’24,TechMart Inc.,Kelly Joseph
+TXN143,Stapler,Office Supplies,13,8.92,115.96,2024-04-09,TechMart Inc.,Kevin Adams
+TXN144,Laptop Bag,Accessories,18,41.98,755.64,2024-06-12,TechMart Inc.,Kelly Joseph
 TXN145,Desk Chair,Furniture,9,117.69,1059.21,2024-11-27,CloudSoft Corp.,Jasmine Mcgee
 TXN146,Desk Chair,Furniture,18,108.01,1944.18,2024-12-11,OfficeSupplies Co.,Cynthia Jenkins
 TXN147,Desk Chair,Furniture,16,132.2,2115.2,2024-10-26,QuickDeliver Ltd.,Laura White
@@ -203,7 +203,7 @@ TXN201,Stapler,Office Supplies,11,9.9,108.9,2024-04-16,OfficeSupplies Co.,Luis H
 TXN202,Printer Ink,Stationery,20,10.21,204.2,2024-04-27,FurniWorks Ltd.,Laura White
 TXN203,Stapler,Office Supplies,15,8.99,134.85,2024-02-28,OfficeSupplies Co.,Aaron Hopkins
 TXN204,Notepad,Stationery,9,2.2,19.8,2024-10-11,FurniWorks Ltd.,Kayla Hanson
-TXN205,Stapler,Office Supplies,17,12.61,214.37,2024-06-11,QuickDeliver Ltd.,Melissa Mckee
+TXN205,Stapler,Office Supplies,17,12.61,214.37,June 11ss ’24,QuickDeliver Ltd.,Melissa Mckee
 TXN206,Whiteboard,Furniture,5,159.04,795.2,2024-04-22,OfficeSupplies Co.,Jasmine Mcgee
 TXN207,Notepad,Stationery,1,2.25,2.25,2024-02-04,OfficeSupplies Co.,Aaron Hopkins
 TXN208,Stapler,Office Supplies,10,6.92,69.2,2024-04-21,OfficeSupplies Co.,Nicole Clay
@@ -216,7 +216,7 @@ TXN214,Desk Chair,Furniture,8,181.38,1451.04,2024-03-02,FurniWorks Ltd.,Laura Wh
 TXN215,Notepad,Stationery,17,1.34,22.78,2024-05-20,OfficeSupplies Co.,Laura White
 TXN216,Desk Chair,Furniture,7,164.7,1152.9,2024-02-21,QuickDeliver Ltd.,Kayla Hanson
 TXN217,Notepad,Stationery,13,2.23,28.99,2024-03-25,OfficeSupplies Co.,Lisa Parks
-TXN218,Notepad,Stationery,2,1.76,3.52,2024-02-22,QuickDeliver Ltd.,Kelly Joseph
+TXN218,Notepad,Stationery,2,1.76,3.52,February 22nn ’24,QuickDeliver Ltd.,Kelly Joseph
 TXN219,Stapler,Office Supplies,14,8.34,116.76,2024-11-26,FurniWorks Ltd.,Nicole Clay
 TXN220,Monitor,Electronics,10,267.91,2679.1,2024-07-10,TechMart Inc.,Melissa Mckee
 TXN221,Laptop,Electronics,11,808.22,8890.42,2024-09-02,TechMart Inc.,Rebecca Bell
@@ -231,7 +231,7 @@ TXN229,Desk Chair,Furniture,10,155.66,1556.6,2024-10-15,FurniWorks Ltd.,Rebecca 
 TXN230,Printer,Electronics,4,175.06,700.24,2024-10-14,TechMart Inc.,Lisa Parks
 TXN231,Printer Ink,Stationery,11,16.66,183.26,2024-04-13,TechMart Inc.,Kelly Joseph
 TXN232,Monitor,Electronics,15,381.95,5729.25,2024-05-11,OfficeSupplies Co.,Jasmine Mcgee
-TXN233,Stapler,Office Supplies,15,9.75,146.25,2024-11-08,FurniWorks Ltd.,Walter Pena
+TXN233,Stapler,Office Supplies,15,9.75,146.25,November 8t8 ’24,FurniWorks Ltd.,Walter Pena
 TXN234,Stapler,Office Supplies,12,8.0,96.0,2024-09-22,FurniWorks Ltd.,Lisa Parks
 TXN235,Stapler,Office Supplies,14,12.62,176.68,2024-02-29,FurniWorks Ltd.,Kayla Hanson
 TXN236,Laptop Bag,Accessories,1,20.72,20.72,2024-07-03,FurniWorks Ltd.,Jasmine Mcgee
@@ -253,7 +253,7 @@ TXN251,Stapler,Office Supplies,19,6.33,120.27,2024-05-22,CloudSoft Corp.,Walter 
 TXN252,Laptop,Electronics,11,960.7,10567.7,2024-10-22,TechMart Inc.,Todd James
 TXN253,Annual Software License,Software,1,5315.45,5315.45,2024-11-08,FurniWorks Ltd.,Melissa Mckee
 TXN254,Stapler,Office Supplies,1,8.77,8.77,2024-04-20,TechMart Inc.,Stephanie Bennett
-TXN255,Whiteboard,Furniture,17,152.66,2595.22,2024-08-12,OfficeSupplies Co.,Jessica Hodges
+TXN255,Whiteboard,Furniture,17,152.66,2595.22,2024-12-08,OfficeSupplies Co.,Jessica Hodges
 TXN256,Monitor,Electronics,1,233.93,233.93,2024-07-12,TechMart Inc.,Laura White
 TXN257,Desk Chair,Furniture,2,198.18,396.36,2024-09-18,OfficeSupplies Co.,Melissa Mckee
 TXN258,Stapler,Office Supplies,1,14.02,14.02,2024-12-21,QuickDeliver Ltd.,Cynthia Jenkins
@@ -296,7 +296,7 @@ TXN294,Printer,Electronics,12,192.13,2305.56,2024-01-15,OfficeSupplies Co.,Noah 
 TXN295,Laptop Bag,Accessories,15,22.7,340.5,2024-12-30,TechMart Inc.,Laura White
 TXN296,Whiteboard,Furniture,5,109.14,545.7,2024-09-28,QuickDeliver Ltd.,Laura White
 TXN297,Annual Software License,Software,1,9503.77,9503.77,2024-11-15,QuickDeliver Ltd.,Lisa Parks
-TXN298,Annual Software License,Software,1,5489.81,5489.81,2024-11-02,TechMart Inc.,Todd James
+TXN298,Annual Software License,Software,1,5489.81,5489.81,2024-02-11,TechMart Inc.,Todd James
 TXN299,Notepad,Stationery,11,1.23,13.53,2024-07-25,QuickDeliver Ltd.,Lisa Parks
 TXN300,Laptop,Electronics,1,871.95,871.95,2024-11-25,OfficeSupplies Co.,Kayla Hanson
 TXN301,Printer,Electronics,3,179.61,538.83,2024-11-25,CloudSoft Corp.,Dawn Padilla
@@ -374,7 +374,7 @@ TXN372,Printer Ink,Stationery,4,12.07,48.28,2024-05-03,OfficeSupplies Co.,Aaron 
 TXN373,Notepad,Stationery,7,1.41,9.87,2024-01-17,CloudSoft Corp.,Stephanie Bennett
 TXN374,Whiteboard,Furniture,2,180.47,360.94,2024-02-13,OfficeSupplies Co.,Melissa Mckee
 TXN375,Printer Ink,Stationery,4,19.92,79.68,2024-06-11,TechMart Inc.,Kevin Adams
-TXN376,Monitor,Electronics,1,254.54,254.54,2024-01-11,QuickDeliver Ltd.,Jasmine Mcgee
+TXN376,Monitor,Electronics,1,254.54,254.54,2024-11-01,QuickDeliver Ltd.,Jasmine Mcgee
 TXN377,Printer,Electronics,19,286.65,5446.35,2024-05-14,QuickDeliver Ltd.,Kelly Joseph
 TXN378,Desk Chair,Furniture,2,199.59,399.18,2024-01-25,QuickDeliver Ltd.,Kelly Joseph
 TXN379,Stapler,Office Supplies,17,8.77,149.09,2024-01-13,QuickDeliver Ltd.,Stephanie Bennett
@@ -382,7 +382,7 @@ TXN380,Printer,Electronics,18,168.63,3035.34,2024-08-09,TechMart Inc.,Laura Whit
 TXN381,Annual Software License,Software,1,6658.84,6658.84,2024-04-25,FurniWorks Ltd.,Aaron Hopkins
 TXN382,Printer,Electronics,9,166.38,1497.42,2024-03-06,OfficeSupplies Co.,Jasmine Mcgee
 TXN383,Laptop,Electronics,13,885.9,11516.7,2024-12-22,QuickDeliver Ltd.,Dawn Padilla
-TXN384,Monitor,Electronics,3,363.3,1089.9,July 28n8 ’24,TechMart Inc.,Jasmine Mcgee
+TXN384,Monitor,Electronics,3,363.3,1089.9,2024-07-28,TechMart Inc.,Jasmine Mcgee
 TXN385,Whiteboard,Furniture,3,122.09,366.27,2024-04-25,QuickDeliver Ltd.,Cynthia Jenkins
 TXN386,Printer,Electronics,10,171.14,1711.4,2024-03-01,OfficeSupplies Co.,Kelly Joseph
 TXN387,Laptop,Electronics,8,949.48,7595.84,2024-05-22,TechMart Inc.,Todd James
@@ -408,11 +408,11 @@ TXN406,Laptop,Electronics,5,840.12,4200.6,2024-09-27,TechMart Inc.,Kelly Joseph
 TXN407,Notepad,Stationery,16,2.67,42.72,2024-03-10,TechMart Inc.,Lisa Parks
 TXN408,Monitor,Electronics,11,230.1,2531.1,2024-12-24,TechMart Inc.,Walter Pena
 TXN409,Laptop Bag,Accessories,16,30.6,489.6,2024-11-11,CloudSoft Corp.,Kelly Joseph
-TXN410,Notepad,Stationery,20,1.29,25.8,May 4t4 ’24,TechMart Inc.,Kelly Joseph
+TXN410,Notepad,Stationery,20,1.29,25.8,2024-05-04,TechMart Inc.,Kelly Joseph
 TXN411,Laptop,Electronics,12,855.91,10270.92,2024-03-22,OfficeSupplies Co.,Luis Holland
 TXN412,Printer,Electronics,20,225.82,4516.4,2024-03-15,FurniWorks Ltd.,Aaron Hopkins
 TXN413,Whiteboard,Furniture,16,140.62,2249.92,2024-03-07,QuickDeliver Ltd.,Aaron Hopkins
-TXN414,Monitor,Electronics,12,370.17,4442.04,November 4t4 ’24,FurniWorks Ltd.,Kevin Adams
+TXN414,Monitor,Electronics,12,370.17,4442.04,2024-11-04,FurniWorks Ltd.,Kevin Adams
 TXN415,Stapler,Office Supplies,14,8.4,117.6,2024-09-30,FurniWorks Ltd.,Dawn Padilla
 TXN416,Stapler,Office Supplies,19,12.71,241.49,2024-01-29,QuickDeliver Ltd.,Kevin Adams
 TXN417,Printer Ink,Stationery,2,18.49,36.98,2024-03-25,CloudSoft Corp.,Noah Long
@@ -431,7 +431,7 @@ TXN429,Laptop Bag,Accessories,18,34.97,629.46,2024-03-23,OfficeSupplies Co.,Todd
 TXN430,Laptop,Electronics,17,844.38,14354.46,2024-09-11,QuickDeliver Ltd.,Stephanie Bennett
 TXN431,Annual Software License,Software,1,8617.42,8617.42,2024-09-09,TechMart Inc.,Kelly Joseph
 TXN432,Whiteboard,Furniture,13,113.56,1476.28,2024-08-10,FurniWorks Ltd.,Walter Pena
-TXN433,Stapler,Office Supplies,3,5.49,16.47,May 16s6 ’24,QuickDeliver Ltd.,Noah Long
+TXN433,Stapler,Office Supplies,3,5.49,16.47,2024-05-16,QuickDeliver Ltd.,Noah Long
 TXN434,Annual Software License,Software,1,8104.62,8104.62,2024-10-17,FurniWorks Ltd.,Aaron Hopkins
 TXN435,Printer,Electronics,7,265.41,1857.87,2024-03-18,OfficeSupplies Co.,Jasmine Mcgee
 TXN436,Laptop,Electronics,2,806.52,1613.04,2024-05-16,QuickDeliver Ltd.,Stephanie Bennett
@@ -443,13 +443,13 @@ TXN441,Stapler,Office Supplies,13,13.56,176.28,2024-01-04,FurniWorks Ltd.,Stepha
 TXN442,Printer,Electronics,6,194.52,1167.12,2024-09-13,FurniWorks Ltd.,Dawn Padilla
 TXN443,Laptop,Electronics,11,968.59,10654.49,2024-12-08,QuickDeliver Ltd.,Noah Long
 TXN444,Desk Chair,Furniture,13,154.6,2009.8,2024-08-05,QuickDeliver Ltd.,Dawn Padilla
-TXN445,Whiteboard,Furniture,10,114.7,1147.0,June 14s4 ’24,CloudSoft Corp.,Barry Johnson
+TXN445,Whiteboard,Furniture,10,114.7,1147.0,2024-06-14,CloudSoft Corp.,Barry Johnson
 TXN446,Laptop,Electronics,1,953.39,953.39,2024-12-06,OfficeSupplies Co.,Jessica Hodges
 TXN447,Annual Software License,Software,1,6738.19,6738.19,2024-10-18,OfficeSupplies Co.,Kelly Joseph
 TXN448,Notepad,Stationery,7,2.96,20.72,2024-05-24,TechMart Inc.,Lisa Parks
 TXN449,Laptop Bag,Accessories,2,39.0,78.0,2024-03-12,CloudSoft Corp.,Nicole Clay
 TXN450,Annual Software License,Software,1,5047.01,5047.01,2024-09-21,OfficeSupplies Co.,Dawn Padilla
-TXN451,Laptop Bag,Accessories,6,29.86,179.16,2024-02-06,OfficeSupplies Co.,Amy Warner
+TXN451,Laptop Bag,Accessories,6,29.86,179.16,2024-06-02,OfficeSupplies Co.,Amy Warner
 TXN452,Printer,Electronics,18,152.01,2736.18,2024-03-22,QuickDeliver Ltd.,Noah Long
 TXN453,Stapler,Office Supplies,6,8.6,51.6,2024-09-03,FurniWorks Ltd.,Melissa Mckee
 TXN454,Stapler,Office Supplies,16,5.35,85.6,2024-07-31,CloudSoft Corp.,Luis Holland
@@ -461,41 +461,41 @@ TXN459,Annual Software License,Software,1,6685.33,6685.33,2024-04-23,TechMart In
 TXN460,Monitor,Electronics,11,282.5,3107.5,2024-04-02,CloudSoft Corp.,Melissa Mckee
 TXN461,Printer Ink,Stationery,14,11.02,154.28,2024-02-24,TechMart Inc.,Jessica Hodges
 TXN462,Laptop Bag,Accessories,17,34.66,589.22,2024-01-13,TechMart Inc.,Jasmine Mcgee
-TXN463,Notepad,Stationery,7,1.42,9.94,2024-06-04,CloudSoft Corp.,Laura White
-TXN464,Notepad,Stationery,3,2.98,8.94,January 20nt ’24,TechMart Inc.,Kevin Adams
+TXN463,Notepad,Stationery,7,1.42,9.94,2024-04-06,CloudSoft Corp.,Laura White
+TXN464,Notepad,Stationery,3,2.98,8.94,2024-01-20,TechMart Inc.,Kevin Adams
 TXN465,Stapler,Office Supplies,10,9.52,95.2,2024-07-18,TechMart Inc.,Lisa Parks
 TXN466,Desk Chair,Furniture,7,185.08,1295.56,2024-01-11,QuickDeliver Ltd.,Laura White
-TXN467,Printer Ink,Stationery,6,17.63,105.78,2024-06-12,CloudSoft Corp.,Todd James
-TXN468,Monitor,Electronics,17,202.33,3439.61,2024-02-08,QuickDeliver Ltd.,Walter Pena
+TXN467,Printer Ink,Stationery,6,17.63,105.78,2024-12-06,CloudSoft Corp.,Todd James
+TXN468,Monitor,Electronics,17,202.33,3439.61,2024-08-02,QuickDeliver Ltd.,Walter Pena
 TXN469,Desk Chair,Furniture,11,150.66,1657.26,2024-07-03,OfficeSupplies Co.,Laura White
 TXN470,Stapler,Office Supplies,10,14.35,143.5,2024-08-08,OfficeSupplies Co.,Jasmine Mcgee
 TXN471,Printer Ink,Stationery,15,18.14,272.1,2024-07-20,CloudSoft Corp.,Todd James
 TXN472,Laptop,Electronics,18,840.57,15130.26,2024-03-05,TechMart Inc.,Melissa Mckee
 TXN473,Annual Software License,Software,1,5151.72,5151.72,2024-07-29,TechMart Inc.,Kayla Hanson
-TXN474,Notepad,Stationery,16,1.81,28.96,2024-02-10,TechMart Inc.,Stephanie Bennett
+TXN474,Notepad,Stationery,16,1.81,28.96,2024-10-02,TechMart Inc.,Stephanie Bennett
 TXN475,Printer Ink,Stationery,16,13.12,209.92,2024-09-14,CloudSoft Corp.,Todd James
 TXN476,Annual Software License,Software,1,5159.92,5159.92,2024-10-11,TechMart Inc.,Dawn Padilla
 TXN477,Laptop Bag,Accessories,15,21.66,324.9,2024-12-14,OfficeSupplies Co.,Todd James
 TXN478,Printer Ink,Stationery,6,16.09,96.54,2024-10-08,OfficeSupplies Co.,Kevin Adams
 TXN479,Stapler,Office Supplies,2,14.14,28.28,2024-12-26,QuickDeliver Ltd.,Cynthia Jenkins
 TXN480,Printer Ink,Stationery,6,12.06,72.36,2024-07-28,CloudSoft Corp.,Walter Pena
-TXN481,Stapler,Office Supplies,6,7.0,42.0,2024-05-12,TechMart Inc.,Rebecca Bell
+TXN481,Stapler,Office Supplies,6,7.0,42.0,2024-12-05,TechMart Inc.,Rebecca Bell
 TXN482,Printer,Electronics,16,260.2,4163.2,2024-09-02,TechMart Inc.,Walter Pena
-TXN483,Monitor,Electronics,7,348.06,2436.42,April 25n5 ’24,QuickDeliver Ltd.,Todd James
+TXN483,Monitor,Electronics,7,348.06,2436.42,2024-04-25,QuickDeliver Ltd.,Todd James
 TXN484,Printer Ink,Stationery,10,18.07,180.7,2024-04-20,TechMart Inc.,Amy Warner
 TXN485,Printer,Electronics,16,200.15,3202.4,2024-10-13,OfficeSupplies Co.,Kayla Hanson
 TXN486,Laptop Bag,Accessories,19,27.44,521.36,2024-06-16,QuickDeliver Ltd.,Laura White
-TXN487,Notepad,Stationery,12,1.24,14.88,August 27n7 ’24,OfficeSupplies Co.,Lisa Parks
+TXN487,Notepad,Stationery,12,1.24,14.88,2024-08-27,OfficeSupplies Co.,Lisa Parks
 TXN488,Laptop,Electronics,18,969.94,17458.92,2024-06-06,TechMart Inc.,Walter Pena
 TXN489,Laptop,Electronics,15,836.99,12554.85,2024-12-18,CloudSoft Corp.,Walter Pena
 TXN490,Printer Ink,Stationery,9,13.57,122.13,2024-05-28,QuickDeliver Ltd.,Kayla Hanson
-TXN491,Laptop Bag,Accessories,5,20.67,103.35,April 18s8 ’24,QuickDeliver Ltd.,Aaron Hopkins
+TXN491,Laptop Bag,Accessories,5,20.67,103.35,2024-04-18,QuickDeliver Ltd.,Aaron Hopkins
 TXN492,Laptop Bag,Accessories,16,28.97,463.52,2024-11-09,OfficeSupplies Co.,Laura White
 TXN493,Laptop Bag,Accessories,12,23.55,282.6,2024-05-19,CloudSoft Corp.,Amy Warner
 TXN494,Printer Ink,Stationery,4,15.67,62.68,2024-07-03,CloudSoft Corp.,Todd James
-TXN495,Monitor,Electronics,4,310.34,1241.36,2024-01-09,QuickDeliver Ltd.,Kayla Hanson
+TXN495,Monitor,Electronics,4,310.34,1241.36,2024-09-01,QuickDeliver Ltd.,Kayla Hanson
 TXN496,Whiteboard,Furniture,19,104.12,1978.28,2024-08-20,QuickDeliver Ltd.,Noah Long
 TXN497,Laptop,Electronics,5,919.08,4595.4,2024-08-15,OfficeSupplies Co.,Walter Pena
-TXN498,Notepad,Stationery,3,1.51,4.53,2024-05-12,QuickDeliver Ltd.,Jessica Hodges
+TXN498,Notepad,Stationery,3,1.51,4.53,2024-12-05,QuickDeliver Ltd.,Jessica Hodges
 TXN499,Whiteboard,Furniture,17,162.01,2754.17,2024-03-14,FurniWorks Ltd.,Rebecca Bell
 TXN500,Stapler,Office Supplies,4,13.64,54.56,2024-03-02,TechMart Inc.,Noah Long

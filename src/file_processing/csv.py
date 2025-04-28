@@ -193,7 +193,7 @@ class CSVLoader:
         sample_data = self._get_representative_sample(sample_size)
 
         input_payload = {
-            "data": sample_data.to_csv(index=True),
+            "data": sample_data.to_csv(index=False),
             "ref_data": reference_data.to_json(),
             "column_info": str(other_column_info), # Provide structured info
         }
@@ -562,8 +562,6 @@ class CSVLoader:
 
     def fix_reference_value_error(self, column: str, reference_values: list[str]):
         improvements = []
-        cant_improvements = []
-
         print(reference_values)
 
         for i in range(self.num_rows):
@@ -585,7 +583,7 @@ class CSVLoader:
                     "value" : best_value}]
                 ))
 
-        return improvements, cant_improvements
+        return improvements
 
     def _fix_typography_data_segment(self, segment_data: pd.DataFrame, few_shot_context: List[Tuple[str, str]]):
         input_payload = {

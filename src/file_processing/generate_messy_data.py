@@ -34,34 +34,25 @@ _FORMATTERS: List[Callable[[float], str]] = [
     _commas,
     _scientific,
     _words,
-    # _eu_decimal,
+    _eu_decimal,
 ]
 
 
 def format_number_random(value):
-    """
-    Format *value* using a randomly chosen numeric style.
-
-    • Accepts int, float, or numeric string.
-    • Non-numeric input is returned unchanged.
-    • Never converts to str until **after** a formatter is chosen.
-    """
-    # --- keep it numeric ----------------------------------------------------
     try:
         num = float(value)
     except (TypeError, ValueError):
-        return value                      # give back strings like "abc"
+        return value
 
-    # --- choose only formatters that can handle *num* -----------------------
     candidates = []
     for fmt in _FORMATTERS:
         try:
-            fmt(num)                      # dry-run
+            fmt(num)
             candidates.append(fmt)
         except Exception:
             pass
 
-    if not candidates:                    # extremely unlikely
+    if not candidates:
         return str(value)
 
     return random.choice(candidates)(num)

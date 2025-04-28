@@ -10,7 +10,7 @@ incorrect_data.set_schema(schema)
 ref_value_category = schema['properties']['Category']['enum']
 print(type(ref_value_category))
 
-list_improve, error = incorrect_data.fix_reference_value_error('Category', ref_value_category)
+list_improve = incorrect_data.fix_reference_value_error('Category', ref_value_category)
 print(len(list_improve))
 incorrect_data.apply_improvements(list_improve)
 incorrect_data.data.to_csv('../public/company-purchasing-dataset/cleaned_ref_data.csv', index=False)
