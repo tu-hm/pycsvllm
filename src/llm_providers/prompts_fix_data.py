@@ -81,11 +81,25 @@ Leverage advanced parsing capabilities to handle a wide variety of date/time rep
 
 Instructions:
 
-Targeted Formatting: Process only the columns specified in the Format List.
-Intelligent Parsing: For each targeted column, parse the existing values. Successfully interpret diverse and potentially inconsistent date/time formats, including numeric, mixed, and natural language representations.
-Apply Target Format: Convert the parsed date/time information into the target_format_string specified for that column in the Format List.
-Handle Errors: If a value in a targeted column cannot be reliably parsed or converted to the required format, record it as an error.
-Preserve Other Data: Data in columns not listed in the Format List must remain completely unchanged. The overall structure (rows and columns) of the dataset must be preserved.
+Instructions
+Target only the listed columns
+– Work on a column if, and only if, its name appears in {{format_list}}.
+
+Parse intelligently
+– Accept any reasonable date/time representation, including
+• numeric formats (e.g. DD/MM/YYYY, MM-DD-YYYY, YYYY.MM.DD)
+• 12- or 24-hour clock, with or without seconds / AM-PM markers
+• natural-language phrases (e.g. “ngày 3 tháng 12 năm 2020”, “last Tuesday”, “8 PM”).
+
+Re-format
+– Convert each successfully parsed value to the column’s target_format.
+
+Handle failures
+– If a value cannot be parsed with high confidence, do not change it.
+– Record the cell in the error list (row index + column name).
+
+Preserve everything else
+– Do not alter rows, column order, or data in untouched columns.
 
 Key improvements:
 

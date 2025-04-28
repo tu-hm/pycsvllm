@@ -11,11 +11,11 @@ Please return only the json format in the result, not '''json or explain else.
 """
 
 FIND_JSON_SCHEMA_PROMPTS = """
-Objective: Generate a highly specific and valid JSON Schema conforming to Draft 2020-12, based on the provided data and context.
+Create an exact, Draft 2020-12 JSON Schema that describes one record (row) of the CSV dataset as precisely as the evidence allows.
 
 **Inputs You Will Receive**:
 
-1.  Data: Sample data (e.g., rows from a CSV, JSON objects, or similar structured format) representing the structure to be described by the schema.
+1.  Data: CSV dataset. Each row is an instance the schema must validate
 2.  Other context column info (Optional): Any additional information about the data, such as:
     * Field meanings or descriptions.
     * Known constraints (e.g., specific formats expected, required fields).

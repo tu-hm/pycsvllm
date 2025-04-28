@@ -1,5 +1,5 @@
 import json
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Any, Tuple
 
 import numpy as np
@@ -238,16 +238,6 @@ class CSVLoader:
              print(f"Warning: Returning empty improvements due to JSON decode error during error scan for range {row_range}.")
              return PotentialErrorQueryResponse(improves=[]) # Graceful fallback
 
-
-    def _adjust_improvement_row_indices(self, batch_start_index: int, items: List[ImprovesItem]) -> List[ImprovesItem]:
-        """Adjusts the row index of improvement items relative to the global DataFrame index."""
-        for item in items:
-            if hasattr(item, 'position') and hasattr(item.position, 'row'):
-                 item.position.row += batch_start_index
-            if hasattr(item, 'row'):
-                item.row += batch_start_index
-        return items
-
     def scan_error(self, schema: Dict[str, Any], batch_size: int = 10, prompt: str = GET_ISSUE_OF_DATA, other_context: str = '') -> List[ImprovesItem]:
         all_improvements: List[ImprovesItem] = []
         total_rows = self.num_rows
@@ -259,10 +249,7 @@ class CSVLoader:
 
             try:
                 batch_response = self._scan_error_for_range(schema=schema, row_range=(start_index, end_index), prompt=prompt, other_context=other_context)
-                adjusted_improvements = self._adjust_improvement_row_indices(
-                    start_index, batch_response.improves
-                )
-                all_improvements.extend(adjusted_improvements)
+                all_improvements.extend(batch_response.improves)
             except ValueError as e:
                 print(f"Warning: Skipping batch {start_index}-{end_index} due to error: {e}")
 
@@ -433,38 +420,6 @@ class CSVLoader:
             print(f"Warning: Failed to process batch for error fixing. Error: {e}")
             return []
 
-
-    def fix_error_schema(self,
-                         schema: Dict[str, Any],
-                         batch_size: int = 20,
-                         prompt: str = GET_DIRTY_DATA_ISSUE,
-                         other_context: str = '') -> List[ImprovesItem]:
-        all_suggested_fixes: List[ImprovesItem] = []
-        total_rows = self.num_rows
-
-
-        batch_args = []
-        for start_index in range(0, total_rows, batch_size):
-            end_index = min(start_index + batch_size, total_rows)
-            if start_index == end_index: continue
-            batch_df = self.get_range_data(start_index, end_index)
-            batch_args.append((schema, batch_df, start_index))
-
-        def process_batch(args):
-            batch_schema, df_batch, start_idx = args
-            print(f"Processing batch for fixing: Rows {start_idx} to {start_idx + len(df_batch)}")
-            items = self._fix_errors_for_batch(batch_schema, df_batch, prompt=prompt, other_context=other_context)
-            corrected_items = self._adjust_improvement_row_indices(start_idx, items)
-            return corrected_items
-
-        with ThreadPoolExecutor(max_workers=5) as executor:
-            results = list(executor.map(process_batch, batch_args))
-
-        for batch_result in results:
-            all_suggested_fixes.extend(batch_result)
-
-        return all_suggested_fixes
-
     @staticmethod
     def extract_column_schema(full_schema: dict, columns_to_extract):
         extracted_schema = {
@@ -508,7 +463,6 @@ class CSVLoader:
 
         try:
             content = self._invoke_llm_for_json(prompt, input_payload)
-            # print(content)
             response = PotentialErrorQueryResponse(**content)
             return response
         except (ValueError, TypeError, KeyError) as e:
@@ -516,35 +470,62 @@ class CSVLoader:
 
     def _fix_error(
             self,
-            column_list: list[str],
+            column_list: list[str] | None = None,
             batch_size: int = 50,
             prompt: str = PROMPT_FIX_NUMBER_FORMATION,
-            formation: List[Tuple[str, str]] = None,
-            few_shot_context: List[Tuple[str, str]] = None,
-         ):
-
-        improvements = []
-        cant_improvements = []
-
-        if column_list is None or len(column_list) == 0:
+            formation: List[Tuple[str, str]] | None = None,
+            few_shot_context: List[Tuple[str, str]] | None = None,
+    ) -> Tuple[List[ImprovesItem], List[NotImprovesItem]]:
+        """
+        Run the LLM fixer on the selected columns, batch the calls,
+        and **wait for every batch to finish** before returning.
+        """
+        # ------------- setup -------------
+        if not column_list:
             column_list = self.data.columns.tolist()
 
-        total_rows: int = self.num_rows
-        data = self.data[column_list]
-        schema = str(self.extract_column_schema(self.schema, column_list))
-        # print(f"Fixing number errors for columns: {column_list}")
-        for start_index in range(0, total_rows, batch_size):
-            end_index = min(start_index + batch_size, total_rows)
-            data_segment = data.iloc[start_index:end_index]
-            response = self._fix_error_with_prompt(data_segment, schema, formation, few_shot_context, prompt=prompt)
-            if response:
-                improvements.extend(response.improves)
-                cant_improvements.extend(response.error)
+        schema_str = str(self.extract_column_schema(self.schema, column_list))
+        total_rows = self.num_rows
+        data_subset = self.data[column_list]
 
+        # Build argument list first (important if num_rows changes later)
+        batch_args: list[tuple[pd.DataFrame, int]] = []
+        for start in range(0, total_rows, batch_size):
+            end = min(start + batch_size, total_rows)
+            if start == end:
+                continue
+            batch_df = data_subset.iloc[start:end]
+            batch_args.append((batch_df, start))
+
+        # ------------- worker -------------
+        def _process_batch(batch_df: pd.DataFrame, batch_start: int):
+            """Call the LLM once for this batch and shift indices."""
+            resp = self._fix_error_with_prompt(
+                batch_df,
+                schema=schema_str,
+                formation=formation,
+                few_shot_context=few_shot_context,
+                prompt=prompt,
+            )
+            return resp.improves, resp.error
+
+        # ------------- execute in parallel -------------
+        improvements: list[ImprovesItem] = []
+        cant_improvements: list[NotImprovesItem] = []
+
+        with ThreadPoolExecutor(max_workers=5) as pool:
+            futures = [pool.submit(_process_batch, df, start) for df, start in batch_args]
+            for fut in as_completed(futures):
+                try:
+                    ok, ko = fut.result()
+                    improvements.extend(ok)
+                    cant_improvements.extend(ko)
+                except Exception as exc:
+                    print(f"⚠️  A batch failed but was skipped: {exc}")
         return improvements, cant_improvements
 
     def fix_number_error(self, column_list: list[str], batch_size: int = 50, formation: List[Tuple[str, str]] = None, few_shot_context: List[Tuple[str, str]] = None):
-        improvements, cant_improvements = self._fix_error(column_list, batch_size, PROMPT_FIX_NUMBER_FORMATION,formation, few_shot_context)
+        improvements, cant_improvements = self._fix_error(column_list, batch_size, PROMPT_FIX_NUMBER_FORMATION, formation, few_shot_context)
         return improvements, cant_improvements
 
     def fix_datetime_error(self, column_list: list[str], batch_size: int = 50, formation: List[Tuple[str, str]] = None, few_shot_context: List[Tuple[str, str]] = None):

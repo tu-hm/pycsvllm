@@ -2,8 +2,7 @@ import string
 
 import pandas as pd
 import random
-from decimal import Decimal
-from typing import Callable, List
+from typing import Callable, List, Iterable, Dict, Tuple
 from dateutil import parser as _dateutil_parser
 
 from num2words import num2words
@@ -122,20 +121,77 @@ def mess_up_datetime_format(date_str: str,
         formats_pool.extend(_extra_format_variants(dt))
     return dt.strftime(random.choice(formats_pool))
 
-def mess_up_string(s, noise_level=0.3):
-    messy = []
-    whitespace = [' ']
-    all_chars = string.ascii_letters + string.digits + string.punctuation
-    for char in s:
-        if random.random() < noise_level:
-            char = char.upper() if char.islower() else char.lower()
-        messy.append(char)
-        if random.random() < noise_level:
-            messy.append(random.choice(whitespace))
-        if random.random() < noise_level:
-            messy.append(random.choice(all_chars))
+RAW_CONFUSIONS: Dict[str, List[Tuple[str, int]]] = {
+    "0": [("O", 1), ("D", 2), ("Q", 3)],
+    "1": [("I", 1), ("L", 1), ("7", 2), ("T", 3)],
+    "2": [("Z", 1)],
+    "3": [("E", 2)],
+    "4": [("A", 2)],
+    "5": [("S", 1)],
+    "6": [("G", 2), ("9", 3)],
+    "7": [("1", 2), ("T", 2)],
+    "8": [("B", 1)],
+    "9": [("G", 2), ("Q", 2)],
+    "O": [("0", 1), ("D", 2), ("Q", 2)],
+    "D": [("0", 2), ("O", 2)],
+    "Q": [("0", 2), ("O", 2), ("9", 2)],
+    "I": [("1", 1), ("L", 1)],
+    "L": [("1", 1), ("I", 1)],
+    "Z": [("2", 1)],
+    "S": [("5", 1)],
+    "B": [("8", 1)],
+    "E": [("3", 2), ("F", 3)],
+    "G": [("6", 2), ("9", 2)],
+    "T": [("7", 2), ("1", 3)],
+    "C": [("G", 3), ("O", 3)],
+    "F": [("E", 3)],
+    "M": [("N", 3)],
+    "N": [("M", 3)],
+}
 
-    return ''.join(messy)
+
+def mess_up_string(
+    text: str,
+    operations: Iterable[str] = ("append", "delete", "replace"),
+    alphabet: str = string.ascii_letters + string.digits,
+    max_append: int = 1,
+    rng: random.Random | None = None,
+    confusion_map: Dict[str, List[Tuple[str, int]]] | None = RAW_CONFUSIONS,
+) -> str:
+    if rng is None:
+        rng = random
+    if confusion_map is None:
+        confusion_map = RAW_CONFUSIONS
+    if not text:
+        return text
+
+    op = rng.choice(tuple(operations))
+
+    if op == "append":
+        n = rng.randint(1, max_append)
+        extra = "".join(rng.choice(alphabet) for _ in range(n))
+        return text + extra
+
+    if op in {"delete", "remove"}:
+        if len(text) == 1:
+            return ""
+        idx = rng.randrange(len(text))
+        return text[:idx] + text[idx + 1 :]
+
+    if op == "replace":
+        idx = rng.randrange(len(text))
+        orig_char = text[idx]
+        choices = confusion_map.get(orig_char, [])
+        if choices:
+            chars, weights = zip(*choices)
+            new_char = rng.choices(chars, weights=weights, k=1)[0]
+        else:
+            new_char = orig_char
+            while new_char == orig_char:
+                new_char = rng.choice(alphabet)
+        return text[:idx] + new_char + text[idx + 1 :]
+
+    raise ValueError(f"Unsupported operation '{op}'")
 
 def make_messy_data_number(
     df: pd.DataFrame,
