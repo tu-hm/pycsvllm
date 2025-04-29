@@ -394,7 +394,6 @@ class CSVLoader:
                      print(f"Warning: Skipping fix for unknown column '{col_name}' at row {row_idx}.")
                      continue
 
-                # Determine the target type for parsing
                 target_type: Any
                 if self.schema and 'properties' in self.schema and col_name in self.schema['properties']:
                     # Prefer schema type if available

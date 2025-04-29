@@ -194,7 +194,6 @@ def make_messy_data_number(
         if col not in df_out.columns:
             raise KeyError(f"Column '{col}' not found in DataFrame")
 
-        # Apply only to non-null entries; leave NaN/None untouched
         df_out[col] = df_out[col].apply(
             lambda x: format_number_random(x) if pd.notna(x) else x
         )
